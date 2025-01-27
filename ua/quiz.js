@@ -2,7 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentStep = 0;
     let userAnswers = [];
 
-    fetch("./locales/quiz.json")
+    // Detect correct language folder
+    const langFolder = window.location.pathname.includes("/pl") ? "pl" : "ua";
+
+    fetch(`../${langFolder}/locales/quiz.json`) // Ensure correct JSON path
         .then(response => response.json())
         .then(data => {
             loadStep(data);
@@ -31,20 +34,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const optionsContainer = document.getElementById("quiz-options");
         optionsContainer.innerHTML = "";
-        data.steps[currentStep].options.forEach(option => {
-            const label = document.createElement("label");
-            const input = document.createElement("input");
-            input.type = "radio";
-            input.name = "answer";
-            input.value = option;
 
-            const span = document.createElement("span");
-            span.textContent = option;
+        if (data.steps[currentStep].options) {
+            data.steps[currentStep].options.forEach(option => {
+                const label = document.createElement("label");
+                label.classList.add("quiz-option");
 
-            label.appendChild(input);
-            label.appendChild(span);
-            optionsContainer.appendChild(label);
-        });
+                const input = document.createElement("input");
+                input.type = "radio";
+                input.name = "answer";
+                input.value = option;
+
+                if (userAnswers[currentStep] === option) {
+                    input.checked = true;
+                }
+
+                const span = document.createElement("span");
+                span.textContent = option;
+
+                label.appendChild(input);
+                label.appendChild(span);
+                optionsContainer.appendChild(label);
+            });
+        } else if (data.steps[currentStep].fields) {
+            data.steps[currentStep].fields.forEach(field => {
+                const input = document.createElement("input");
+                input.type = "text";
+                input.name = field;
+                input.placeholder = field;
+
+                if (userAnswers[currentStep]) {
+                    input.value = userAnswers[currentStep];
+                }
+
+                optionsContainer.appendChild(input);
+            });
+        }
 
         document.getElementById("next-btn").textContent = (currentStep === data.steps.length - 1) ? data.buttons.submit : data.buttons.next;
         document.getElementById("prev-btn").style.display = currentStep > 0 ? "inline-block" : "none";
@@ -52,8 +77,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function saveAnswer() {
         const selectedOption = document.querySelector("input[name='answer']:checked");
+        const inputFields = document.querySelectorAll("input[type='text']");
+
         if (selectedOption) {
             userAnswers[currentStep] = selectedOption.value;
+        } else if (inputFields.length > 0) {
+            userAnswers[currentStep] = Array.from(inputFields).map(input => input.value);
         }
     }
 

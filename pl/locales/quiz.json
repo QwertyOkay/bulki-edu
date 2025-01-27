@@ -2,11 +2,89 @@
     "steps": [
         {
             "question": "Dlaczego chcesz uczyć się angielskiego?",
-            "options": ["Kultura", "Podróże", "Nauka", "Kariera"]
+            "options": [
+                "Aby lepiej rozumieć kulturę lub literaturę",
+                "Dla podróży lub hobby",
+                "Do nauki lub zdawania egzaminów",
+                "Dla kariery lub biznesu"
+            ]
         },
         {
             "question": "Jakie umiejętności językowe są dla Ciebie najważniejsze?",
-            "options": ["Słownictwo", "Egzaminy", "Konwersacje", "Angielski biznesowy"]
+            "options": [
+                "Słownictwo specjalistyczne (medyczne, prawnicze, techniczne itd.)",
+                "Przygotowanie do egzaminów (IELTS, TOEFL, CAE itd.)",
+                "Konwersacje w języku angielskim",
+                "Angielski biznesowy",
+                "Angielski na potrzeby podróży",
+                "Angielski dla początkujących",
+                "Angielski dla dzieci"
+            ]
+        },
+        {
+            "question": "Jaki jest Twój obecny poziom języka angielskiego?",
+            "options": [
+                "Zaawansowany",
+                "Średnio zaawansowany",
+                "Początkujący"
+            ]
+        },
+        {
+            "question": "Czy zależy Ci na poznaniu konkretnej kultury lub akcentu?",
+            "options": [
+                "Akcent amerykański",
+                "Akcent brytyjski",
+                "Nie, każdy akcent jest odpowiedni"
+            ]
+        },
+        {
+            "question": "Czy potrzebujesz nauczyciela, który zna inne języki?",
+            "options": [
+                "Tak, tylko native speaker.",
+                "Tak, polskojęzyczny nauczyciel.",
+                "Nie, to nie jest istotne"
+            ]
+        },
+        {
+            "question": "Kiedy najlepiej jest Ci się uczyć?",
+            "options": [
+                "Rano (przed 12:00)",
+                "Po południu (12:00–18:00)",
+                "Wieczorem (18:00–21:00)",
+                "W nocy (po 21:00)"
+            ]
+        },
+        {
+            "question": "Ile czasu w tygodniu możesz poświęcić na naukę?",
+            "options": [
+                "6 godzin lub więcej",
+                "3–5 godzin",
+                "1–2 godziny"
+            ]
+        },
+        {
+            "question": "Twój budżet na zajęcia:",
+            "options": [
+                "50 zł",
+                "90 zł",
+                "200 zł"
+            ]
+        },
+        {
+            "question": "Czy słyszałeś/aś o nas wcześniej?",
+            "options": [
+                "Tak, słyszałem/słyszałam o Was",
+                "Nie, to dla mnie nowość",
+                "Chciałbym/Chciałabym dowiedzieć się więcej"
+            ]
+        },
+        {
+            "question": "Wypełnij swoje dane kontaktowe",
+            "fields": [
+                "Twój adres e-mail",
+                "Twój numer telefonu",
+                "Twoje imię"
+            ]
         }
     ],
     "buttons": {
