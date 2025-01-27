@@ -1,0 +1,17 @@
+{
+    "steps": [
+        {
+            "question": "Dlaczego chcesz uczyć się angielskiego?",
+            "options": ["Kultura", "Podróże", "Nauka", "Kariera"]
+        },
+        {
+            "question": "Jakie umiejętności językowe są dla Ciebie najważniejsze?",
+            "options": ["Słownictwo", "Egzaminy", "Konwersacje", "Angielski biznesowy"]
+        }
+    ],
+    "buttons": {
+        "next": "Kontynuować",
+        "prev": "Wstecz",
+        "submit": "Wyślij"
+    }
+}

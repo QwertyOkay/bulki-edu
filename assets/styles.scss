@@ -1,0 +1,152 @@
+// 🎨 Color variables
+$primary-color: #007bff;
+$bg-color: #f9f9f9;
+$text-color: #333;
+$button-color: #28a745;
+$border-color: #ddd;
+
+// 📐 Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+// 🔹 Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: $bg-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+// 🟢 Quiz Container
+.quiz-container {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+// 🏷️ Quiz Header
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h1 {
+    font-size: 18px;
+    font-weight: bold;
+    color: $text-color;
+  }
+
+  .quiz-progress {
+    font-size: 14px;
+    color: $primary-color;
+    font-weight: bold;
+  }
+}
+
+// 📋 Quiz Form
+.quiz-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+// ✅ Quiz Options (Radio Buttons)
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  padding: 12px;
+  border: 2px solid $border-color;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+}
+
+.quiz-option input {
+  display: none;
+}
+
+.quiz-option span {
+  font-size: 16px;
+  color: $text-color;
+}
+
+.quiz-option input:checked + span {
+  font-weight: bold;
+  color: $primary-color;
+}
+
+// 🔘 Buttons
+.quiz-button {
+  background: $button-color;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
+  transition: background 0.3s ease-in-out;
+
+  &:hover {
+    background: darken($button-color, 10%);
+  }
+}
+
+// 📱 Responsive Styling
+@media (min-width: $breakpoint-sm) {
+  .quiz-container {
+    max-width: 500px;
+  }
+
+  .quiz-header h1 {
+    font-size: 20px;
+  }
+
+  .quiz-option {
+    padding: 14px;
+  }
+
+  .quiz-button {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  .quiz-container {
+    max-width: 600px;
+  }
+
+  .quiz-header h1 {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .quiz-container {
+    max-width: 700px;
+  }
+
+  .quiz-header h1 {
+    font-size: 24px;
+  }
+}
