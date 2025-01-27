@@ -2,15 +2,40 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentStep = 0;
     let userAnswers = [];
 
+    const startPage = document.getElementById("start-page");
+    const quizContainer = document.getElementById("quiz-container");
+    const startButton = document.getElementById("start-btn");
+    const nextButton = document.getElementById("next-btn");
+    const prevButton = document.getElementById("prev-btn");
+
+    if (startButton) {
+        startButton.addEventListener("click", function () {
+            if (startPage && quizContainer) {
+                startPage.style.display = "none"; // Hide start page
+                quizContainer.style.display = "block"; // Show quiz
+            }
+        });
+    }
+
+    // Ensure quiz buttons exist before adding event listeners
+    if (!nextButton || !prevButton) {
+        console.error("Quiz buttons not found. Make sure the quiz container is in the HTML.");
+        return;
+    }
+
     // Detect correct language folder
     const langFolder = window.location.pathname.includes("/pl") ? "pl" : "ua";
 
-    fetch(`../${langFolder}/locales/quiz.json`) // Ensure correct JSON path
+    fetch(`../${langFolder}/locales/quiz.json`)
         .then(response => response.json())
         .then(data => {
+            if (!data || !data.steps) {
+                console.error("Quiz JSON is missing or invalid");
+                return;
+            }
             loadStep(data);
 
-            document.getElementById("next-btn").addEventListener("click", () => {
+            nextButton.addEventListener("click", () => {
                 saveAnswer();
                 if (currentStep < data.steps.length - 1) {
                     currentStep++;
@@ -20,20 +45,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
 
-            document.getElementById("prev-btn").addEventListener("click", () => {
+            prevButton.addEventListener("click", () => {
                 if (currentStep > 0) {
                     currentStep--;
                     loadStep(data);
                 }
             });
-        });
+        })
+        .catch(error => console.error("Error loading quiz JSON:", error));
 
     function loadStep(data) {
-        document.getElementById("quiz-title").textContent = data.steps[currentStep].question;
-        document.querySelector(".quiz-progress").textContent = `${currentStep + 1} / ${data.steps.length}`;
+        const quizTitle = document.getElementById("quiz-title");
+        const quizProgress = document.querySelector(".quiz-progress");
+        const quizOptions = document.getElementById("quiz-options");
+        const imageContainer = document.querySelector(".image-container");
 
-        const optionsContainer = document.getElementById("quiz-options");
-        optionsContainer.innerHTML = "";
+        if (!quizTitle || !quizProgress || !quizOptions || !imageContainer) {
+            console.error("Quiz elements are missing!");
+            return;
+        }
+
+        quizTitle.textContent = data.steps[currentStep].question;
+        quizProgress.textContent = `${currentStep + 1} / ${data.steps.length}`;
+
+        quizOptions.innerHTML = "";
+        imageContainer.innerHTML = ""; // Clear old images
 
         if (data.steps[currentStep].options) {
             data.steps[currentStep].options.forEach(option => {
@@ -54,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 label.appendChild(input);
                 label.appendChild(span);
-                optionsContainer.appendChild(label);
+                quizOptions.appendChild(label);
             });
         } else if (data.steps[currentStep].fields) {
             data.steps[currentStep].fields.forEach(field => {
@@ -67,12 +103,28 @@ document.addEventListener("DOMContentLoaded", function () {
                     input.value = userAnswers[currentStep];
                 }
 
-                optionsContainer.appendChild(input);
+                quizOptions.appendChild(input);
             });
         }
 
-        document.getElementById("next-btn").textContent = (currentStep === data.steps.length - 1) ? data.buttons.submit : data.buttons.next;
-        document.getElementById("prev-btn").style.display = currentStep > 0 ? "inline-block" : "none";
+        // Dynamically change the image based on the step
+        const stepImages = [
+            "../assets/img/cat-firstPage.svg",  // Step 1
+            "../assets/img/cat-ua-step2.png",  // Step 2
+            "../assets/img/cat-ua-step3.png",  // Step 3
+            "../assets/img/cat-ua-step4.png"   // Step 4
+        ];
+
+        if (currentStep < stepImages.length) {
+            const imgElement = document.createElement("img");
+            imgElement.src = stepImages[currentStep];
+            imgElement.alt = "Quiz Step Image";
+            imgElement.classList.add("quiz-image");
+            imageContainer.appendChild(imgElement);
+        }
+
+        nextButton.textContent = (currentStep === data.steps.length - 1) ? data.buttons.submit : data.buttons.next;
+        prevButton.style.display = currentStep > 0 ? "inline-block" : "none";
     }
 
     function saveAnswer() {

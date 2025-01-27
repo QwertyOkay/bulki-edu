@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl"> <!-- Change to "pl" for Polish version -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUKI Quiz (PL)</title>
+    <title>BUKI Quiz</title>
     <link rel="stylesheet" href="../assets/styles.css">
 </head>
 
 <body>
-    <div class="quiz-container">
+
+    <!-- Start Page (Shown First) -->
+    <div id="start-page" class="start-container">
+        <h1 id="start-title">Підберіть свого професійного репетитора</h1>
+        <p id="start-description">Знайдемо ідеального викладача за допомогою нашого алгоритму.</p>
+        <button id="start-btn" class="start-button">Почати тест</button>
+    </div>
+
+    <!-- Quiz Page (Hidden at First) -->
+    <div id="quiz-container" class="quiz-container hidden">
         <header class="quiz-header">
             <h1 id="quiz-title"></h1>
             <span class="quiz-progress"></span>
@@ -20,6 +29,7 @@
             <button type="button" id="next-btn">Продовжити</button>
         </form>
     </div>
+
     <script src="./quiz.js"></script>
 </body>
 

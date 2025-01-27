@@ -2,10 +2,20 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentStep = 0;
     let userAnswers = [];
 
+    const startPage = document.getElementById("start-page");
+    const quizContainer = document.getElementById("quiz-container");
+    const startButton = document.getElementById("start-btn");
+
+    // Show quiz when user clicks "Start"
+    startButton.addEventListener("click", function () {
+        startPage.classList.add("hidden");
+        quizContainer.classList.remove("hidden");
+    });
+
     // Detect correct language folder
     const langFolder = window.location.pathname.includes("/pl") ? "pl" : "ua";
 
-    fetch(`../${langFolder}/locales/quiz.json`) // Ensure correct JSON path
+    fetch(`../${langFolder}/locales/quiz.json`)
         .then(response => response.json())
         .then(data => {
             loadStep(data);

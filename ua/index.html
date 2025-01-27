@@ -1,15 +1,41 @@
 <!DOCTYPE html>
-<html lang="uk"> <!-- Changed from "pl" to "uk" -->
+<html lang="uk">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUKI Quiz (UA)</title>
+    <title>BUKI Quiz</title>
     <link rel="stylesheet" href="../assets/styles.css">
 </head>
 
 <body>
-    <div class="quiz-container">
+
+    <div id="start-page" class="start-container">
+        <header class="header">
+            <!-- <span class="logo">BUKI</span>
+            <span class="badge">School</span> -->
+            <img src="../assets/img/logo.svg" alt="">
+        </header>
+
+        <main class="content">
+            <h1 class="main-title">Підберіть свого професійного репетитора за допомогою нашого спеціального алгоритму.
+            </h1>
+            <p class="sub-title">Розкажіть про вашу ціль навчання, і ми знайдемо для вас персонального викладача.</p>
+
+            <span class="tutor-count">ПІДБІР ІЗ <strong>728</strong> РЕПЕТИТОРІВ</span>
+
+            <div class="language-selector">
+                <span class="flag-icon">🇬🇧</span>
+                <span class="language-name">Англійська мова</span>
+            </div>
+
+            <button id="start-btn" class="start-button">ПОЧАТИ</button>
+        </main>
+
+        <div class="image-container"></div> <!-- Dynamic image will be added here -->
+    </div>
+
+    <div id="quiz-container" class="quiz-container hidden">
         <header class="quiz-header">
             <h1 id="quiz-title"></h1>
             <span class="quiz-progress"></span>
@@ -19,7 +45,9 @@
             <button type="button" id="prev-btn">Назад</button>
             <button type="button" id="next-btn">Продовжити</button>
         </form>
+        <div class="image-container"></div>
     </div>
+
     <script src="./quiz.js"></script>
 </body>
 

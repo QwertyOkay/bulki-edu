@@ -1,16 +1,21 @@
-// 🎨 Color variables
-$primary-color: #007bff;
-$bg-color: #f9f9f9;
-$text-color: #333;
-$button-color: #28a745;
+// 🎨 Color Variables (from Figma)
+$primary-color: #1d1d1d;
+$secondary-color: #666;
+$button-color: #6abf4b; // Correct Green
+$badge-bg: linear-gradient(90deg, #ede902 0%, #4caf50 100%);
 $border-color: #ddd;
+$bg-color: #f9f9f9;
+$language-border: #c6c6c6;
+$cat-bg-color: #e5f5dd; // Correct green behind the cat
+$text-color: 353535;
 
 // 📐 Breakpoints
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
 
-// 🔹 Global Styles
+// // 🔹 Global Styles
 * {
   margin: 0;
   padding: 0;
@@ -24,17 +29,202 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  padding: 20px;
+  //   padding: 20px;
 }
 
-// 🟢 Quiz Container
-.quiz-container {
-  width: 100%;
-  max-width: 400px;
+// /* First page */
+
+// 🟢 Start Page Styling (Figma Match)
+.start-container {
+  //   width: 100%;
+  //   max-width: 400px;
+  //   background: white;
+  padding: 24px;
+  border-radius: 15px;
+  //   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: $primary-color;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: $secondary-color;
+  }
+
+  .tutor-count {
+    font-size: 14px;
+    color: #4caf50;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 14px;
+  }
+}
+
+// 🏷️ Header Section (BUKI Logo & Badge)
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+}
+
+.badge {
+  background: $badge-bg;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 14px;
+}
+
+// 🌍 Language Selector (Figma Adjusted)
+.language-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid $language-border;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 18px;
+  font-size: 16px;
+  font-weight: bold;
+
+  .flag-icon {
+    font-size: 18px;
+    margin-right: 8px;
+  }
+}
+
+// 🔘 Start Button (Green)
+.start-button {
+  background: $button-color;
+  color: white;
+  border: none;
+  padding: 16px 20px;
+  border-radius: 12px; // More rounded corners
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+
+  &:hover {
+    background: darken($button-color, 10%);
+  }
+}
+
+// 🖼️ Image Styling (Green Background Added)
+.image-container {
+  text-align: center;
+  margin-top: 20px;
+  background: $cat-bg-color; // ✅ Green background behind the cat
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.cat-image {
+  max-width: 100%;
+  height: auto;
+}
+
+// 📱 Responsive Styling
+@media (min-width: $breakpoint-md) {
+  .start-container {
+    max-width: 500px;
+    padding: 30px;
+  }
+
+  .main-title {
+    font-size: 24px;
+  }
+
+  .sub-title {
+    font-size: 18px;
+  }
+
+  .language-selector {
+    max-width: 280px;
+    margin: 14px auto;
+  }
+
+  .start-button {
+    font-size: 20px;
+  }
+}
+
+// 🖥️ Desktop Layout (Two-Column)
+@media (min-width: $breakpoint-lg) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 50px;
+  }
+
+  .start-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    flex-direction: row;
+    padding: 40px;
+  }
+
+  .content {
+    text-align: left;
+    max-width: 50%;
+  }
+
+  .image-container {
+    max-width: 50%;
+    text-align: right;
+    background: $cat-bg-color; // ✅ Ensure green background in both layouts
+    padding: 40px;
+    border-radius: 15px;
+  }
+
+  .cat-image {
+    max-width: 400px;
+  }
+
+  .language-selector {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: $breakpoint-xl) {
+  .start-container {
+    max-width: 1200px;
+  }
+
+  .main-title {
+    font-size: 26px;
+  }
+
+  .sub-title {
+    font-size: 20px;
+  }
+}
+
+// 🟢 KEEPING YOUR QUIZ STYLES INTACT 🟢
+.hidden {
+  display: none;
 }
 
 // 🏷️ Quiz Header
@@ -64,7 +254,7 @@ body {
   gap: 15px;
 }
 
-// ✅ Quiz Options (Radio Buttons)
+// // ✅ Quiz Options (Radio Buttons)
 .quiz-option {
   display: flex;
   align-items: center;
@@ -148,5 +338,158 @@ body {
 
   .quiz-header h1 {
     font-size: 24px;
+  }
+}
+
+// 🎨 Color Variables
+$primary-color: #333;
+$secondary-color: #666;
+$button-color: #4caf50;
+$badge-color: linear-gradient(90deg, #ede902 0%, #4caf50 100%);
+$border-color: #ddd;
+$bg-color: #f9f9f9;
+
+// 📐 Breakpoints
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+// 🔹 Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// // 🔹 Hide quiz at start
+.hidden {
+  display: none;
+}
+
+// 🏷️ Header Section
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+}
+
+.badge {
+  background: $badge-color;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+}
+
+// 📋 Content
+.content {
+  text-align: center;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.main-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: $primary-color;
+}
+
+.sub-title {
+  font-size: 16px;
+  color: $secondary-color;
+  margin: 10px 0;
+}
+
+.tutor-count {
+  font-size: 14px;
+  color: #4caf50;
+  display: block;
+  margin-top: 10px;
+}
+
+// 🌍 Language Selector
+.language-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid $border-color;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.flag-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.language-name {
+  font-size: 16px;
+}
+
+// 🖼️ Image Styling
+.image-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cat-image {
+  max-width: 100%;
+  height: auto;
+}
+
+// 📱 Responsive Styling
+@media (min-width: $breakpoint-md) {
+  .content {
+    max-width: 500px;
+  }
+
+  .main-title {
+    font-size: 24px;
+  }
+
+  .sub-title {
+    font-size: 18px;
+  }
+
+  .language-selector {
+    max-width: 300px;
+    margin: 10px auto;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 50px;
+  }
+
+  .start-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+  }
+
+  .content {
+    text-align: left;
+  }
+
+  .image-container {
+    margin-top: 0;
+  }
+
+  .cat-image {
+    max-width: 350px;
   }
 }
