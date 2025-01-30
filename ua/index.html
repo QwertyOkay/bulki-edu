@@ -5,34 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUKI Quiz</title>
+    <link rel="icon" type="image/png" href="../assets/img/logo.svg">
     <link rel="stylesheet" href="../assets/styles.css">
+    <!--jsdelivr-->
+    <link href="https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.css" rel="stylesheet">
+    <!--or github raw-->
+    <link href="https://raw.githubusercontent.com/repalash/gilroy-free-webfont/fonts/Gilroy-Extrabold.css"
+        rel="stylesheet">
+    <!--jsdelivr-->
+    <link href="https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.css" rel="stylesheet">
 </head>
 
 <body>
 
     <div id="start-page" class="start-container">
         <header class="header">
-            <!-- <span class="logo">BUKI</span>
-            <span class="badge">School</span> -->
             <img src="../assets/img/logo.svg" alt="">
         </header>
 
         <main class="content">
-            <h1 class="main-title">Підберіть свого професійного репетитора за допомогою нашого спеціального алгоритму.
-            </h1>
-            <p class="sub-title">Розкажіть про вашу ціль навчання, і ми знайдемо для вас персонального викладача.</p>
-
-            <span class="tutor-count">ПІДБІР ІЗ <strong>728</strong> РЕПЕТИТОРІВ</span>
-
-            <div class="language-selector">
-                <span class="flag-icon">🇬🇧</span>
-                <span class="language-name">Англійська мова</span>
+            <div>
+                <h1 class="main-title">Підберіть свого професійного репетитора за допомогою нашого спеціального
+                    алгоритму.
+                </h1>
+                <p class="sub-title">Розкажіть, про вашу ціль навчання, і ми знайдемо для вас персонального викладача.
+                </p>
             </div>
 
-            <button id="start-btn" class="start-button">ПОЧАТИ</button>
+            <span class="tutor-count">ПІДБІР ІЗ 728 РЕПЕТИТОРІВ</span>
+
+            <div class="buttons-wrapper">
+                <div class="language-selector">
+                    <span class="flag-icon"><img src="../assets/img/GB.svg" alt="GB"></span>
+                    <span class="language-name">Англійська мова</span>
+                </div>
+                <button id="start-btn" class="start-button">ПОЧАТИ</button>
+            </div>
         </main>
 
         <div class="image-container"></div> <!-- Dynamic image will be added here -->
+        <div class="image-arrow">
+            <img src="../assets/img/arrow-left.svg" alt="arrow">
+        </div>
+        <div class="catBg-container"></div>
     </div>
 
     <div id="quiz-container" class="quiz-container hidden">

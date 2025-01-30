@@ -1,13 +1,51 @@
+@font-face {
+  font-family: "Gilroy";
+  src: url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.eot");
+  src: local("Gilroy Extrabold"), local("Gilroy-Extrabold"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.ttf")
+      format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("../assets/fonts/gilroy-medium.ttf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.eot");
+  src: local("Gilroy Light"), local("Gilroy-Light"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.woff")
+      format("woff"),
+    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.ttf")
+      format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
 // 🎨 Color Variables (from Figma)
 $primary-color: #1d1d1d;
-$secondary-color: #666;
-$button-color: #6abf4b; // Correct Green
+$secondary-color: #353535;
+$button-color: #66b314; // Correct Green
+$button-font-size: 16px;
 $badge-bg: linear-gradient(90deg, #ede902 0%, #4caf50 100%);
-$border-color: #ddd;
+$border-color: #353535;
 $bg-color: #f9f9f9;
 $language-border: #c6c6c6;
 $cat-bg-color: #e5f5dd; // Correct green behind the cat
-$text-color: 353535;
+$text-color: #ffffff;
+$border-radius: 40px;
+$font-family: "Gilroy";
 
 // 📐 Breakpoints
 $breakpoint-sm: 576px;
@@ -23,7 +61,7 @@ $breakpoint-xl: 1280px;
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: $font-family;
   background: $bg-color;
   display: flex;
   align-items: center;
@@ -36,33 +74,28 @@ body {
 
 // 🟢 Start Page Styling (Figma Match)
 .start-container {
-  //   width: 100%;
-  //   max-width: 400px;
-  //   background: white;
-  padding: 24px;
-  border-radius: 15px;
-  //   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  padding: 17px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 300px;
 
   h1 {
-    font-size: 22px;
+    font-size: 30px;
     font-weight: bold;
     color: $primary-color;
-    margin-bottom: 12px;
+    max-width: 397px;
   }
 
   p {
-    font-size: 16px;
-    margin-bottom: 20px;
+    font-size: $button-font-size;
+    margin-bottom: 40px;
+    margin-top: 15px;
     color: $secondary-color;
-  }
-
-  .tutor-count {
-    font-size: 14px;
-    color: #4caf50;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 14px;
+    font-weight: 500;
   }
 }
 
@@ -90,35 +123,17 @@ body {
 }
 
 // 🌍 Language Selector (Figma Adjusted)
-.language-selector {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  border: 1px solid $language-border;
-  padding: 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  margin-bottom: 18px;
-  font-size: 16px;
-  font-weight: bold;
-
-  .flag-icon {
-    font-size: 18px;
-    margin-right: 8px;
-  }
-}
 
 // 🔘 Start Button (Green)
 .start-button {
   background: $button-color;
-  color: white;
+  color: $text-color;
   border: none;
   padding: 16px 20px;
-  border-radius: 12px; // More rounded corners
+  border-radius: $border-radius;
   cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: $button-font-size;
+  font-weight: 500;
   text-align: center;
   transition: background 0.3s ease-in-out;
   width: 100%;
@@ -132,14 +147,30 @@ body {
 .image-container {
   text-align: center;
   margin-top: 20px;
-  background: $cat-bg-color; // ✅ Green background behind the cat
-  padding: 24px;
+  // background: $cat-bg-color;
+  // padding: 24px;
   border-radius: 12px;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
 }
 
 .cat-image {
   max-width: 100%;
   height: auto;
+}
+
+.catBg-container {
+  width: 100%;
+  position: fixed;
+  height: 177px;
+  background: linear-gradient(90deg, #c0ea96 0%, #e5f5dd 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  bottom: 0;
+  left: 0;
 }
 
 // 📱 Responsive Styling
@@ -162,9 +193,9 @@ body {
     margin: 14px auto;
   }
 
-  .start-button {
-    font-size: 20px;
-  }
+  // .start-button {
+  //   font-size: 20px;
+  // }
 }
 
 // 🖥️ Desktop Layout (Two-Column)
@@ -344,9 +375,7 @@ body {
 // 🎨 Color Variables
 $primary-color: #333;
 $secondary-color: #666;
-$button-color: #4caf50;
 $badge-color: linear-gradient(90deg, #ede902 0%, #4caf50 100%);
-$border-color: #ddd;
 $bg-color: #f9f9f9;
 
 // 📐 Breakpoints
@@ -399,17 +428,10 @@ $breakpoint-lg: 1024px;
   color: $primary-color;
 }
 
-.sub-title {
-  font-size: 16px;
-  color: $secondary-color;
-  margin: 10px 0;
-}
-
 .tutor-count {
-  font-size: 14px;
-  color: #4caf50;
+  color: #66b314;
+  font-size: $button-font-size;
   display: block;
-  margin-top: 10px;
 }
 
 // 🌍 Language Selector
@@ -418,26 +440,35 @@ $breakpoint-lg: 1024px;
   align-items: center;
   justify-content: center;
   background: white;
-  border: 1px solid $border-color;
+  font-size: 18px;
+  font-weight: bold;
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
   margin-top: 10px;
+  width: 100%;
+  border: 2px solid $border-color;
+  border-radius: $border-radius;
+  border-color: $border-color;
+}
+
+.language-name {
+  font-size: 18px;
+  font-weight: 800;
 }
 
 .flag-icon {
   font-size: 18px;
   margin-right: 8px;
-}
-
-.language-name {
-  font-size: 16px;
+  align-self: baseline;
+  display: flex;
 }
 
 // 🖼️ Image Styling
 .image-container {
   text-align: center;
   margin-top: 20px;
+  margin-bottom: -10px;
 }
 
 .cat-image {
@@ -492,4 +523,20 @@ $breakpoint-lg: 1024px;
   .cat-image {
     max-width: 350px;
   }
+}
+
+.image-arrow {
+  display: none;
+
+  @media screen and (min-width: $breakpoint-md) {
+    display: flex;
+  }
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 13px;
 }
