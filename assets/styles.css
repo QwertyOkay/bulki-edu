@@ -1,13 +1,7 @@
 @font-face {
   font-family: "Gilroy";
   src: url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.eot");
-  src: local("Gilroy Extrabold"), local("Gilroy-Extrabold"),
-    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.eot?#iefix")
-      format("embedded-opentype"),
-    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.woff")
-      format("woff"),
-    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.ttf")
-      format("truetype");
+  src: local("Gilroy Extrabold"), local("Gilroy-Extrabold"), url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.eot?#iefix") format("embedded-opentype"), url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.woff") format("woff"), url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
 }
@@ -20,13 +14,7 @@
 @font-face {
   font-family: "Gilroy";
   src: url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.eot");
-  src: local("Gilroy Light"), local("Gilroy-Light"),
-    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.eot?#iefix")
-      format("embedded-opentype"),
-    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.woff")
-      format("woff"),
-    url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.ttf")
-      format("truetype");
+  src: local("Gilroy Light"), local("Gilroy-Light"), url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.eot?#iefix") format("embedded-opentype"), url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.woff") format("woff"), url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
 }
@@ -49,10 +37,10 @@ body {
   padding: 17px;
   text-align: center;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 300px;
+  padding-bottom: 30vh;
   min-height: 100dvh;
 }
 .start-container h1 {
@@ -439,4 +427,4 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 13px;
-} /*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */

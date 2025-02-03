@@ -81,7 +81,9 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 300px;
+  // margin-bottom: 300px;
+  padding-bottom: 30vh;
+  min-height: 100dvh;
 
   h1 {
     font-size: 30px;
