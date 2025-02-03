@@ -30,7 +30,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
 .start-container {
@@ -46,7 +45,7 @@ body {
 .start-container h1 {
   font-size: 30px;
   font-weight: bold;
-  color: #1d1d1d;
+  color: #353535;
   max-width: 397px;
 }
 .start-container p {
