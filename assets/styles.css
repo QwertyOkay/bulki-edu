@@ -148,7 +148,7 @@ body {
   width: 100%;
   position: fixed;
   height: 137px;
-  background: linear-gradient(90deg, #c0ea96 0%, #e5f5dd 100%);
+  background: #c0ea96;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -386,7 +386,8 @@ body {
 }
 
 .flag-icon_img {
-  height: 20px;
+  height: 19px;
+  width: 25px;
 }
 
 .image-container {
@@ -523,7 +524,7 @@ body {
   .catBg-container {
     position: absolute;
     height: 100%;
-    background: linear-gradient(90deg, #c0ea96 0%, #e5f5dd 100%);
+    background: #c0ea96;
     z-index: -1;
     width: 120px;
     right: 0;
