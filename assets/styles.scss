@@ -75,7 +75,7 @@ body {
 // 🟢 Start Page Styling (Figma Match)
 .start-container {
   text-align: center;
-  padding: 17px;
+  // padding: 17px;
   text-align: center;
   display: flex;
   justify-content: flex-start;
@@ -112,6 +112,7 @@ body {
   justify-content: center;
   gap: 10px;
   margin-bottom: 14px;
+  margin-top: 70px;
 }
 
 .header {
@@ -122,7 +123,7 @@ body {
 
 .header-wrapper {
   @media screen and (min-width: $breakpoint-lg) {
-    margin-bottom: 184px;
+    margin-bottom: 174px;
   }
 }
 
@@ -210,24 +211,12 @@ body {
 
   .language-selector {
     max-width: 280px;
-    margin: 14px auto;
+    // margin: 14px auto;
   }
-
-  // .start-button {
-  //   font-size: 20px;
-  // }
 }
 
 // 🖥️ Desktop Layout (Two-Column)
 @media (min-width: $breakpoint-lg) {
-  body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    // padding: 50px;
-  }
-
   .start-container {
     display: flex;
     align-items: center;
@@ -256,6 +245,7 @@ body {
 
   .language-selector {
     margin-left: 0;
+    height: 50px;
   }
 }
 
@@ -452,6 +442,7 @@ $breakpoint-lg: 1024px;
   color: #66b314;
   font-size: $button-font-size;
   display: block;
+  margin-bottom: 10px;
 }
 
 // 🌍 Language Selector
@@ -465,7 +456,6 @@ $breakpoint-lg: 1024px;
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
   width: 100%;
   border: 2px solid $border-color;
   border-radius: $border-radius;
@@ -475,12 +465,15 @@ $breakpoint-lg: 1024px;
 .language-name {
   font-size: 18px;
   font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .flag-icon {
-  font-size: 18px;
-  margin-right: 8px;
-  align-self: baseline;
+  // font-size: 18px;
+  margin-right: 15px;
+  // align-self: baseline;
   display: flex;
 }
 
@@ -511,8 +504,8 @@ $breakpoint-lg: 1024px;
   }
 
   .language-selector {
-    max-width: 300px;
-    margin: 10px auto;
+    max-width: 397px;
+    // margin: 10px auto;
   }
 }
 
@@ -520,7 +513,7 @@ $breakpoint-lg: 1024px;
   body {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: auto;
     // padding: 50px;
   }
@@ -550,6 +543,9 @@ $breakpoint-lg: 1024px;
 
   @media screen and (min-width: $breakpoint-md) {
     display: flex;
+    position: absolute;
+    right: 160px;
+    bottom: 50px;
   }
 }
 
@@ -570,7 +566,7 @@ $breakpoint-lg: 1024px;
     flex-direction: row;
     max-width: 1320px;
     margin: 0 auto;
-    // padding: 50px;
+    padding-left: 120px;
   }
 
   .content {
@@ -604,17 +600,21 @@ $breakpoint-lg: 1024px;
     flex-direction: row;
     align-items: center;
     gap: 20px;
+    justify-content: flex-start;
+    margin-left: -18px;
   }
 
   .language-selector {
-    max-width: 300px;
+    max-width: 397px;
     padding: 15px;
     font-size: 20px;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .start-button {
-    max-width: 250px;
-    font-size: 20px;
+    max-width: 280px;
+    font-size: 16px;
     padding: 15px 30px;
   }
 
@@ -626,10 +626,11 @@ $breakpoint-lg: 1024px;
 
   .image-container img {
     max-width: 500px;
-    height: 265px;
+    // height: 265px;
+    height: 425px;
     position: fixed;
     bottom: 0;
-    right: 140px;
+    right: 260px;
   }
 
   .catBg-container {
