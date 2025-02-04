@@ -17,53 +17,59 @@
 </head>
 
 <body>
+    <main>
 
-    <div id="start-page" class="start-container">
-        <header class="header">
-            <img src="../assets/img/logo.svg" alt="">
-        </header>
-
-        <main class="content">
+        <div id="start-page" class="start-container">
             <div>
-                <h1 class="main-title">Підберіть свого професійного репетитора за допомогою нашого спеціального
-                    алгоритму.
-                </h1>
-                <p class="sub-title">Розкажіть, про вашу ціль навчання, і ми знайдемо для вас персонального викладача.
-                </p>
-            </div>
-
-            <span class="tutor-count">ПІДБІР ІЗ 728 РЕПЕТИТОРІВ</span>
-
-            <div class="buttons-wrapper">
-                <div class="language-selector">
-                    <span class="flag-icon"><img src="../assets/img/GB.svg" alt="GB"></span>
-                    <span class="language-name">Англійська мова</span>
+                <div class="header-wrapper">
+                    <header class="header">
+                        <img src="../assets/img/logo.svg" alt="">
+                    </header>
                 </div>
-                <button id="start-btn" class="start-button">ПОЧАТИ</button>
+
+                <div class="content">
+                    <div>
+                        <h1 class="main-title">Підберіть свого професійного репетитора за допомогою нашого спеціального
+                            алгоритму.
+                        </h1>
+                        <p class="sub-title">Розкажіть, про вашу ціль навчання, і ми знайдемо для вас персонального
+                            викладача.
+                        </p>
+                    </div>
+
+                    <span class="tutor-count">ПІДБІР ІЗ 728 РЕПЕТИТОРІВ</span>
+
+                    <div class="buttons-wrapper">
+                        <div class="language-selector">
+                            <span class="flag-icon"><img src="../assets/img/GB.svg" alt="GB"></span>
+                            <span class="language-name">Англійська мова</span>
+                        </div>
+                        <button id="start-btn" class="start-button">ПОЧАТИ</button>
+                    </div>
+                </div>
             </div>
-        </main>
-
-        <div class="image-container"></div> <!-- Dynamic image will be added here -->
-        <div class="image-arrow">
-            <img src="../assets/img/arrow-left.svg" alt="arrow">
+            <div class="image-container"></div> <!-- Dynamic image will be added here -->
+            <div class="image-arrow">
+                <img src="../assets/img/arrow-left.svg" alt="arrow">
+            </div>
+            <div class="catBg-container"></div>
         </div>
-        <div class="catBg-container"></div>
-    </div>
 
-    <div id="quiz-container" class="quiz-container hidden">
-        <header class="quiz-header">
-            <h1 id="quiz-title"></h1>
-            <span class="quiz-progress"></span>
-        </header>
-        <form id="quiz-form">
-            <div id="quiz-options"></div>
-            <button type="button" id="prev-btn">Назад</button>
-            <button type="button" id="next-btn">Продовжити</button>
-        </form>
-        <div class="image-container"></div>
-    </div>
+        <div id="quiz-container" class="quiz-container hidden">
+            <header class="quiz-header">
+                <h1 id="quiz-title"></h1>
+                <span class="quiz-progress"></span>
+            </header>
+            <form id="quiz-form">
+                <div id="quiz-options"></div>
+                <button type="button" id="prev-btn">Назад</button>
+                <button type="button" id="next-btn">Продовжити</button>
+            </form>
+            <div class="image-container"></div>
+        </div>
 
-    <script src="./quiz.js"></script>
+        <script src="./quiz.js"></script>
+    </main>
 </body>
 
 </html>
