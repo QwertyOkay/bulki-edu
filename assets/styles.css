@@ -125,7 +125,6 @@ body {
   justify-content: center;
   border-radius: 0;
   bottom: 0;
-  left: 0;
 }
 
 @media (min-width: 768px) {
@@ -150,7 +149,6 @@ body {
     align-items: center;
     justify-content: center;
     height: auto;
-    padding: 50px;
   }
   .start-container {
     display: flex;
@@ -167,7 +165,6 @@ body {
   .image-container {
     max-width: 50%;
     text-align: right;
-    background: #e5f5dd;
     padding: 40px;
     border-radius: 15px;
   }
@@ -399,7 +396,6 @@ body {
     align-items: center;
     justify-content: center;
     height: auto;
-    padding: 50px;
   }
   .start-container {
     display: flex;
@@ -490,12 +486,13 @@ body {
     height: auto;
   }
   .catBg-container {
-    width: 100%;
     position: absolute;
     height: 100%;
     background: linear-gradient(90deg, #c0ea96 0%, #e5f5dd 100%);
-    left: 0;
     z-index: -1;
+    width: 120px;
+    right: 0;
+    height: 100%;
   }
 }
 /* 📱 Мобильная версия (дополнения) */

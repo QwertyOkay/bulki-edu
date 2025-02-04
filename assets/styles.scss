@@ -149,8 +149,6 @@ body {
 .image-container {
   text-align: center;
   margin-top: 20px;
-  // background: $cat-bg-color;
-  // padding: 24px;
   border-radius: 12px;
   position: fixed;
   z-index: 1;
@@ -176,7 +174,7 @@ body {
   justify-content: center;
   border-radius: 0;
   bottom: 0;
-  left: 0;
+  // left: 0;
 }
 
 // 📱 Responsive Styling
@@ -211,7 +209,7 @@ body {
     align-items: center;
     justify-content: center;
     height: auto;
-    padding: 50px;
+    // padding: 50px;
   }
 
   .start-container {
@@ -231,7 +229,7 @@ body {
   .image-container {
     max-width: 50%;
     text-align: right;
-    background: $cat-bg-color; // ✅ Ensure green background in both layouts
+    // background: $cat-bg-color; // ✅ Ensure green background in both layouts
     padding: 40px;
     border-radius: 15px;
   }
@@ -508,7 +506,7 @@ $breakpoint-lg: 1024px;
     align-items: center;
     justify-content: center;
     height: auto;
-    padding: 50px;
+    // padding: 50px;
   }
 
   .start-container {
@@ -548,7 +546,7 @@ $breakpoint-lg: 1024px;
 }
 
 /* 🖥️ Десктопная версия */
-@media (min-width: 1024px) {
+@media (min-width: $breakpoint-lg) {
   .start-container {
     display: flex;
     align-items: center;
@@ -613,12 +611,13 @@ $breakpoint-lg: 1024px;
   }
 
   .catBg-container {
-    width: 100%;
     position: absolute;
     height: 100%;
     background: linear-gradient(90deg, #c0ea96 0%, #e5f5dd 100%);
-    left: 0;
     z-index: -1;
+    width: 120px;
+    right: 0;
+    height: 100%;
   }
 }
 
