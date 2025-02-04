@@ -60,6 +60,12 @@ $breakpoint-xl: 1280px;
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100vh; /* Ограничиваем высоту экрана */
+  overflow: hidden; /* Блокируем скролл */
+}
+
 body {
   font-family: $font-family;
   background: $bg-color;
@@ -92,7 +98,8 @@ body {
     max-width: 397px;
 
     @media screen and (min-width: $breakpoint-lg) {
-      max-width: 604px;
+      max-width: 894px;
+      font-size: 42px;
     }
   }
 
@@ -102,6 +109,10 @@ body {
     margin-top: 15px;
     color: $secondary-color;
     font-weight: 500;
+
+    @media screen and (min-width: $breakpoint-lg) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -123,7 +134,7 @@ body {
 
 .header-wrapper {
   @media screen and (min-width: $breakpoint-lg) {
-    margin-bottom: 174px;
+    margin-bottom: 184px;
   }
 }
 
@@ -592,7 +603,7 @@ $breakpoint-lg: 1024px;
     display: block;
     color: #66b314;
     font-size: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .buttons-wrapper {
@@ -627,10 +638,10 @@ $breakpoint-lg: 1024px;
   .image-container img {
     max-width: 500px;
     // height: 265px;
-    height: 425px;
+    height: 400px;
     position: fixed;
     bottom: 0;
-    right: 260px;
+    right: 200px;
   }
 
   .catBg-container {

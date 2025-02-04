@@ -25,6 +25,12 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100vh; /* Ограничиваем высоту экрана */
+  overflow: hidden; /* Блокируем скролл */
+}
+
 body {
   font-family: "Gilroy";
   background: #f9f9f9;
@@ -51,7 +57,8 @@ body {
 }
 @media screen and (min-width: 1024px) {
   .start-container h1 {
-    max-width: 604px;
+    max-width: 894px;
+    font-size: 42px;
   }
 }
 .start-container p {
@@ -60,6 +67,11 @@ body {
   margin-top: 15px;
   color: #353535;
   font-weight: 500;
+}
+@media screen and (min-width: 1024px) {
+  .start-container p {
+    font-size: 20px;
+  }
 }
 
 .header {
@@ -79,7 +91,7 @@ body {
 
 @media screen and (min-width: 1024px) {
   .header-wrapper {
-    margin-bottom: 174px;
+    margin-bottom: 184px;
   }
 }
 
@@ -471,7 +483,7 @@ body {
     display: block;
     color: #66b314;
     font-size: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   .buttons-wrapper {
     display: flex;
@@ -500,10 +512,10 @@ body {
   }
   .image-container img {
     max-width: 500px;
-    height: 425px;
+    height: 400px;
     position: fixed;
     bottom: 0;
-    right: 260px;
+    right: 200px;
   }
   .catBg-container {
     position: absolute;
