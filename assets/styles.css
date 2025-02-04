@@ -37,6 +37,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #353535;
 }
 
 .start-container {
@@ -218,9 +219,9 @@ body {
   margin-bottom: 20px;
 }
 .quiz-header h1 {
-  font-size: 18px;
+  font-size: 30px;
   font-weight: bold;
-  color: #ffffff;
+  color: #353535;
 }
 .quiz-header .quiz-progress {
   font-size: 14px;
@@ -255,7 +256,6 @@ body {
 
 .quiz-option span {
   font-size: 16px;
-  color: #ffffff;
 }
 
 .quiz-option input:checked + span {
@@ -560,4 +560,40 @@ body {
     margin-top: 20px;
     text-align: center;
   }
+}
+/* 🚫 0. Кнопка, когда ни один вариант не выбран */
+.btn-disabled {
+  background: transparent;
+  border: 2px solid #353535;
+  color: #353535;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 14px 30px;
+  border-radius: 50px;
+  cursor: not-allowed;
+  transition: all 0.3s;
+}
+
+/* 🖱️ 1. Кнопка, когда ни один вариант не выбран, но наведен */
+.btn-disabled:hover {
+  background: #1d1d1d;
+  color: #fff;
+}
+
+/* ✅ 2. Кнопка, когда выбран вариант */
+.btn-active {
+  background: #66b314;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 14px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* 🖱️ 3. Кнопка при наведении после выбора */
+.btn-active:hover {
+  background: #85c747;
 }/*# sourceMappingURL=styles.css.map */

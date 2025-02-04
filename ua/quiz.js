@@ -11,19 +11,18 @@ document.addEventListener("DOMContentLoaded", function () {
     if (startButton) {
         startButton.addEventListener("click", function () {
             if (startPage && quizContainer) {
-                startPage.style.display = "none"; // Hide start page
-                quizContainer.style.display = "block"; // Show quiz
+                startPage.style.display = "none"; // Скрываем стартовую страницу
+                quizContainer.style.display = "block"; // Показываем квиз
             }
         });
     }
 
-    // Ensure quiz buttons exist before adding event listeners
     if (!nextButton || !prevButton) {
         console.error("Quiz buttons not found. Make sure the quiz container is in the HTML.");
         return;
     }
 
-    // Detect correct language folder
+    // Определяем язык
     const langFolder = window.location.pathname.includes("/pl") ? "pl" : "ua";
 
     fetch(`../${langFolder}/locales/quiz.json`)
@@ -69,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         quizProgress.textContent = `${currentStep + 1} / ${data.steps.length}`;
 
         quizOptions.innerHTML = "";
-        imageContainer.innerHTML = ""; // Clear old images
+        imageContainer.innerHTML = ""; // Очищаем старые изображения
 
         if (data.steps[currentStep].options) {
             data.steps[currentStep].options.forEach(option => {
@@ -107,24 +106,28 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        // Dynamically change the image based on the step
-        const stepImages = [
-            "../assets/img/cat-firstPage.svg",  // Step 1
-            "../assets/img/cat-ua-step2.png",  // Step 2
-            "../assets/img/cat-ua-step3.png",  // Step 3
-            "../assets/img/cat-ua-step4.png"   // Step 4
-        ];
+        // Обновляем стили кнопки
+        updateButtonStyles();
 
-        if (currentStep < stepImages.length) {
-            const imgElement = document.createElement("img");
-            imgElement.src = stepImages[currentStep];
-            imgElement.alt = "Quiz Step Image";
-            imgElement.classList.add("quiz-image");
-            imageContainer.appendChild(imgElement);
-        }
+        // Добавляем слушатель событий для изменения кнопки при выборе варианта
+        document.querySelectorAll("input[name='answer']").forEach(input => {
+            input.addEventListener("change", updateButtonStyles);
+        });
 
         nextButton.textContent = (currentStep === data.steps.length - 1) ? data.buttons.submit : data.buttons.next;
         prevButton.style.display = currentStep > 0 ? "inline-block" : "none";
+    }
+
+    function updateButtonStyles() {
+        const selectedOption = document.querySelector("input[name='answer']:checked");
+
+        if (selectedOption) {
+            nextButton.classList.remove("btn-disabled");
+            nextButton.classList.add("btn-active");
+        } else {
+            nextButton.classList.remove("btn-active");
+            nextButton.classList.add("btn-disabled");
+        }
     }
 
     function saveAnswer() {
