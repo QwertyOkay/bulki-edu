@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Gilroy";
   src: url("https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.eot");
@@ -37,7 +38,7 @@ body {
   padding: 17px;
   text-align: center;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   padding-bottom: 30vh;
@@ -431,4 +432,97 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 13px;
+}
+
+/* 🖥️ Десктопная версия */
+@media (min-width: 1024px) {
+  .start-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+  }
+  .content {
+    text-align: left;
+    max-width: 50%;
+  }
+  .main-title {
+    font-size: 36px;
+    font-weight: 800;
+    max-width: 550px;
+  }
+  .sub-title {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .tutor-count {
+    display: block;
+    color: #66b314;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+  .language-selector {
+    max-width: 300px;
+    padding: 15px;
+    font-size: 20px;
+  }
+  .start-button {
+    max-width: 250px;
+    font-size: 20px;
+    padding: 15px 30px;
+  }
+  .image-container {
+    position: relative;
+    max-width: 50%;
+    text-align: right;
+  }
+  .image-container img {
+    max-width: 500px;
+    height: auto;
+  }
+  .catBg-container {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(90deg, #c0ea96 0%, #e5f5dd 100%);
+    left: 0;
+    z-index: -1;
+  }
+}
+/* 📱 Мобильная версия (дополнения) */
+@media (max-width: 1023px) {
+  .start-container {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+  .main-title {
+    font-size: 28px;
+    max-width: 90%;
+  }
+  .sub-title {
+    font-size: 16px;
+  }
+  .buttons-wrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+  .language-selector {
+    max-width: 100%;
+  }
+  .start-button {
+    width: 100%;
+  }
+  .image-container {
+    margin-top: 20px;
+    text-align: center;
+  }
 }/*# sourceMappingURL=styles.css.map */
