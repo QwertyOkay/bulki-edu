@@ -105,6 +105,10 @@ body {
   bottom: 0;
 }
 
+.image-container img {
+  height: 210px;
+}
+
 .cat-image {
   max-width: 100%;
   height: auto;
@@ -113,7 +117,7 @@ body {
 .catBg-container {
   width: 100%;
   position: fixed;
-  height: 177px;
+  height: 137px;
   background: linear-gradient(90deg, #c0ea96 0%, #e5f5dd 100%);
   display: flex;
   align-items: center;
