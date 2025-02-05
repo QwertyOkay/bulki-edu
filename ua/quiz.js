@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Элементы
     const startPage = document.getElementById("start-page");
     const quizContainer = document.getElementById("quiz-container");
+    const quizHeaderWrapper = document.getElementById("quiz-header_wrapper");
+    const quizContent = document.getElementById("quiz-content");
     const startButton = document.getElementById("start-btn");
     const nextButton = document.getElementById("next-btn");
     const prevButton = document.getElementById("prev-btn");
@@ -21,9 +23,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const preloadImages = [
         '../assets/img/cat-firstPage.svg', // Изображение для стартовой страницы
         '../assets/img/cat-step1.svg',     // Шаг 1
-        '../assets/img/cat-ua-step2.png',  // Шаг 2
-        '../assets/img/cat-ua-step3.png',  // Шаг 3
-        '../assets/img/cat-ua-step4.png'   // Шаг 4
+        '../assets/img/cat-step2.svg',     // Шаг 2
+        '../assets/img/cat-step3.svg',     // Шаг 3
+        '../assets/img/cat-step4.svg',
+        '../assets/img/cat-step5.svg',
+        '../assets/img/cat-step6.svg',
+        '../assets/img/cat-step7.svg',
+        '../assets/img/cat-step8.svg',
+        '../assets/img/cat-step9.svg',
+        '../assets/img/cat-step10.svg'
     ].forEach(src => new Image().src = src);
 
     // Обработчик ошибок загрузки изображений
@@ -36,6 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
     startButton.addEventListener('click', () => {
         startPage.style.display = 'none';
         quizContainer.classList.remove('hidden');
+        quizHeaderWrapper.classList.remove('hidden');
+        quizContent.classList.remove('hidden');
         currentStep = 0;
         catImg.src = '../assets/img/cat-step1.svg'; // Изображение для первого шага
         catImg.style.display = 'block';
@@ -116,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateButtonStyles();
         nextButton.textContent = currentStep === data.steps.length - 1
             ? 'Завершити'
-            : 'Далі';
+            : ' Продовжити';
         prevButton.style.display = currentStep > 0 ? 'block' : 'none';
     }
 

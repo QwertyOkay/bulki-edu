@@ -1,5 +1,19 @@
 // quiz styles
 
+.quiz-content {
+  height: 100dvh;
+}
+
+.quiz-header_wrapper {
+  background-color: $quiz-header-bg;
+  height: 317px;
+  position: relative;
+}
+
+#quizHeaderWrapper {
+  visibility: hidden;
+}
+
 // 🏷️ Quiz Header
 .quiz-header {
   display: flex;
@@ -115,27 +129,44 @@
 }
 
 .quiz-container {
+  padding: 23px 16px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#quiz-image-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  #quiz-image-container {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    width: 50%;
-    max-width: 500px;
-    z-index: 10;
+.quiz-cat {
+  max-width: 320px;
+  height: auto;
 
-    img {
-      width: 100%;
-      height: auto;
-      max-height: 70vh;
-      object-fit: contain;
-    }
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
   }
+}
+
+#prev-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 // Дополнения к стилям для соответствия макету
@@ -221,6 +252,9 @@
 #next-btn {
   margin-top: 20px;
   align-self: center;
+  width: 398px;
+  height: 50px;
+  width: 100%;
 
   @media (min-width: $breakpoint-lg) {
     align-self: flex-end;
@@ -268,4 +302,46 @@
       opacity: 1;
     }
   }
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 16px;
+  border: 2px solid #ccc;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+
+  &:hover {
+    border-color: #4caf50;
+  }
+}
+
+.quiz-option input {
+  display: none;
+}
+
+.quiz-option::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.quiz-option input:checked + span {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.quiz-option input:checked + span::before {
+  background: #4caf50;
+  border-color: #4caf50;
 }
