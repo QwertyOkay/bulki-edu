@@ -8,6 +8,9 @@
   background-color: $quiz-header-bg;
   height: 217px;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
 }
 
 #quizHeaderWrapper {
@@ -67,8 +70,8 @@
 }
 
 .quiz-option input:checked + span {
-  font-weight: bold;
-  color: $primary-color;
+  // font-weight: bold;
+  color: $main-title-color;
 }
 
 // 🔘 Buttons
@@ -178,7 +181,7 @@
 
     #quiz-title {
       font-size: 32px;
-      margin-bottom: 30px;
+      // margin-bottom: 30px;
       font-weight: 800;
     }
 
@@ -200,7 +203,7 @@
   @media (max-width: $breakpoint-lg) {
     #quiz-title {
       font-size: 24px;
-      margin-bottom: 20px;
+      // margin-bottom: 20px;
     }
 
     .quiz-option {
@@ -222,9 +225,12 @@
 }
 
 .quiz-progress {
-  color: $button-color;
+  color: $main-title-color;
   font-weight: 500;
   margin-top: 8px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
 }
 
 #quiz-options {
@@ -245,7 +251,7 @@
 
   &.selected {
     border-color: $button-color;
-    background: rgba($button-color, 0.05);
+    // background: rgba($button-color, 0.05);
   }
 }
 
@@ -292,8 +298,9 @@
 
 // Стилизация выбранного ответа
 .quiz-option.selected {
-  border-color: $button-color;
-  background: rgba($button-color, 0.1);
+  // border-color: $button-color;
+  // background: rgba($button-color, 0.1);
+  border: 2px solid rgb(53, 53, 53);
 
   .custom-radio {
     border-color: $button-color;
@@ -316,9 +323,9 @@
   transition: all 0.3s ease-in-out;
   position: relative;
 
-  &:hover {
-    border-color: #4caf50;
-  }
+  // &:hover {
+  //   border-color: #4caf50;
+  // }
 }
 
 .quiz-option input {
@@ -336,10 +343,9 @@
   transition: all 0.3s ease-in-out;
 }
 
-.quiz-option input:checked + span {
-  font-weight: bold;
-  color: #4caf50;
-}
+// .quiz-option input:checked + span {
+
+// }
 
 .quiz-option input:checked + span::before {
   background: #4caf50;
