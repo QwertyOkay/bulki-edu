@@ -25,7 +25,7 @@
 
 .quiz-header_wrapper {
   background-color: rgb(192, 234, 150);
-  height: 317px;
+  height: 217px;
   position: relative;
 }
 
@@ -149,7 +149,7 @@
 }
 
 .quiz-cat {
-  max-width: 320px;
+  max-width: 210px;
   height: auto;
 }
 .quiz-cat img {
