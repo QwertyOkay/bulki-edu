@@ -186,7 +186,6 @@
     padding: 18px;
     font-size: 18px;
     border-radius: 8px;
-    margin-bottom: 12px;
   }
   .quiz-container #next-btn {
     margin-top: 30px;
@@ -200,7 +199,6 @@
   }
   .quiz-container .quiz-option {
     padding: 16px;
-    margin-bottom: 8px;
   }
   .quiz-container .quiz-progress {
     font-size: 14px;
@@ -210,7 +208,6 @@
 .quiz-header {
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 30px;
 }
 
 .quiz-progress {
@@ -225,7 +222,7 @@
 #quiz-options {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .quiz-option {
