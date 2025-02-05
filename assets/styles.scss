@@ -319,8 +319,9 @@ body {
   body {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     height: auto;
+    max-height: 100dvh;
   }
 
   .start-container {
@@ -371,7 +372,7 @@ body {
     flex-direction: row;
     max-width: 1320px;
     margin: 0 auto;
-    padding-left: 120px;
+    // padding-left: 120px;
   }
 
   .content {
@@ -408,7 +409,7 @@ body {
   }
 
   .language-selector {
-    max-width: 397px;
+    max-width: 367px;
     padding: 15px;
     font-size: 20px;
     justify-content: flex-start;
@@ -429,7 +430,7 @@ body {
 
   .image-container img {
     max-width: 500px;
-    height: 400px;
+    height: 350px;
     position: fixed;
     bottom: 0;
     right: 200px;
