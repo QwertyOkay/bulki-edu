@@ -124,7 +124,7 @@ body {
   width: 100%;
 }
 .start-button:hover {
-  background: #4c850f;
+  background: rgba(102, 179, 20, 0.7);
 }
 
 .image-container {
@@ -330,6 +330,84 @@ body {
   max-height: 70vh;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+@media (min-width: 1024px) {
+  .quiz-container {
+    max-width: 800px;
+    padding: 40px;
+  }
+  .quiz-container #quiz-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: 800;
+  }
+  .quiz-container .quiz-option {
+    padding: 18px;
+    font-size: 18px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  .quiz-container #next-btn {
+    margin-top: 30px;
+    width: 200px;
+    align-self: flex-end;
+  }
+}
+@media (max-width: 1024px) {
+  .quiz-container #quiz-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .quiz-container .quiz-option {
+    padding: 16px;
+    margin-bottom: 8px;
+  }
+  .quiz-container .quiz-progress {
+    font-size: 14px;
+  }
+}
+
+.quiz-header {
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.quiz-progress {
+  color: #66b314;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+#quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quiz-option {
+  background: white;
+  border: 2px solid #c6c6c6;
+  transition: all 0.2s ease;
+}
+.quiz-option:hover {
+  border-color: #66b314;
+  box-shadow: 0 2px 8px rgba(102, 179, 20, 0.1);
+}
+.quiz-option.selected {
+  border-color: #66b314;
+  background: rgba(102, 179, 20, 0.05);
+}
+
+#next-btn {
+  margin-top: 20px;
+  align-self: center;
+}
+@media (min-width: 1024px) {
+  #next-btn {
+    align-self: flex-end;
+  }
 }
 
 * {
@@ -591,7 +669,7 @@ body {
   border: 2px solid #353535;
   color: #353535;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
   padding: 14px 30px;
   border-radius: 50px;
   cursor: not-allowed;
@@ -600,7 +678,7 @@ body {
 
 /* 🖱️ 1. Кнопка, когда ни один вариант не выбран, но наведен */
 .btn-disabled:hover {
-  background: #1d1d1d;
+  background: #353535;
   color: #fff;
 }
 
@@ -610,7 +688,7 @@ body {
   border: none;
   color: #fff;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 16px;
   padding: 14px 30px;
   border-radius: 50px;
   cursor: pointer;
@@ -619,5 +697,42 @@ body {
 
 /* 🖱️ 3. Кнопка при наведении после выбора */
 .btn-active:hover {
-  background: #85c747;
+  background: rgba(102, 179, 20, 0.7);
+}
+
+.quiz-button {
+  background: #66b314;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+  margin-top: 20px;
+}
+.quiz-button:hover {
+  background: rgba(102, 179, 20, 0.7);
+}
+.quiz-button.btn-disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+.quiz-button.btn-active {
+  background: #66b314;
+  cursor: pointer;
+}
+
+.quiz-option.selected {
+  border-color: #66b314;
+  background: rgba(102, 179, 20, 0.1);
+}
+.quiz-option.selected .custom-radio {
+  border-color: #66b314;
+}
+.quiz-option.selected .custom-radio::after {
+  opacity: 1;
 }/*# sourceMappingURL=styles.css.map */
