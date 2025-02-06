@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     let currentStep = 0;
     let userAnswers = [];
-    let quizData = null; // Сохраняем загруженные данные
+    let quizData = null;
 
     // Элементы
     const startPage = document.getElementById("start-page");
@@ -10,10 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const quizContent = document.getElementById("quiz-content");
     const startButton = document.getElementById("start-btn");
     const nextButton = document.getElementById("next-btn");
+    const prevButton = document.getElementById("prev-btn");
     const quizImageContainer = document.getElementById("quiz-image-container");
-    const quizCompletionPage = document.getElementById("quiz-completion"); // Страница завершения квиза
+    const quizCompletionPage = document.getElementById("quiz-completion");
 
-    // Создание изображения
+    // Создание изображения для котика
     const catImg = new Image();
     catImg.classList.add("quiz-cat");
     catImg.alt = "Quiz Cat";
@@ -63,7 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 throw new Error("Ошибка: некорректные данные квиза");
             }
 
-            quizData = data; // Сохраняем данные квиза
+            quizData = data;
+            userAnswers = new Array(quizData.steps.length).fill(null);
             loadStep();
 
             nextButton.addEventListener("click", () => navigate(1));
@@ -83,35 +85,61 @@ document.addEventListener("DOMContentLoaded", function () {
         const optionsContainer = document.getElementById("quiz-options");
         optionsContainer.innerHTML = "";
 
-        if (quizData.steps[currentStep].options) {
-            quizData.steps[currentStep].options.forEach((option) => {
-                const label = document.createElement("label");
-                label.className = "quiz-option";
+        const stepData = quizData.steps[currentStep];
 
-                const input = document.createElement("input");
-                input.type = "radio";
-                input.name = "answer";
-                input.value = option;
+        stepData.options.forEach((option) => {
+            const label = document.createElement("label");
+            label.className = "quiz-option";
 
-                if (userAnswers[currentStep] === option) input.checked = true;
+            const input = document.createElement("input");
+            input.type = stepData.multiSelect ? "checkbox" : "radio";
+            input.name = "answer";
+            input.value = option;
 
-                const span = document.createElement("span");
-                span.textContent = option;
+            // Восстанавливаем сохраненный ответ
+            if (userAnswers[currentStep]) {
+                if (Array.isArray(userAnswers[currentStep]) && userAnswers[currentStep].includes(option)) {
+                    input.checked = true;
+                    label.classList.add("selected");
+                } else if (userAnswers[currentStep] === option) {
+                    input.checked = true;
+                    label.classList.add("selected");
+                }
+            }
 
-                label.append(input, span);
-                optionsContainer.appendChild(label);
+            const span = document.createElement("span");
+            span.textContent = option;
 
-                input.addEventListener("change", () => {
-                    document.querySelectorAll(".quiz-option").forEach((opt) => {
-                        opt.classList.remove("selected");
-                    });
+            label.append(input, span);
+            optionsContainer.appendChild(label);
+
+            // 🔥 Исправляем проблему с выбором
+            label.addEventListener("click", () => {
+                if (stepData.multiSelect) {
+                    // Множественный выбор (checkbox)
+                    input.checked = !input.checked;
+
                     if (input.checked) {
                         label.classList.add("selected");
+                    } else {
+                        label.classList.remove("selected");
                     }
-                    updateButtonStyles();
-                });
+
+                    userAnswers[currentStep] = Array.from(
+                        document.querySelectorAll('input[name="answer"]:checked')
+                    ).map((el) => el.value);
+                } else {
+                    // Одиночный выбор (radio)
+                    document.querySelectorAll(".quiz-option").forEach((opt) => opt.classList.remove("selected"));
+                    input.checked = true;
+                    label.classList.add("selected");
+
+                    userAnswers[currentStep] = input.value;
+                }
+
+                updateButtonStyles();
             });
-        }
+        });
 
         if (currentStep < preloadImages.length) {
             catImg.src = preloadImages[currentStep];
@@ -119,15 +147,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         updateButtonStyles();
-        prevButton.style.display = currentStep > 0 ? "block" : "none";
+        prevButton.style.display = currentStep > 0 ? "none" : "none";
     }
 
     function navigate(direction) {
         if (!quizData) return;
 
-        if (direction === 1 && !document.querySelector('input[name="answer"]:checked') && currentStep < 9) {
-            saveSkippedAnswer();
-        } else {
+        if (direction === 1 && currentStep < 9) {
             saveAnswer();
         }
 
@@ -141,30 +167,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateButtonStyles() {
-    const selectedOption = document.querySelector('input[name="answer"]:checked');
+        const selectedOptions = document.querySelectorAll('input[name="answer"]:checked');
 
-    if (currentStep === 9) {
-        nextButton.textContent = "Відправити";
-        nextButton.classList.remove("btn-skip", "btn-disabled");
-        nextButton.classList.add("btn-active"); // Теперь "Відправити" стилизуется как "Продовжити"
-    } else if (selectedOption) {
-        nextButton.textContent = "Продовжити";
-        nextButton.classList.remove("btn-skip", "btn-submit", "btn-disabled");
-        nextButton.classList.add("btn-active");
-    } else {
-        nextButton.textContent = "Пропустити питання";
-        nextButton.classList.remove("btn-active", "btn-submit");
-        nextButton.classList.add("btn-skip", "btn-disabled");
+        if (currentStep === 9) {
+            nextButton.textContent = "Відправити";
+            nextButton.classList.remove("btn-skip", "btn-disabled");
+            nextButton.classList.add("btn-active");
+        } else if (selectedOptions.length > 0) {
+            nextButton.textContent = "Продовжити";
+            nextButton.classList.remove("btn-skip", "btn-submit", "btn-disabled");
+            nextButton.classList.add("btn-active");
+        } else {
+            nextButton.textContent = "Пропустити питання";
+            nextButton.classList.remove("btn-active", "btn-submit");
+            nextButton.classList.add("btn-skip", "btn-disabled");
+        }
     }
-}
 
     function saveAnswer() {
-        const selected = document.querySelector('input[name="answer"]:checked');
-        userAnswers[currentStep] = selected ? selected.value : null;
-    }
-
-    function saveSkippedAnswer() {
-        userAnswers[currentStep] = null;
+        const selected = document.querySelectorAll('input[name="answer"]:checked');
+        userAnswers[currentStep] = selected.length > 1
+            ? Array.from(selected).map(el => el.value)
+            : (selected[0] ? selected[0].value : null);
     }
 
     function showCompletionPage() {
@@ -173,30 +197,22 @@ document.addEventListener("DOMContentLoaded", function () {
         quizCompletionPage.classList.remove("hidden");
     }
 
-const prevButton = document.getElementById("prev-btn");
-if (prevButton) prevButton.remove();
+    // Логика "Назад" на стрелку
+    const backArrow = document.querySelector(".image-arrow-left");
 
-// Добавляем логику "Назад" на стрелку
-const backArrow = document.querySelector(".image-arrow-left");
+    if (backArrow) {
+        backArrow.addEventListener("click", () => {
+            if (currentStep === 0) {
+                startPage.style.display = "flex";
+                quizContainer.classList.add("hidden");
+                quizHeaderWrapper.classList.add("hidden");
+                quizContent.classList.add("hidden");
 
-if (backArrow) {
-    backArrow.addEventListener("click", () => {
-        if (currentStep === 0) {
-            // Возвращаемся на стартовую страницу
-            startPage.style.display = "flex";
-            quizContainer.classList.add("hidden");
-            quizHeaderWrapper.classList.add("hidden");
-            quizContent.classList.add("hidden");
-
-            // 🛠 СБРАСЫВАЕМ ВСЕ ПРОБЛЕМНЫЕ СТИЛИ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ
-            document.body.style.overflow = "auto";  // Разрешаем прокрутку
-            document.body.style.height = "auto";  // Сбрасываем возможное фиксирование высоты
-
-        } else {
-            // Если это не первый шаг, просто идём на предыдущий
-            navigate(-1);
-        }
-    });
-}
-    
+                document.body.style.overflow = "auto";
+                document.body.style.height = "auto";
+            } else {
+                navigate(-1);
+            }
+        });
+    }
 });

@@ -933,4 +933,8 @@ body {
 /* 🖱️ 3. Кнопка при наведении после выбора */
 .btn-active:hover {
   background: rgba(102, 179, 20, 0.7);
+}
+
+#prev-btn {
+  display: none;
 }/*# sourceMappingURL=styles.css.map */

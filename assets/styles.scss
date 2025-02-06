@@ -522,3 +522,7 @@ body {
 .btn-active:hover {
   background: $button-active-hover;
 }
+
+#prev-btn {
+  display: none;
+}
