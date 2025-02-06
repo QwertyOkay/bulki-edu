@@ -183,7 +183,7 @@ if (backArrow) {
     backArrow.addEventListener("click", () => {
         if (currentStep === 0) {
             // Возвращаемся на стартовую страницу
-            startPage.style.display = "block";
+            startPage.style.display = "flex";
             quizContainer.classList.add("hidden");
             quizHeaderWrapper.classList.add("hidden");
             quizContent.classList.add("hidden");
