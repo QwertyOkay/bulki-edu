@@ -243,7 +243,7 @@
     font-size: 24px;
   }
   .quiz-container .quiz-option {
-    padding: 20px;
+    padding: 16px 16px 16px 20px;
   }
   .quiz-container .quiz-progress {
     font-size: 14px;
