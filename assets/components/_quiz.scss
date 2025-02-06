@@ -538,6 +538,22 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   text-align: center;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    max-height: 45px;
+  }
+}
+
+// .half-width,
+// #quiz-options.step-2.full-width > span {
+//   @media screen and (max-width: $breakpoint-sm) {
+//     font-size: 14px;
+//   }
+// }
+#quiz-options.step-2 .quiz-option span {
+  @media screen and (max-width: $breakpoint-sm) {
+    font-size: 14px;
+  }
 }
 
 /* Выбранный вариант */

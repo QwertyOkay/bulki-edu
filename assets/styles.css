@@ -518,6 +518,17 @@
   transition: all 0.3s ease-in-out;
   text-align: center;
 }
+@media screen and (max-width: 576px) {
+  #quiz-options.step-2 .quiz-option {
+    max-height: 45px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #quiz-options.step-2 .quiz-option span {
+    font-size: 14px;
+  }
+}
 
 /* Выбранный вариант */
 #quiz-options.step-2 .quiz-option.selected {
