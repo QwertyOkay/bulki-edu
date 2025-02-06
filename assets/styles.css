@@ -243,7 +243,7 @@
     font-size: 24px;
   }
   .quiz-container .quiz-option {
-    padding: 16px;
+    padding: 20px;
   }
   .quiz-container .quiz-progress {
     font-size: 14px;
@@ -351,6 +351,8 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   position: relative;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 .quiz-option input {

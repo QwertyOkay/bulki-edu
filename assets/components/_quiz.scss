@@ -251,7 +251,7 @@
     }
 
     .quiz-option {
-      padding: 16px;
+      padding: 20px;
     }
 
     .quiz-progress {
@@ -366,6 +366,8 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   position: relative;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 .quiz-option input {
