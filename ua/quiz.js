@@ -192,17 +192,6 @@ if (backArrow) {
             document.body.style.overflow = "auto";  // Разрешаем прокрутку
             document.body.style.height = "auto";  // Сбрасываем возможное фиксирование высоты
 
-            if (startContainer) startContainer.style.height = "100dvh"; // Возвращаем нормальную высоту
-            if (catBg) catBg.style.height = "auto"; // Убираем возможное залипание высоты
-            if (imageContainer) {
-                imageContainer.style.position = "relative"; // Сбрасываем фиксированное позиционирование
-                imageContainer.style.bottom = "auto";
-                imageContainer.style.top = "auto";
-            }
-            if (catImage) {
-                catImage.style.transform = "none"; // Убираем смещение
-                catImage.style.bottom = "0";
-            }
         } else {
             // Если это не первый шаг, просто идём на предыдущий
             navigate(-1);
