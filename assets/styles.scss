@@ -80,7 +80,7 @@ body {
 
 .header-wrapper {
   @media screen and (min-width: $breakpoint-lg) {
-    margin-bottom: 184px;
+    margin-bottom: 154px;
   }
 }
 
@@ -320,8 +320,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: auto;
-    max-height: 100dvh;
+    // height: auto;
+    height: 100dvh;
   }
 
   .start-container {
@@ -409,7 +409,7 @@ body {
   }
 
   .language-selector {
-    max-width: 367px;
+    max-width: 327px;
     padding: 15px;
     font-size: 20px;
     justify-content: flex-start;
