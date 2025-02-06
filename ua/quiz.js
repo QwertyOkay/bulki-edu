@@ -112,9 +112,15 @@ document.addEventListener("DOMContentLoaded", function () {
         // Обновление изображения
         const stepImages = [
             '../assets/img/cat-step1.svg',   // Шаг 1
-            '../assets/img/cat-ua-step2.png', // Шаг 2
-            '../assets/img/cat-ua-step3.png', // Шаг 3
-            '../assets/img/cat-ua-step4.png'  // Шаг 4
+            '../assets/img/cat-step2.svg', // Шаг 2
+            '../assets/img/cat-step3.svg', // Шаг 3
+            '../assets/img/cat-step4.svg',
+            '../assets/img/cat-step5.svg',
+            '../assets/img/cat-step6.svg',
+            '../assets/img/cat-step7.svg',
+            '../assets/img/cat-step8.svg',
+            '../assets/img/cat-step9.svg',
+            '../assets/img/cat-step10.svg',
         ];
 
         if (currentStep < stepImages.length) {
