@@ -285,6 +285,11 @@
   flex-direction: column;
   gap: 10px;
 
+  // step2
+  // flex-direction: row;
+  // gap: 10px;
+  // flex-wrap: wrap;
+
   @media (min-width: $breakpoint-lg) {
     gap: 15px;
   }
@@ -485,4 +490,91 @@
   font-size: 18px;
   color: #333;
   margin-top: 10px;
+}
+
+// STEP 2
+
+.quiz-description {
+  color: rgb(196, 196, 196);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+#quiz-options.step-2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+#quiz-options.step-2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+/* Половина ширины (два в ряд) */
+#quiz-options.step-2 .half-width {
+  width: calc(50% - 5px);
+}
+
+/* Полная ширина (каждый третий элемент) */
+#quiz-options.step-2 .full-width {
+  width: 100%;
+}
+
+/* Общий стиль для чекбоксов */
+#quiz-options.step-2 .quiz-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 16px;
+  border: 2px solid #ccc;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+
+/* Выбранный вариант */
+#quiz-options.step-2 .quiz-option.selected {
+  border-color: #6cbf32;
+  background: rgba(108, 191, 50, 0.1);
+}
+
+/* 📱 Адаптация для мобильных устройств (фикс) */
+@media (max-width: 768px) {
+  #quiz-options.step-2 {
+    flex-direction: row; /* Важно: оставляем флекс! */
+  }
+
+  #quiz-options.step-2 .half-width {
+    width: calc(50% - 5px); /* Оставляем два в ряд */
+  }
+
+  #quiz-options.step-2 .full-width {
+    width: 100%; /* Каждый третий остается на всю ширину */
+  }
+}
+
+#quiz-options.step-2 .quiz-option:hover {
+  border-color: #66b314;
+  box-shadow: 0 2px 8px rgba(102, 179, 20, 0.1);
+}
+
+.step-2 .quiz-option::before {
+  display: none;
+}
+
+.step-2-title {
+  text-align: left;
+  font-size: 24px !important;
+}
+
+.step-2-subtitle {
+  text-align: left;
 }

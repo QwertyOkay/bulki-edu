@@ -73,82 +73,357 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(console.error);
 
+    
+    
+//   function loadStep() {
+//     if (!quizData || !quizData.steps || !quizData.steps[currentStep]) {
+//         console.error("Ошибка: шаг не найден", currentStep);
+//         return;
+//     }
+
+//     const stepData = quizData.steps[currentStep];
+
+//     document.getElementById("quiz-title").textContent = stepData.question;
+//     document.querySelector(".quiz-progress").textContent = `${currentStep + 1}/${quizData.steps.length}`;
+
+//     const optionsContainer = document.getElementById("quiz-options");
+//     optionsContainer.innerHTML = "";
+
+//     // Если шаг 2, добавляем спец-класс
+//     if (currentStep === 1) {
+//         optionsContainer.classList.add("step-2");
+//     } else {
+//         optionsContainer.classList.remove("step-2");
+//     }
+
+//     // Добавляем подзаголовок, если он есть
+//     if (stepData.description) {
+//         const description = document.createElement("p");
+//         description.className = "quiz-description";
+//         description.textContent = stepData.description;
+//         optionsContainer.appendChild(description);
+//     }
+
+//     stepData.options.forEach((option, index) => {
+//         const label = document.createElement("label");
+//         label.className = "quiz-option";
+
+//         let optionText = "";
+//         if (typeof option === "string") {
+//             optionText = option;
+//             label.classList.add("half-width");
+//         } else {
+//             optionText = option.text;
+//             label.classList.add(option.width === "full" ? "full-width" : "half-width");
+//         }
+
+//         const input = document.createElement("input");
+//         input.type = stepData.multiSelect ? "checkbox" : "radio";
+//         input.name = "answer";
+//         input.value = optionText;
+
+//         if (userAnswers[currentStep]) {
+//             if (Array.isArray(userAnswers[currentStep]) && userAnswers[currentStep].includes(optionText)) {
+//                 input.checked = true;
+//                 label.classList.add("selected");
+//             } else if (userAnswers[currentStep] === optionText) {
+//                 input.checked = true;
+//                 label.classList.add("selected");
+//             }
+//         }
+
+//         const span = document.createElement("span");
+//         span.textContent = optionText;
+
+//         label.append(input, span);
+//         optionsContainer.appendChild(label);
+
+//         label.addEventListener("click", () => {
+//             if (stepData.multiSelect) {
+//                 input.checked = !input.checked;
+
+//                 if (input.checked) {
+//                     label.classList.add("selected");
+//                 } else {
+//                     label.classList.remove("selected");
+//                 }
+
+//                 userAnswers[currentStep] = Array.from(
+//                     document.querySelectorAll('input[name="answer"]:checked')
+//                 ).map((el) => el.value);
+//             } else {
+//                 document.querySelectorAll(".quiz-option").forEach((opt) => opt.classList.remove("selected"));
+//                 input.checked = true;
+//                 label.classList.add("selected");
+
+//                 userAnswers[currentStep] = input.value;
+//             }
+
+//             updateButtonStyles();
+//         });
+//     });
+
+//     if (currentStep < preloadImages.length) {
+//         catImg.src = preloadImages[currentStep];
+//         catImg.style.display = "block";
+//     }
+
+//     updateButtonStyles();
+//     prevButton.style.display = currentStep > 0 ? "none" : "none";
+    // }
+    
+//     function loadStep() {
+//     if (!quizData || !quizData.steps || !quizData.steps[currentStep]) {
+//         console.error("Ошибка: шаг не найден", currentStep);
+//         return;
+//     }
+
+//     const stepData = quizData.steps[currentStep];
+//     const quizTitle = document.getElementById("quiz-title");
+//     const optionsContainer = document.getElementById("quiz-options");
+
+//     // Очищаем контейнер с вариантами
+//     optionsContainer.innerHTML = "";
+
+//     // Проверяем и очищаем подзаголовок перед добавлением нового
+//     let existingSubTitle = document.querySelector(".quiz-subtitle");
+//     if (existingSubTitle) existingSubTitle.remove();
+
+//     // Обновляем заголовок
+//     quizTitle.textContent = stepData.question;
+
+//     // Если это второй шаг, добавляем спец-класс для заголовка
+//     if (currentStep === 1) {
+//         quizTitle.classList.add("step-2-title");
+//     } else {
+//         quizTitle.classList.remove("step-2-title");
+//     }
+
+//     // Добавляем подзаголовок, если он есть
+//     if (stepData.description) {
+//         let subTitle = document.createElement("p");
+//         subTitle.className = "quiz-subtitle";
+//         if (currentStep === 1) subTitle.classList.add("step-2-subtitle"); // Только для второго шага
+//         subTitle.textContent = stepData.description;
+
+//         // Вставляем подзаголовок перед вариантами ответа
+//         quizTitle.parentNode.insertBefore(subTitle, quizTitle.nextSibling);
+//     }
+
+//     // Если шаг 2, добавляем спец-класс контейнеру
+//     if (currentStep === 1) {
+//         optionsContainer.classList.add("step-2");
+//     } else {
+//         optionsContainer.classList.remove("step-2");
+//     }
+
+//     // Генерация вариантов ответов
+//     stepData.options.forEach((option, index) => {
+//         const label = document.createElement("label");
+//         label.className = "quiz-option";
+
+//         let optionText = "";
+//         if (typeof option === "string") {
+//             optionText = option;
+//             label.classList.add("half-width");
+//         } else {
+//             optionText = option.text;
+//             label.classList.add(option.width === "full" ? "full-width" : "half-width");
+//         }
+
+//         // На втором шаге каждый третий элемент должен быть на всю ширину
+//         if (currentStep === 1 && (index + 1) % 3 === 0) {
+//             label.classList.remove("half-width");
+//             label.classList.add("full-width");
+//         }
+
+//         const input = document.createElement("input");
+//         input.type = stepData.multiSelect ? "checkbox" : "radio";
+//         input.name = "answer";
+//         input.value = optionText;
+
+//         // Убираем радио-кнопки на втором шаге
+//         if (currentStep === 1) {
+//             input.type = "checkbox";
+//         }
+
+//         if (userAnswers[currentStep]) {
+//             if (Array.isArray(userAnswers[currentStep]) && userAnswers[currentStep].includes(optionText)) {
+//                 input.checked = true;
+//                 label.classList.add("selected");
+//             } else if (userAnswers[currentStep] === optionText) {
+//                 input.checked = true;
+//                 label.classList.add("selected");
+//             }
+//         }
+
+//         const span = document.createElement("span");
+//         span.textContent = optionText;
+
+//         label.append(input, span);
+//         optionsContainer.appendChild(label);
+
+//         label.addEventListener("click", () => {
+//             if (stepData.multiSelect) {
+//                 input.checked = !input.checked;
+
+//                 if (input.checked) {
+//                     label.classList.add("selected");
+//                 } else {
+//                     label.classList.remove("selected");
+//                 }
+
+//                 userAnswers[currentStep] = Array.from(
+//                     document.querySelectorAll('input[name="answer"]:checked')
+//                 ).map((el) => el.value);
+//             } else {
+//                 document.querySelectorAll(".quiz-option").forEach((opt) => opt.classList.remove("selected"));
+//                 input.checked = true;
+//                 label.classList.add("selected");
+
+//                 userAnswers[currentStep] = input.value;
+//             }
+
+//             updateButtonStyles();
+//         });
+//     });
+
+//     if (currentStep < preloadImages.length) {
+//         catImg.src = preloadImages[currentStep];
+//         catImg.style.display = "block";
+//     }
+
+//     updateButtonStyles();
+//     prevButton.style.display = currentStep > 0 ? "none" : "none";
+    // }
+    
     function loadStep() {
-        if (!quizData || !quizData.steps || !quizData.steps[currentStep]) {
-            console.error("Ошибка: шаг не найден", currentStep);
-            return;
+    if (!quizData || !quizData.steps || !quizData.steps[currentStep]) {
+        console.error("Ошибка: шаг не найден", currentStep);
+        return;
+    }
+
+    const stepData = quizData.steps[currentStep];
+    const quizTitle = document.getElementById("quiz-title");
+    const optionsContainer = document.getElementById("quiz-options");
+
+    // Очищаем контейнер с вариантами
+    optionsContainer.innerHTML = "";
+
+    // Проверяем и очищаем подзаголовок перед добавлением нового
+    let existingSubTitle = document.querySelector(".quiz-subtitle");
+    if (existingSubTitle) existingSubTitle.remove();
+
+    // Обновляем заголовок
+    quizTitle.textContent = stepData.question;
+
+    // Если это второй шаг, добавляем спец-класс для заголовка
+    if (currentStep === 1) {
+        quizTitle.classList.add("step-2-title");
+    } else {
+        quizTitle.classList.remove("step-2-title");
+    }
+
+    // Добавляем подзаголовок, если он есть
+    if (stepData.description) {
+        let subTitle = document.createElement("p");
+        subTitle.className = "quiz-subtitle";
+        if (currentStep === 1) subTitle.classList.add("step-2-subtitle"); // Только для второго шага
+        subTitle.textContent = stepData.description;
+
+        // Вставляем подзаголовок перед вариантами ответа
+        quizTitle.parentNode.insertBefore(subTitle, quizTitle.nextSibling);
+    }
+
+    // Если шаг 2, добавляем спец-класс контейнеру
+    if (currentStep === 1) {
+        optionsContainer.classList.add("step-2");
+    } else {
+        optionsContainer.classList.remove("step-2");
+    }
+
+    // Генерация вариантов ответов
+    stepData.options.forEach((option, index) => {
+        const label = document.createElement("label");
+        label.className = "quiz-option";
+
+        let optionText = "";
+        if (typeof option === "string") {
+            optionText = option;
+            label.classList.add("half-width");
+        } else {
+            optionText = option.text;
+            label.classList.add(option.width === "full" ? "full-width" : "half-width");
         }
 
-        document.getElementById("quiz-title").textContent = quizData.steps[currentStep].question;
-        document.querySelector(".quiz-progress").textContent = `${currentStep + 1}/${quizData.steps.length}`;
+        // На втором шаге каждый третий элемент должен быть на всю ширину
+        if (currentStep === 1 && (index + 1) % 3 === 0) {
+            label.classList.remove("half-width");
+            label.classList.add("full-width");
+        }
 
-        const optionsContainer = document.getElementById("quiz-options");
-        optionsContainer.innerHTML = "";
+        const input = document.createElement("input");
+        input.type = stepData.multiSelect ? "checkbox" : "radio";
+        input.name = "answer";
+        input.value = optionText;
 
-        const stepData = quizData.steps[currentStep];
+        // Убираем радио-кнопки на втором шаге
+        if (currentStep === 1) {
+            input.type = "checkbox";
+        }
 
-        stepData.options.forEach((option) => {
-            const label = document.createElement("label");
-            label.className = "quiz-option";
+        if (userAnswers[currentStep]) {
+            if (Array.isArray(userAnswers[currentStep]) && userAnswers[currentStep].includes(optionText)) {
+                input.checked = true;
+                label.classList.add("selected");
+            } else if (userAnswers[currentStep] === optionText) {
+                input.checked = true;
+                label.classList.add("selected");
+            }
+        }
 
-            const input = document.createElement("input");
-            input.type = stepData.multiSelect ? "checkbox" : "radio";
-            input.name = "answer";
-            input.value = option;
+        const span = document.createElement("span");
+        span.textContent = optionText;
 
-            // Восстанавливаем сохраненный ответ
-            if (userAnswers[currentStep]) {
-                if (Array.isArray(userAnswers[currentStep]) && userAnswers[currentStep].includes(option)) {
-                    input.checked = true;
+        label.append(input, span);
+        optionsContainer.appendChild(label);
+
+        label.addEventListener("click", () => {
+            if (stepData.multiSelect) {
+                input.checked = !input.checked;
+
+                if (input.checked) {
                     label.classList.add("selected");
-                } else if (userAnswers[currentStep] === option) {
-                    input.checked = true;
-                    label.classList.add("selected");
+                } else {
+                    label.classList.remove("selected");
                 }
+
+                userAnswers[currentStep] = Array.from(
+                    document.querySelectorAll('input[name="answer"]:checked')
+                ).map((el) => el.value);
+            } else {
+                document.querySelectorAll(".quiz-option").forEach((opt) => opt.classList.remove("selected"));
+                input.checked = true;
+                label.classList.add("selected");
+
+                userAnswers[currentStep] = input.value;
             }
 
-            const span = document.createElement("span");
-            span.textContent = option;
-
-            label.append(input, span);
-            optionsContainer.appendChild(label);
-
-            // 🔥 Исправляем проблему с выбором
-            label.addEventListener("click", () => {
-                if (stepData.multiSelect) {
-                    // Множественный выбор (checkbox)
-                    input.checked = !input.checked;
-
-                    if (input.checked) {
-                        label.classList.add("selected");
-                    } else {
-                        label.classList.remove("selected");
-                    }
-
-                    userAnswers[currentStep] = Array.from(
-                        document.querySelectorAll('input[name="answer"]:checked')
-                    ).map((el) => el.value);
-                } else {
-                    // Одиночный выбор (radio)
-                    document.querySelectorAll(".quiz-option").forEach((opt) => opt.classList.remove("selected"));
-                    input.checked = true;
-                    label.classList.add("selected");
-
-                    userAnswers[currentStep] = input.value;
-                }
-
-                updateButtonStyles();
-            });
+            updateButtonStyles();
         });
+    });
 
-        if (currentStep < preloadImages.length) {
-            catImg.src = preloadImages[currentStep];
-            catImg.style.display = "block";
-        }
-
-        updateButtonStyles();
-        prevButton.style.display = currentStep > 0 ? "none" : "none";
+    if (currentStep < preloadImages.length) {
+        catImg.src = preloadImages[currentStep];
+        catImg.style.display = "block";
     }
+
+    updateButtonStyles();
+    prevButton.style.display = currentStep > 0 ? "none" : "none";
+
+    // 🔥 ВАЖНО: Обновляем прогресс-бар после всех изменений
+    document.querySelector(".quiz-progress").textContent = `${currentStep + 1} / ${quizData.steps.length}`;
+}
 
     function navigate(direction) {
         if (!quizData) return;
