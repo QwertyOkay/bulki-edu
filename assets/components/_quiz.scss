@@ -246,9 +246,9 @@
 
   // Мобильная версия
   @media (max-width: $breakpoint-lg) {
-    #quiz-title {
-      font-size: 24px;
-    }
+    // #quiz-title {
+    //   font-size: 24px;
+    // }
 
     .quiz-option {
       padding: 16px 16px 16px 20px;
@@ -588,9 +588,10 @@
 
 .step-2-title {
   text-align: left;
-  font-size: 24px !important;
+  // font-size: 24px !important;
 }
 
 .step-2-subtitle {
   text-align: left;
+  color: rgb(196, 196, 196);
 }

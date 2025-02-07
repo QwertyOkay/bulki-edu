@@ -239,9 +239,6 @@
   }
 }
 @media (max-width: 1024px) {
-  .quiz-container #quiz-title {
-    font-size: 24px;
-  }
   .quiz-container .quiz-option {
     padding: 16px 16px 16px 20px;
   }
@@ -559,11 +556,11 @@
 
 .step-2-title {
   text-align: left;
-  font-size: 24px !important;
 }
 
 .step-2-subtitle {
   text-align: left;
+  color: rgb(196, 196, 196);
 }
 
 * {
