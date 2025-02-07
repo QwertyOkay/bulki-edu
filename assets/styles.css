@@ -55,7 +55,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .quiz-header h1 {
   font-size: 30px;
