@@ -81,17 +81,6 @@
     display: none;
   }
 
-  // Кастомный круг для радио-кнопки
-  &::before {
-    content: "";
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ccc;
-    border-radius: 50%;
-    display: inline-block;
-    transition: all 0.3s ease-in-out;
-  }
-
   // Добавляем активное состояние для выбранного ответа
   &.selected {
     border-color: rgb(102, 179, 20);
@@ -290,11 +279,6 @@
   flex-direction: column;
   gap: 10px;
   min-height: 280px;
-
-  // step2
-  // flex-direction: row;
-  // gap: 10px;
-  // flex-wrap: wrap;
 
   @media (min-width: $breakpoint-lg) {
     gap: 15px;
@@ -550,12 +534,6 @@
   }
 }
 
-// .half-width,
-// #quiz-options.step-2.full-width > span {
-//   @media screen and (max-width: $breakpoint-sm) {
-//     font-size: 14px;
-//   }
-// }
 #quiz-options.step-2 .quiz-option span {
   @media screen and (max-width: $breakpoint-sm) {
     font-size: 14px;
@@ -600,4 +578,110 @@
 .step-2-subtitle {
   text-align: left;
   color: rgb(196, 196, 196);
+}
+
+// STEP #6
+
+#quiz-options.step-6 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quiz-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.quiz-days .quiz-option {
+  width: calc(25% - 5px);
+}
+
+.quiz-times .quiz-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quiz-icon {
+  font-size: 20px;
+}
+
+/* Убираем ::before для чекбоксов на шаге 6 */
+#quiz-options.step-6 .quiz-option::before {
+  display: none; /* Скрываем стандартный ::before */
+}
+
+/* Переопределяем стили для чекбоксов на шаге 6 */
+#quiz-options.step-6 .quiz-option {
+  justify-content: center; /* Выравниваем текст слева */
+  padding-left: 20px; /* Добавляем отступ для чекбоксов */
+}
+
+/* Стиль для выбранных чекбоксов на шаге 6 */
+#quiz-options.step-6 .quiz-option.selected {
+  background: rgba(108, 191, 50, 0.1); /* Фон для выбранного варианта */
+}
+
+.quiz-days {
+  display: flex;
+  flex-wrap: wrap; /* Разрешаем перенос на новую строку */
+  gap: 6px; /* Отступ между элементами */
+  justify-content: flex-start; /* Выравниваем элементы слева */
+}
+
+/* Общие стили для каждого дня */
+.quiz-days .quiz-option {
+  flex: 1 1 calc(25% - 6px); /* Каждый элемент занимает 25% ширины (минус отступ) */
+  text-align: center; /* Центрируем текст внутри */
+}
+
+/* Первая строка: первые 4 элемента */
+.quiz-days .quiz-option:nth-child(-n + 4) {
+  order: 1; /* Помещаем первыми */
+}
+
+/* Вторая строка: следующие 3 элемента */
+.quiz-days .quiz-option:nth-child(n + 5):nth-child(-n + 7) {
+  order: 2; /* Помещаем вторыми */
+  flex: 1 1 calc(33.33% - 6px); /* Каждый элемент занимает 33.33% ширины */
+}
+
+/* Добавляем отступ между двумя блоками */
+.quiz-days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px; /* Расстояние между днями */
+  justify-content: flex-start; /* Выравнивание влево */
+  margin-bottom: 20px; /* 🔥 ФИКС: Добавляем отступ между блоками */
+}
+
+/* Указываем, что первые 4 элемента в одном ряду */
+.quiz-days .quiz-option:nth-child(-n + 4) {
+  flex: 1 1 calc(25% - 6px); /* Делаем их одинаковыми по ширине */
+}
+
+/* Следующие 3 элемента должны быть равными */
+.quiz-days .quiz-option:nth-child(n + 5):nth-child(-n + 7) {
+  flex: 1 1 calc(33.33% - 6px); /* Делаем их шире, чтобы заполнить вторую строку */
+}
+
+/* Общие стили для временных интервалов */
+.quiz-times {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 🔥 ФИКС: Отступ между временными интервалами */
+}
+
+/* Стиль для элементов с временем */
+.quiz-times .quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: flex-start; /* Выравниваем контент */
+  padding: 12px 16px;
 }
