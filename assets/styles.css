@@ -563,7 +563,7 @@
 #quiz-options.step-6 {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 
 .quiz-group {
@@ -578,10 +578,15 @@
 }
 
 .quiz-times .quiz-option {
-  width: 100%;
+  flex: 1 1 calc(50% - 10px); /* Каждый элемент занимает половину ширины (минус отступ) */
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 12px 16px;
+  border: 2px solid #ccc;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .quiz-icon {
@@ -595,13 +600,15 @@
 
 /* Переопределяем стили для чекбоксов на шаге 6 */
 #quiz-options.step-6 .quiz-option {
-  justify-content: center; /* Выравниваем текст слева */
+  justify-content: space-evenly; /* Выравниваем текст слева */
   padding-left: 20px; /* Добавляем отступ для чекбоксов */
+  flex-direction: row;
 }
 
 /* Стиль для выбранных чекбоксов на шаге 6 */
 #quiz-options.step-6 .quiz-option.selected {
   background: rgba(108, 191, 50, 0.1); /* Фон для выбранного варианта */
+  border: 2px solid rgb(53, 53, 53);
 }
 
 .quiz-days {
@@ -650,8 +657,9 @@
 /* Общие стили для временных интервалов */
 .quiz-times {
   display: flex;
-  flex-direction: column;
-  gap: 10px; /* 🔥 ФИКС: Отступ между временными интервалами */
+  flex-wrap: wrap; /* Разрешаем перенос на новую строку */
+  gap: 10px; /* Отступ между временными интервалами */
+  justify-content: flex-start; /* Выравниваем элементы слева */
 }
 
 /* Стиль для элементов с временем */
@@ -664,6 +672,13 @@
   padding: 12px 16px;
 }
 
+@media (max-width: 768px) {
+  .quiz-times .quiz-option {
+    flex: 1 1 calc(50% - 10px); /* Оставляем два элемента в ряд */
+    flex-direction: row;
+    font-size: 14px;
+  }
+}
 * {
   margin: 0;
   padding: 0;
