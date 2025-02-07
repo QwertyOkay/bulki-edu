@@ -4,6 +4,10 @@
   height: 100dvh;
 }
 
+#quiz-form {
+  width: 100%;
+}
+
 .quiz-header_wrapper {
   background-color: $quiz-header-bg;
   height: 217px;
@@ -285,6 +289,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-height: 280px;
 
   // step2
   // flex-direction: row;
