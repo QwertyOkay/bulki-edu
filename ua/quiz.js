@@ -151,80 +151,171 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-        } else if (currentStep === 5) { // Шаг 6
-            optionsContainer.classList.add("step-6");
+        // } else if (currentStep === 5) { // Шаг 6
+        //     optionsContainer.classList.add("step-6");
 
-            // ✅ Блок 1: ДНИ НЕДЕЛИ (ЧЕКБОКСЫ)
-            const daysGroup = document.createElement("div");
-            daysGroup.classList.add("quiz-group", "quiz-days");
+        //     // ✅ Блок 1: ДНИ НЕДЕЛИ (ЧЕКБОКСЫ)
+        //     const daysGroup = document.createElement("div");
+        //     daysGroup.classList.add("quiz-group", "quiz-days");
 
-            stepData.options.days.forEach((day) => {
-                const label = document.createElement("label");
-                label.className = "quiz-option half-width";
+        //     stepData.options.days.forEach((day) => {
+        //         const label = document.createElement("label");
+        //         label.className = "quiz-option half-width";
 
-                const input = document.createElement("input");
-                input.type = "checkbox"; // Чекбокс
-                input.name = "answer-day";
-                input.value = day;
+        //         const input = document.createElement("input");
+        //         input.type = "checkbox"; // Чекбокс
+        //         input.name = "answer-day";
+        //         input.value = day;
 
-                const span = document.createElement("span");
-                span.textContent = day;
+        //         const span = document.createElement("span");
+        //         span.textContent = day;
 
-                label.append(input, span);
-                daysGroup.appendChild(label);
+        //         label.append(input, span);
+        //         daysGroup.appendChild(label);
 
-                // Восстановление выбранных значений
-                if (userAnswers[currentStep]?.days?.includes(day)) {
-                    input.checked = true;
-                    label.classList.add("selected");
-                }
+        //         // Восстановление выбранных значений
+        //         if (userAnswers[currentStep]?.days?.includes(day)) {
+        //             input.checked = true;
+        //             label.classList.add("selected");
+        //         }
 
-                // Обработчик клика
-                label.addEventListener("click", () => {
-                    input.checked = !input.checked;
-                    label.classList.toggle("selected", input.checked);
-                    updateSelectedAnswers();
-                });
-            });
+        //         // Обработчик клика
+        //         label.addEventListener("click", () => {
+        //             input.checked = !input.checked;
+        //             label.classList.toggle("selected", input.checked);
+        //             updateSelectedAnswers();
+        //         });
+        //     });
 
-            optionsContainer.appendChild(daysGroup);
+        //     optionsContainer.appendChild(daysGroup);
 
-            // ✅ Блок 2: ВРЕМЯ (ЧЕКБОКСЫ + ИКОНКИ)
-            const timeGroup = document.createElement("div");
-            timeGroup.classList.add("quiz-group", "quiz-times");
+        //     // ✅ Блок 2: ВРЕМЯ (ЧЕКБОКСЫ + ИКОНКИ)
+        //     const timeGroup = document.createElement("div");
+        //     timeGroup.classList.add("quiz-group", "quiz-times");
 
-            stepData.options.times.forEach((time) => {
-                const label = document.createElement("label");
-                label.className = "quiz-option full-width";
+        //     stepData.options.times.forEach((time) => {
+        //         const label = document.createElement("label");
+        //         label.className = "quiz-option full-width";
 
-                const input = document.createElement("input");
-                input.type = "checkbox"; // Чекбокс
-                input.name = "answer-time";
-                input.value = time.text;
+        //         const input = document.createElement("input");
+        //         input.type = "checkbox"; // Чекбокс
+        //         input.name = "answer-time";
+        //         input.value = time.text;
 
-                const icon = document.createElement("span");
-                icon.className = "quiz-icon";
-                icon.textContent = time.icon;
+        //         const icon = document.createElement("span");
+        //         icon.className = "quiz-icon";
+        //         icon.textContent = time.icon;
 
-                const span = document.createElement("span");
-                span.textContent = time.text;
+        //         const span = document.createElement("span");
+        //         span.textContent = time.text;
 
-                label.append(input, icon, span);
-                timeGroup.appendChild(label);
+        //         label.append(input, icon, span);
+        //         timeGroup.appendChild(label);
 
-                // Восстановление выбранных значений
-                if (userAnswers[currentStep]?.times?.includes(time.text)) {
-                    input.checked = true;
-                    label.classList.add("selected");
-                }
+        //         // Восстановление выбранных значений
+        //         if (userAnswers[currentStep]?.times?.includes(time.text)) {
+        //             input.checked = true;
+        //             label.classList.add("selected");
+        //         }
 
-                // Обработчик клика
-                label.addEventListener("click", () => {
-                    input.checked = !input.checked;
-                    label.classList.toggle("selected", input.checked);
-                    updateSelectedAnswers();
-                });
-            });
+        //         // Обработчик клика
+        //         label.addEventListener("click", () => {
+        //             input.checked = !input.checked;
+        //             label.classList.toggle("selected", input.checked);
+        //             updateSelectedAnswers();
+        //         });
+            //     });
+            
+            } else if (currentStep === 5) { // ✅ Шаг 6 (Выбор дней и времени)
+    optionsContainer.classList.add("step-6");
+
+    // ✅ Блок 1: ДНИ НЕДЕЛИ (ЧЕКБОКСЫ)
+    const daysGroup = document.createElement("div");
+    daysGroup.classList.add("quiz-group", "quiz-days");
+
+    stepData.options.days.forEach((day) => {
+        const label = document.createElement("label");
+        label.className = "quiz-option half-width";
+
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.name = "answer-day";
+        input.value = day;
+
+        const span = document.createElement("span");
+        span.textContent = day;
+
+        label.append(input, span);
+        daysGroup.appendChild(label);
+
+        // ✅ Восстанавливаем выбранные значения
+        if (userAnswers[currentStep]?.days?.includes(day)) {
+            input.checked = true;
+            label.classList.add("selected");
+        }
+
+        // ✅ Обработчик клика
+        input.addEventListener("change", () => {
+            console.log("📌 Выбран день:", day);
+            updateSelectedAnswers();
+            updateButtonStyles(); // ✅ Обновляем кнопку!
+        });
+
+        label.addEventListener("click", () => {
+            input.checked = !input.checked;
+            label.classList.toggle("selected", input.checked);
+            updateSelectedAnswers();
+            updateButtonStyles(); // ✅ Гарантированно вызываем обновление кнопки!
+        });
+    });
+
+    optionsContainer.appendChild(daysGroup);
+
+    // ✅ Блок 2: ВРЕМЯ (ЧЕКБОКСЫ)
+    const timeGroup = document.createElement("div");
+    timeGroup.classList.add("quiz-group", "quiz-times");
+
+    stepData.options.times.forEach((time) => {
+        const label = document.createElement("label");
+        label.className = "quiz-option full-width";
+
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.name = "answer-time";
+        input.value = time.text;
+
+        const icon = document.createElement("span");
+        icon.className = "quiz-icon";
+        icon.textContent = time.icon;
+
+        const span = document.createElement("span");
+        span.textContent = time.text;
+
+        label.append(input, icon, span);
+        timeGroup.appendChild(label);
+
+        // ✅ Восстанавливаем выбранные значения
+        if (userAnswers[currentStep]?.times?.includes(time.text)) {
+            input.checked = true;
+            label.classList.add("selected");
+        }
+
+        // ✅ Обработчик клика
+        input.addEventListener("change", () => {
+            console.log("📌 Выбрано время:", time.text);
+            updateSelectedAnswers();
+            updateButtonStyles(); // ✅ Обновляем кнопку!
+        });
+
+        label.addEventListener("click", () => {
+            input.checked = !input.checked;
+            label.classList.toggle("selected", input.checked);
+            updateSelectedAnswers();
+            updateButtonStyles(); // ✅ Гарантированно вызываем обновление кнопки!
+        });
+    });
+
+   
 
             optionsContainer.appendChild(timeGroup);
         } else if (currentStep === 6) { // Шаг 7
@@ -285,11 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
             sliderWrapper.appendChild(sliderInput);
             sliderWrapper.appendChild(valueDisplay);
 
-            // // Обработчик изменения значения слайдера
-            // sliderInput.addEventListener("input", () => {
-            //     valueDisplay.textContent = `${sliderInput.value} грн`;
-            //     updateSelectedAnswers();
-            // });
+            
             // 🛠 ВАЖНО! Добавляем обработчик изменений
     sliderInput.addEventListener("input", () => {
         console.log("📌 Ползунок изменен! Новое значение:", sliderInput.value);
@@ -363,26 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(".quiz-progress").textContent = `${currentStep + 1} / ${quizData.steps.length}`;
     }
 
-    // Функция для обновления ответов
-    // function updateSelectedAnswers() {
-    //     if (currentStep === 5) { // Шаг 6 (индекс 5)
-    //         const selectedDays = Array.from(document.querySelectorAll('input[name="answer-day"]:checked')).map(el => el.value);
-    //         const selectedTimes = Array.from(document.querySelectorAll('input[name="answer-time"]:checked')).map(el => el.value);
-    //         userAnswers[currentStep] = {
-    //             days: selectedDays,
-    //             times: selectedTimes
-    //         };
-    //     } else if (currentStep === 7) { // Шаг 8 (слайдер бюджета)
-    //         const sliderValue = document.querySelector('input[type="range"]');
-    //         userAnswers[currentStep] = sliderValue ? sliderValue.value : null;
-    //     } else {
-    //         const selected = document.querySelectorAll('input[name="answer"]:checked');
-    //         const currentStepData = quizData.steps[currentStep]; // Получаем данные текущего шага
-    //         userAnswers[currentStep] = currentStepData.multiSelect
-    //             ? Array.from(selected).map(el => el.value)
-    //             : (selected[0] ? selected[0].value : null);
-    //     }
-    // }
+    
     function updateSelectedAnswers() {
     if (currentStep === 5) { // Шаг 6 (индекс 5)
         const selectedDays = Array.from(document.querySelectorAll('input[name="answer-day"]:checked')).map(el => el.value);
@@ -407,152 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateSelectedAnswers();
     }
 
-    // Функция обновления стилей кнопок
-    // function updateButtonStyles() {
-    //     let hasSelection = false;
 
-    //     if (currentStep === 5) { // Шаг 6 (чекбоксы)
-    //         const selectedDays = document.querySelectorAll('input[name="answer-day"]:checked').length > 0;
-    //         const selectedTimes = document.querySelectorAll('input[name="answer-time"]:checked').length > 0;
-    //         hasSelection = selectedDays || selectedTimes;
-    //     } else if (currentStep === 7) { // Шаг 8 (слайдер)
-    //         const sliderValue = document.querySelector('input[type="range"]');
-    //         hasSelection = sliderValue && sliderValue.value !== null && sliderValue.value !== ""; // Проверяем, что значение выбрано
-    //     } else { // Остальные шаги
-    //         const selectedOptions = document.querySelectorAll('input[name="answer"]:checked');
-    //         hasSelection = selectedOptions.length > 0;
-    //     }
-
-    //     if (currentStep === 9) { // Последний шаг
-    //         nextButton.textContent = "Відправити";
-    //         nextButton.classList.remove("btn-skip", "btn-disabled");
-    //         nextButton.classList.add("btn-active");
-    //     } else if (hasSelection) {
-    //         nextButton.textContent = "Продовжити";
-    //         nextButton.classList.remove("btn-skip", "btn-submit", "btn-disabled");
-    //         nextButton.classList.add("btn-active");
-    //     } else {
-    //         nextButton.textContent = "Пропустити питання";
-    //         nextButton.classList.remove("btn-active", "btn-submit");
-    //         nextButton.classList.add("btn-skip", "btn-disabled");
-    //     }
-    // }
-//     function updateButtonStyles() {
-//     let hasSelection = false;
-
-//     if (currentStep === 5) { // Шаг 6 (чекбоксы)
-//         const selectedDays = document.querySelectorAll('input[name="answer-day"]:checked').length > 0;
-//         const selectedTimes = document.querySelectorAll('input[name="answer-time"]:checked').length > 0;
-//         hasSelection = selectedDays || selectedTimes;
-//     } else if (currentStep === 7) { // Шаг 8 (слайдер)
-//         const sliderInput = document.querySelector('input[type="range"]');
-//         hasSelection = userAnswers[currentStep] !== null && userAnswers[currentStep] !== undefined;
-//     } else { // Остальные шаги
-//         const selectedOptions = document.querySelectorAll('input[name="answer"]:checked');
-//         hasSelection = selectedOptions.length > 0;
-//     }
-
-//     if (currentStep === 9) { // Последний шаг
-//         nextButton.textContent = "Відправити";
-//         nextButton.classList.remove("btn-skip", "btn-disabled");
-//         nextButton.classList.add("btn-active");
-//     } else if (hasSelection) {
-//         nextButton.textContent = "Продовжити";
-//         nextButton.classList.remove("btn-skip", "btn-submit", "btn-disabled");
-//         nextButton.classList.add("btn-active");
-//     } else {
-//         nextButton.textContent = "Пропустити питання";
-//         nextButton.classList.remove("btn-active", "btn-submit");
-//         nextButton.classList.add("btn-skip", "btn-disabled");
-//     }
-    // }
-    // function updateButtonStyles() {
-    // let hasSelection = false;
-
-    // if (currentStep === 5) { // Шаг 6 (чекбоксы)
-    //     const selectedDays = document.querySelectorAll('input[name="answer-day"]:checked').length > 0;
-    //     const selectedTimes = document.querySelectorAll('input[name="answer-time"]:checked').length > 0;
-    //     hasSelection = selectedDays || selectedTimes;
-    // } else if (currentStep === 7) { // Шаг 8 (слайдер)
-    //     const sliderInput = document.querySelector('input[type="range"]');
-    //     hasSelection = sliderInput && parseInt(sliderInput.value, 10) !== 200; // ✅ Проверяем, сдвинул ли пользователь ползунок
-    // } else { // Остальные шаги
-    //     const selectedOptions = document.querySelectorAll('input[name="answer"]:checked');
-    //     hasSelection = selectedOptions.length > 0;
-    // }
-
-    // if (currentStep === 9) { // Последний шаг
-    //     nextButton.textContent = "Відправити";
-    //     nextButton.classList.remove("btn-skip", "btn-disabled");
-    //     nextButton.classList.add("btn-active");
-    // } else if (hasSelection) {
-    //     nextButton.textContent = "Продовжити";
-    //     nextButton.classList.remove("btn-skip", "btn-submit", "btn-disabled");
-    //     nextButton.classList.add("btn-active");
-    // } else {
-    //     nextButton.textContent = "Пропустити питання";
-    //     nextButton.classList.remove("btn-active", "btn-submit");
-    //     nextButton.classList.add("btn-skip", "btn-disabled");
-    // }
-    // }
-    // function updateButtonStyles() {
-    // let hasSelection = false;
-
-    // if (currentStep === 5) { // Шаг 6 (чекбоксы)
-    //     const selectedDays = document.querySelectorAll('input[name="answer-day"]:checked').length > 0;
-    //     const selectedTimes = document.querySelectorAll('input[name="answer-time"]:checked').length > 0;
-    //     hasSelection = selectedDays || selectedTimes;
-    // } else if (currentStep === 7) { // Шаг 8 (слайдер)
-    //     const sliderInput = document.querySelector('input[type="range"]');
-    //     hasSelection = sliderInput && parseInt(sliderInput.value, 10) > parseInt(sliderInput.min, 10); // ✅ Проверяем, сдвинул ли пользователь ползунок
-    // } else { // Остальные шаги
-    //     const selectedOptions = document.querySelectorAll('input[name="answer"]:checked');
-    //     hasSelection = selectedOptions.length > 0;
-    // }
-
-    // if (currentStep === 9) { // Последний шаг
-    //     nextButton.textContent = "Відправити";
-    //     nextButton.classList.remove("btn-skip", "btn-disabled");
-    //     nextButton.classList.add("btn-active");
-    // } else if (hasSelection) {
-    //     nextButton.textContent = "Продовжити";
-    //     nextButton.classList.remove("btn-skip", "btn-submit", "btn-disabled");
-    //     nextButton.classList.add("btn-active");
-    // } else {
-    //     nextButton.textContent = "Пропустити питання";
-    //     nextButton.classList.remove("btn-active", "btn-submit");
-    //     nextButton.classList.add("btn-skip", "btn-disabled");
-    // }
-    // }
-    // function updateButtonStyles() {
-    // let hasSelection = false;
-
-    // if (currentStep === 5) { // Шаг 6 (чекбоксы)
-    //     const selectedDays = document.querySelectorAll('input[name="answer-day"]:checked').length > 0;
-    //     const selectedTimes = document.querySelectorAll('input[name="answer-time"]:checked').length > 0;
-    //     hasSelection = selectedDays || selectedTimes;
-    // } else if (currentStep === 7) { // Шаг 8 (слайдер)
-    //     const sliderInput = document.querySelector('input[type="range"]');
-    //     hasSelection = sliderInput && parseInt(sliderInput.value, 10) > parseInt(sliderInput.min, 10); // ✅ Проверяем, что значение изменилось
-    // } else { // Остальные шаги
-    //     const selectedOptions = document.querySelectorAll('input[name="answer"]:checked');
-    //     hasSelection = selectedOptions.length > 0;
-    // }
-
-    // if (currentStep === 9) { // Последний шаг
-    //     nextButton.textContent = "Відправити";
-    //     nextButton.classList.remove("btn-skip", "btn-disabled");
-    //     nextButton.classList.add("btn-active");
-    // } else if (hasSelection) {
-    //     nextButton.textContent = "Продовжити";
-    //     nextButton.classList.remove("btn-skip", "btn-submit", "btn-disabled");
-    //     nextButton.classList.add("btn-active");
-    // } else {
-    //     nextButton.textContent = "Пропустити питання";
-    //     nextButton.classList.remove("btn-active", "btn-submit");
-    //     nextButton.classList.add("btn-skip", "btn-disabled");
-    // }
-    // }
     function updateButtonStyles() {
     let hasSelection = false;
 
