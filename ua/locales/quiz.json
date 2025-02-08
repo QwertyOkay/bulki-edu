@@ -91,14 +91,30 @@
                 "Хотів/хотіла б дізнатися більше"
             ]
         },
+       {
+    "question": "Останній крок!",
+    "description": "Заповніть вашу контактну інформацію, щоб ми могли надати ідеального репетитора, якого алгоритм підбере саме для вас, та надати <span class='highlight'>безкоштовний пробний урок.</span>",
+    "fields": [
         {
-            "question": "Заповніть вашу контактну інформацію",
-            "fields": [
-                "Ваш email",
-                "Ваш номер телефону",
-                "Ваше ім'я"
-            ]
+            "label": "Ваше ім'я",
+            "placeholder": "Ім'я",
+            "type": "text",
+            "required": true
         },
+        {
+            "label": "Ваш номер телефону",
+            "placeholder": "+380",
+            "type": "tel",
+            "required": true
+        },
+        {
+            "label": "Ваш email",
+            "placeholder": "@gmail.com",
+            "type": "email",
+            "required": false
+        }
+    ]
+},
         {
             "completion": {
                 "image": "../assets/img/cat-step11.svg",
