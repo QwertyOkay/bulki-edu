@@ -110,60 +110,66 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Добавляем класс для текущего шага
         if (currentStep === 1) { // Шаг 2
-            optionsContainer.classList.add("step-2");
+    optionsContainer.classList.add("step-2");
 
-            stepData.options.forEach((option, index) => {
-    const label = document.createElement("label");
-    label.className = "quiz-option";
+    // Добавляем подзаголовок
+    const description = document.createElement("div");
+    description.className = "quiz-description";
+    description.textContent = stepData.description;
+    optionsContainer.appendChild(description);
 
-    let optionText = "";
-    if (typeof option === "string") {
-        optionText = option;
-        label.classList.add("half-width");
-    } else {
-        optionText = option.text; // ✅ Берём текст вместо объекта
-        label.classList.add(option.width === "full" ? "full-width" : "half-width");
-    }
+    stepData.options.forEach((option, index) => {
+        const label = document.createElement("label");
+        label.className = "quiz-option";
 
-    const input = document.createElement("input");
-    input.type = stepData.multiSelect ? "checkbox" : "radio"; // Радио или чекбокс
-    input.name = "answer";
-    input.value = optionText; // ✅ Используем только текст
-
-    if (userAnswers[currentStep]) {
-        if (
-            Array.isArray(userAnswers[currentStep]) &&
-            userAnswers[currentStep].includes(optionText)
-        ) {
-            input.checked = true;
-            label.classList.add("selected");
-        } else if (userAnswers[currentStep] === optionText) {
-            input.checked = true;
-            label.classList.add("selected");
-        }
-    }
-
-    const span = document.createElement("span");
-    span.textContent = optionText;
-    label.append(input, span);
-    optionsContainer.appendChild(label);
-
-    // Обработчик клика
-    label.addEventListener("click", () => {
-        if (stepData.multiSelect) {
-            input.checked = !input.checked;
-            label.classList.toggle("selected", input.checked);
+        let optionText = "";
+        if (typeof option === "string") {
+            optionText = option;
+            label.classList.add("half-width");
         } else {
-            document.querySelectorAll(".quiz-option").forEach((opt) => opt.classList.remove("selected"));
-            input.checked = true;
-            label.classList.add("selected");
-            userAnswers[currentStep] = input.value;
+            optionText = option.text;
+            label.classList.add(option.width === "full" ? "full-width" : "half-width");
         }
-        updateButtonStyles();
-    });
-});
 
-        } else if (currentStep === 5) { // Шаг 6
+        const input = document.createElement("input");
+        input.type = stepData.multiSelect ? "checkbox" : "radio";
+        input.name = "answer";
+        input.value = optionText;
+
+        if (userAnswers[currentStep]) {
+            if (
+                Array.isArray(userAnswers[currentStep]) &&
+                userAnswers[currentStep].includes(optionText)
+            ) {
+                input.checked = true;
+                label.classList.add("selected");
+            } else if (userAnswers[currentStep] === optionText) {
+                input.checked = true;
+                label.classList.add("selected");
+            }
+        }
+
+        const span = document.createElement("span");
+        span.textContent = optionText;
+        label.append(input, span);
+        optionsContainer.appendChild(label);
+
+        // Обработчик клика
+        label.addEventListener("click", () => {
+            if (stepData.multiSelect) {
+                input.checked = !input.checked;
+                label.classList.toggle("selected", input.checked);
+            } else {
+                document.querySelectorAll(".quiz-option").forEach((opt) => opt.classList.remove("selected"));
+                input.checked = true;
+                label.classList.add("selected");
+                userAnswers[currentStep] = input.value;
+            }
+            updateButtonStyles();
+        });
+    });
+}
+  else if (currentStep === 5) { // Шаг 6
             optionsContainer.classList.add("step-6");
 
             // ✅ Блок 1: ДНИ НЕДЕЛИ (ЧЕКБОКСЫ)
