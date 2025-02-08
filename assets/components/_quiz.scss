@@ -761,3 +761,78 @@
 .quiz-description-step9 {
   color: rgb(53, 53, 53);
 }
+
+//  STEP 10
+/* Общий стиль для контейнера шага */
+.step-10 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Стиль для подзаголовка */
+.quiz-description-step10 {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Стиль для выделенного текста */
+.quiz-description-step10 .highlight {
+  text-transform: uppercase;
+  color: rgb(102, 179, 20);
+  font-weight: bold;
+}
+
+/* Стиль для формы */
+.quiz-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Стиль для обертки поля */
+.quiz-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Стиль для лейбла */
+.quiz-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #555;
+}
+
+/* Стиль для поля ввода */
+.quiz-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 16px;
+  border: 2px solid #ccc;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.quiz-input:focus {
+  border-color: green;
+  outline: none;
+}
+
+/* Стиль для плейсхолдера */
+.quiz-input::placeholder {
+  color: rgb(196, 196, 196);
+  // font-style: italic;
+}
