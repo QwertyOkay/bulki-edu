@@ -496,10 +496,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Удаляем предыдущие классы шагов
     optionsContainer.classList.remove("step-2", "step-6", "step-7", "step-8");
 
-    // ✅ Универсальная логика для description
+    // // ✅ Универсальная логика для description
+    // if (stepData.description) {
+    //     const description = document.createElement("div");
+    //     description.className = "quiz-description";
+    //     description.textContent = stepData.description;
+    //     optionsContainer.appendChild(description);
+        // }
+        // ✅ Универсальная логика для description
     if (stepData.description) {
         const description = document.createElement("div");
         description.className = "quiz-description";
+
+        // Добавляем уникальный класс для 9-го шага
+        if (currentStep === 8) { // Шаг 9 (индекс 8)
+            description.classList.add("quiz-description-step9");
+        }
+
         description.textContent = stepData.description;
         optionsContainer.appendChild(description);
     }
