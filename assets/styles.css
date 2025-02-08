@@ -55,7 +55,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 1024px) {
+  .quiz-header {
+    margin-bottom: 15px;
+  }
 }
 .quiz-header h1 {
   font-size: 30px;

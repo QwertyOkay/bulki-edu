@@ -36,7 +36,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+
+  @media screen and (min-width: $breakpoint-lg) {
+    margin-bottom: 15px;
+  }
 
   h1 {
     font-size: $quiz-title-size;
