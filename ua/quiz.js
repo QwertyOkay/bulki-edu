@@ -73,17 +73,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки текущего шага
     function loadStep() {
+        // if (!quizData || !quizData.steps || !quizData.steps[currentStep]) {
+        //     console.error("Ошибка: шаг не найден", currentStep);
+        //     return;
+        // }
         if (!quizData || !quizData.steps || !quizData.steps[currentStep]) {
-            console.error("Ошибка: шаг не найден", currentStep);
-            return;
-        }
+        console.error("Ошибка: шаг не найден", currentStep);
+        return;
+    }
 
+        // const stepData = quizData.steps[currentStep];
+        // const quizTitle = document.getElementById("quiz-title");
+        // const optionsContainer = document.getElementById("quiz-options");
         const stepData = quizData.steps[currentStep];
-        const quizTitle = document.getElementById("quiz-title");
-        const optionsContainer = document.getElementById("quiz-options");
+    const quizTitle = document.getElementById("quiz-title");
+    const optionsContainer = document.getElementById("quiz-options");
 
         // Очищаем контейнер с вариантами
         optionsContainer.innerHTML = "";
+
+         // Удаляем предыдущие классы шагов
+        optionsContainer.classList.remove("step-2", "step-6", "step-7");
+        
+        // Добавляем класс для текущего шага
+    if (currentStep === 1) {
+        optionsContainer.classList.add("step-2");
+    } else if (currentStep === 5) {
+        optionsContainer.classList.add("step-6");
+    } else if (currentStep === 6) { // Шаг 7 (индекс 6)
+        optionsContainer.classList.add("step-7");
+    }
 
         // Проверяем и очищаем подзаголовок перед добавлением нового
         let existingSubTitle = document.querySelector(".quiz-subtitle");

@@ -679,6 +679,15 @@
     font-size: 14px;
   }
 }
+#quiz-options.step-7 {
+  min-height: 250px; /* Изменяем высоту для шага 7 */
+}
+@media screen and (main-width: 1024px) {
+  #quiz-options.step-7 {
+    max-height: 280px;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

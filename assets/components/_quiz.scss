@@ -702,3 +702,12 @@
     font-size: 14px;
   }
 }
+
+// STEP #7
+#quiz-options.step-7 {
+  min-height: 250px; /* Изменяем высоту для шага 7 */
+
+  @media screen and (main-width: $breakpoint-lg) {
+    max-height: 280px;
+  }
+}
