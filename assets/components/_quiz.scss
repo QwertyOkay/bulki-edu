@@ -817,13 +817,14 @@
   gap: 12px;
   background: white;
   padding: 16px;
-  border: 2px solid #ccc;
+  // border: 2px solid #ccc;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   position: relative;
   flex-direction: row-reverse;
   justify-content: space-between;
+  border: 2px solid rgb(53, 53, 53);
 }
 
 .quiz-input:focus {
@@ -835,4 +836,11 @@
 .quiz-input::placeholder {
   color: rgb(196, 196, 196);
   // font-style: italic;
+}
+
+input,
+textarea {
+  font-size: 14px; /* Минимальный размер шрифта */
+  width: 100%;
+  box-sizing: border-box;
 }
