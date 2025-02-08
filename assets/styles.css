@@ -680,12 +680,51 @@
   }
 }
 #quiz-options.step-7 {
-  min-height: 250px; /* Изменяем высоту для шага 7 */
+  min-height: 240px; /* Изменяем высоту для шага 7 */
 }
 @media screen and (main-width: 1024px) {
   #quiz-options.step-7 {
     max-height: 280px;
   }
+}
+
+#quiz-options.step-8 {
+  min-height: 250px; /* Высота контейнера для шага 8 */
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.slider-wrapper input[type=range] {
+  width: 100%;
+  height: 10px;
+  background: #ccc;
+  outline: none;
+  border-radius: 5px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.slider-wrapper input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #6cbf32;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.value-display {
+  font-size: 18px;
+  font-weight: bold;
+  color: #6cbf32;
 }
 
 * {

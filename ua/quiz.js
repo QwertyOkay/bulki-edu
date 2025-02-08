@@ -73,18 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Функция для загрузки текущего шага
     function loadStep() {
-        // if (!quizData || !quizData.steps || !quizData.steps[currentStep]) {
-        //     console.error("Ошибка: шаг не найден", currentStep);
-        //     return;
-        // }
         if (!quizData || !quizData.steps || !quizData.steps[currentStep]) {
         console.error("Ошибка: шаг не найден", currentStep);
         return;
-    }
-
-        // const stepData = quizData.steps[currentStep];
-        // const quizTitle = document.getElementById("quiz-title");
-        // const optionsContainer = document.getElementById("quiz-options");
+        }
+        
         const stepData = quizData.steps[currentStep];
     const quizTitle = document.getElementById("quiz-title");
     const optionsContainer = document.getElementById("quiz-options");
