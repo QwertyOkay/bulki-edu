@@ -15,6 +15,13 @@ body {
   overflow: hidden; /* Блокируем скролл */
 }
 
+html,
+body {
+  min-height: 100%;
+  height: auto;
+  overflow-x: hidden;
+}
+
 body {
   font-family: $font-family;
   background: $bg-color;
