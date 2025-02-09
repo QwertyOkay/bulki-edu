@@ -724,38 +724,100 @@ document.addEventListener("DOMContentLoaded", function () {
     // });
     // }
     
-    function submitQuiz() {
-    const dataToSend = {
-        Timestamp: new Date().toISOString(), // Временная метка
-        Step1: quizResponses[0] || "",
-        Step2: quizResponses[1] || [],
-        Step3: quizResponses[2] || "",
-        Step4: quizResponses[3] || "",
-        Step5: quizResponses[4] || "",
-        Step6: quizResponses[5]?.days || [],
-        Step7: quizResponses[6] || "",
-        Step8: quizResponses[7] || "",
-        Step9: quizResponses[8] || "",
-        name: quizResponses[9]?.name || "",
-        phone: quizResponses[9]?.phone || "",
-        email: quizResponses[9]?.email || ""
-    };
+//     function submitQuiz() {
+//     const dataToSend = {
+//         Timestamp: new Date().toISOString(), // Временная метка
+//         Step1: quizResponses[0] || "",
+//         Step2: quizResponses[1] || [],
+//         Step3: quizResponses[2] || "",
+//         Step4: quizResponses[3] || "",
+//         Step5: quizResponses[4] || "",
+//         Step6: quizResponses[5]?.days || [],
+//         Step7: quizResponses[6] || "",
+//         Step8: quizResponses[7] || "",
+//         Step9: quizResponses[8] || "",
+//         name: quizResponses[9]?.name || "",
+//         phone: quizResponses[9]?.phone || "",
+//         email: quizResponses[9]?.email || ""
+//     };
 
-    fetch("https://script.google.com/macros/s/AKfycbzCN2lVEfeRwsIeE-YOjxAl8g9AIUdAehMRXHLlKKfCTjfVLcH2jLxYQU3H1YoApypv/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dataToSend)
-    })
-        .then(response => response.text())
-        .then(data => {
-            console.log("✅ Данные успешно отправлены!", data);
-            alert("Ваші дані успішно надіслано!");
-            showCompletionPage();
-        })
-        .catch(error => {
-            console.error("❌ Помилка відправки:", error);
-            alert("Помилка при відправці. Спробуйте ще раз.");
+//     fetch("https://script.google.com/macros/s/AKfycbxw_-hp7v4QwdQWrCSsQW2dxBz3TR7YrLV7L3YHhomv0DcG9-rxuhVCrjlVUfMk0lQn/exec", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(dataToSend)
+//     })
+//         .then(response => response.text())
+//         .then(data => {
+//             console.log("✅ Данные успешно отправлены!", data);
+//             alert("Ваші дані успішно надіслано!");
+//             showCompletionPage();
+//         })
+//         .catch(error => {
+//             console.error("❌ Помилка відправки:", error);
+//             alert("Помилка при відправці. Спробуйте ще раз.");
+//         });
+    // }
+    
+    async function submitQuiz() {
+    try {
+        const dataToSend = {
+            Timestamp: new Date().toISOString(),
+            Step1: quizResponses[0] || "",
+            Step2: quizResponses[1] || [],
+            Step3: quizResponses[2] || "",
+            Step4: quizResponses[3] || "",
+            Step5: quizResponses[4] || "",
+            Step6: {
+                days: quizResponses[5]?.days || [],
+                times: quizResponses[5]?.times || []
+            },
+            Step7: quizResponses[6] || "",
+            Step8: quizResponses[7] || "",
+            Step9: quizResponses[8] || "",
+            name: quizResponses[9]?.name || "",
+            phone: quizResponses[9]?.phone || "",
+            email: quizResponses[9]?.email || ""
+        };
+
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxw_-hp7v4QwdQWrCSsQW2dxBz3TR7YrLV7L3YHhomv0DcG9-rxuhVCrjlVUfMk0lQn/exec";
+        
+        // Добавляем задержку для обхода ограничений
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        const response = await fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "cors",
+            headers: { 
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(dataToSend)
         });
+
+        // Проверка HTTP статуса
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        // Проверка бизнес-логики
+        if (result.status !== "success") {
+            throw new Error(result.message || "Unknown server error");
+        }
+
+        console.log("✅ Данные успешно отправлены:", result);
+        alert("Ваші дані успішно надіслано!");
+        showCompletionPage();
+
+    } catch (error) {
+        console.error("❌ Помилка відправки:", error);
+        alert(`Помилка при відправці: ${error.message}`);
+        // Дополнительная логика обработки ошибок
+        if(error.message.includes("Failed to fetch")) {
+            console.warn("Проверьте интернет-соединение");
+        }
+    }
 }
     
 });
