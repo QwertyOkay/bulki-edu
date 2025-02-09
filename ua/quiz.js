@@ -106,6 +106,46 @@ document.addEventListener("DOMContentLoaded", function () {
         // Удаляем предыдущие классы шагов
         optionsContainer.classList.remove("step-2", "step-6", "step-7", "step-8", "step-10");
 
+        // Проверяем, является ли текущий шаг финальным
+    if (currentStep === quizData.steps.length - 1) { // Последний шаг
+        optionsContainer.classList.add("step-completion");
+
+         // Добавляем изображение
+        if (stepData.completion?.image) {
+            const image = document.createElement("img");
+            image.src = stepData.completion.image;
+            image.alt = "Completion";
+            image.classList.add("completion-image"); // Класс для стилизации
+            optionsContainer.appendChild(image);
+        }
+
+        // Добавляем заголовок
+        if (stepData.completion?.title) {
+            const title = document.createElement("h1");
+            title.textContent = stepData.completion.title;
+            title.classList.add("completion-title"); // Класс для стилизации
+            optionsContainer.appendChild(title);
+        }
+
+        // Добавляем основное сообщение
+        if (stepData.completion?.message) {
+            const message = document.createElement("p");
+            message.textContent = stepData.completion.message;
+            message.classList.add("completion-message"); // Класс для стилизации
+            optionsContainer.appendChild(message);
+        }
+
+        // Добавляем подзаголовок
+        if (stepData.completion?.subtext) {
+            const subtext = document.createElement("p");
+            subtext.textContent = stepData.completion.subtext;
+            subtext.classList.add("completion-subtext"); // Класс для стилизации
+            optionsContainer.appendChild(subtext);
+        }
+
+       
+    }
+
         // ✅ Универсальная логика для description
         if (stepData.description) {
             const description = document.createElement("div");
@@ -300,106 +340,6 @@ document.addEventListener("DOMContentLoaded", function () {
             optionsContainer.appendChild(sliderWrapper);
 
         }
-        
-        // else if (currentStep === 9) { // Шаг 10 (индекс 9)
-        //     optionsContainer.classList.add("step-10");
-
-        //     // Создаем поля ввода
-        //     if (stepData.fields) {
-        //         stepData.fields.forEach((field) => {
-        //             const fieldWrapper = document.createElement("div");
-        //             fieldWrapper.className = "quiz-field";
-
-        //             // Лейбл
-        //             const label = document.createElement("label");
-        //             label.textContent = field.label;
-        //             label.htmlFor = `input-${field.type}`;
-        //             fieldWrapper.appendChild(label);
-
-        //             // Поле ввода
-        //             const input = document.createElement("input");
-        //             input.type = field.type;
-        //             input.placeholder = field.placeholder;
-        //             input.id = `input-${field.type}`;
-        //             input.required = field.required;
-
-        //             // Восстановление ранее введенных значений
-        //             if (userAnswers[currentStep]?.[field.label]) {
-        //                 input.value = userAnswers[currentStep][field.label];
-        //             }
-
-        //             // Обработчик ввода
-        //             input.addEventListener("input", () => {
-        //                 if (!userAnswers[currentStep]) {
-        //                     userAnswers[currentStep] = {};
-        //                 }
-        //                 userAnswers[currentStep][field.label] = input.value;
-        //                 updateButtonStyles();
-        //             });
-
-        //             fieldWrapper.appendChild(input);
-        //             optionsContainer.appendChild(fieldWrapper);
-        //         });
-        //     }
-            // }
-
-//             else if (currentStep === 9) { // Шаг 10 (индекс 9)
-//     optionsContainer.classList.add("step-10");
-
-//     // Добавляем описание (description)
-//     if (stepData.description) {
-//         const description = document.createElement("div");
-//         description.className = "quiz-description quiz-description-step10";
-//         description.innerHTML = stepData.description; // Используем innerHTML для поддержки HTML-тегов
-//         // optionsContainer.appendChild(description);
-//     }
-
-//     // Создаем форму
-//     const form = document.createElement("form");
-//     form.className = "quiz-form";
-
-//     // Создаем поля ввода
-//     if (stepData.fields) {
-//         stepData.fields.forEach((field) => {
-//             const fieldWrapper = document.createElement("div");
-//             fieldWrapper.className = "quiz-field";
-
-//             // Лейбл
-//             const label = document.createElement("label");
-//             label.className = "quiz-label";
-//             label.textContent = field.label;
-//             label.htmlFor = `input-${field.type}`;
-//             fieldWrapper.appendChild(label);
-
-//             // Поле ввода
-//             const input = document.createElement("input");
-//             input.type = field.type;
-//             input.placeholder = field.placeholder;
-//             input.id = `input-${field.type}`;
-//             input.required = field.required;
-//             input.classList.add("quiz-input");
-
-//             // Восстановление ранее введенных значений
-//             if (userAnswers[currentStep]?.[field.label]) {
-//                 input.value = userAnswers[currentStep][field.label];
-//             }
-
-//             // Обработчик ввода
-//             input.addEventListener("input", () => {
-//                 if (!userAnswers[currentStep]) {
-//                     userAnswers[currentStep] = {};
-//                 }
-//                 userAnswers[currentStep][field.label] = input.value;
-//                 updateButtonStyles();
-//             });
-
-//             fieldWrapper.appendChild(input);
-//             form.appendChild(fieldWrapper);
-//         });
-//     }
-
-//     optionsContainer.appendChild(form);
-            // }
             
             else if (currentStep === 9) { // Шаг 10 (индекс 9)
     optionsContainer.classList.add("step-10");

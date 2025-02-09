@@ -439,53 +439,6 @@
   z-index: 99;
 }
 
-// complete page
-
-.quiz-completion {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  text-align: center;
-}
-
-.quiz-completion-container {
-  max-width: 600px;
-  padding: 20px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.quiz-image-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.quiz-image-container img {
-  max-width: 250px;
-}
-
-.completion-icon img {
-  width: 50px;
-  height: 50px;
-  margin: 20px 0;
-}
-
-.quiz-completion-content h2 {
-  color: #6cbf32;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.quiz-completion-content p {
-  font-size: 18px;
-  color: #333;
-  margin-top: 10px;
-}
-
 // STEP 2
 
 .quiz-description {
@@ -843,4 +796,89 @@ textarea {
   font-size: 14px; /* Минимальный размер шрифта */
   width: 100%;
   box-sizing: border-box;
+}
+
+// complete page
+
+.quiz-completion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.quiz-completion-container {
+  max-width: 600px;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.quiz-image-container img {
+  max-width: 250px;
+}
+
+.completion-icon img {
+  width: 50px;
+  height: 50px;
+  margin: 20px 0;
+}
+
+.quiz-completion-content h2 {
+  color: #6cbf32;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.quiz-completion-content p {
+  font-size: 18px;
+  color: #333;
+  margin-top: 10px;
+}
+
+/* Стиль для контейнера финальной страницы */
+.step-completion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px !important;
+}
+
+/* Стиль для заголовка */
+.completion-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #4caf50; /* Зеленый цвет */
+  margin-bottom: 15px;
+}
+
+/* Стиль для основного сообщения */
+.completion-message {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Стиль для подзаголовка */
+.completion-subtext {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Стиль для изображения */
+.completion-image {
+  width: 60px;
+  height: auto;
+  margin-bottom: 15px;
 }
