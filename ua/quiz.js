@@ -811,8 +811,8 @@ document.addEventListener("DOMContentLoaded", function () {
         showCompletionPage();
 
     } catch (error) {
-        console.error("❌ Помилка відправки:", error);
-        alert(`Помилка при відправці: ${error.message}`);
+        // console.error("❌ Помилка відправки:", error);
+        // alert(`Помилка при відправці: ${error.message}`);
         // Дополнительная логика обработки ошибок
         if(error.message.includes("Failed to fetch")) {
             console.warn("Проверьте интернет-соединение");
