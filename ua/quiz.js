@@ -15,6 +15,44 @@ document.addEventListener("DOMContentLoaded", function () {
     const quizImageContainer = document.getElementById("quiz-image-container");
     const quizCompletionPage = document.getElementById("quiz-completion");
 
+     // Перенесите код модалки сюда, убрав вложенный DOMContentLoaded
+    const legalModal = document.getElementById("legal-modal");
+    const legalBtn = document.getElementById("legal-center-btn");
+    const closeModal = document.querySelector(".close-modal");
+
+    function openModal() {
+        legalModal.classList.remove("hidden");
+    }
+
+    function closeModalWindow() {
+        legalModal.classList.add("hidden");
+    }
+
+    if (legalBtn) {
+        legalBtn.addEventListener("click", openModal);
+    }
+
+    if (closeModal) {
+        closeModal.addEventListener("click", closeModalWindow);
+    }
+
+    window.addEventListener("click", (event) => {
+        if (event.target === legalModal) {
+            closeModalWindow();
+        }
+    });
+
+    function toggleLegalCenterVisibility() {
+        if (currentStep === 9) { // 10-й шаг (индекс 9)
+            legalBtn.style.display = "block";
+        } else {
+            legalBtn.style.display = "none";
+        }
+    }
+
+    document.addEventListener("stepChanged", toggleLegalCenterVisibility);
+
+
     // Создание изображения для котика
     const catImg = new Image();
     catImg.classList.add("quiz-cat");
@@ -163,11 +201,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 optionsContainer.appendChild(subtext);
             }
         } else {
-            {
-        // Показываем кнопки для обычных шагов
-        nextButton.style.display = 'block';
-        if (prevButton) prevButton.style.display = 'block';
-    }
             // Для всех остальных шагов показываем прогресс-бар и стрелку "Назад"
             const progressBar = document.querySelector(".quiz-progress");
             if (progressBar) {
@@ -492,6 +525,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (currentStep < quizData.steps.length - 1) {
             document.querySelector(".quiz-progress").textContent = `${currentStep + 1} / ${quizData.steps.length - 1}`;
         }
+        if (typeof toggleLegalCenterVisibility === 'function') {
+        toggleLegalCenterVisibility();
+    }
     }
 
 
