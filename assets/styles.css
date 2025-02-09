@@ -234,7 +234,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 30px auto;
+    margin: 30px auto 20px;
     margin-top: 30px;
   }
 }
@@ -1428,4 +1428,9 @@ body {
   cursor: pointer;
   margin-top: 15px;
   text-decoration: underline;
+}
+@media screen and (min-width: 1024px) {
+  .legal-center {
+    font-size: 14px;
+  }
 }/*# sourceMappingURL=styles.css.map */

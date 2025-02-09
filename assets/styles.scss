@@ -606,4 +606,8 @@ body {
   cursor: pointer;
   margin-top: 15px;
   text-decoration: underline;
+
+  @media screen and (min-width: $breakpoint-lg) {
+    font-size: 14px;
+  }
 }

@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     startButton.addEventListener("click", () => {
         if (!quizData) {
             console.error("Ошибка: данные квиза не загружены.");
-            alert("Данные для квиза не загружены. Пожалуйста, попробуйте позже.");
+            // alert("Данные для квиза не загружены. Пожалуйста, попробуйте позже.");
             return;
         }
 
