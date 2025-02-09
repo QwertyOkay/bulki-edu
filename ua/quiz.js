@@ -90,6 +90,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+
+
     function loadStep() {
         if (!quizData || !quizData.steps || !quizData.steps[currentStep]) {
             console.error("Ошибка: шаг не найден", currentStep);
@@ -107,44 +109,65 @@ document.addEventListener("DOMContentLoaded", function () {
         optionsContainer.classList.remove("step-2", "step-6", "step-7", "step-8", "step-10");
 
         // Проверяем, является ли текущий шаг финальным
-    if (currentStep === quizData.steps.length - 1) { // Последний шаг
-        optionsContainer.classList.add("step-completion");
+        if (currentStep === quizData.steps.length - 1) { // Последний шаг
+            optionsContainer.classList.add("step-completion");
 
-         // Добавляем изображение
-        if (stepData.completion?.image) {
-            const image = document.createElement("img");
-            image.src = stepData.completion.image;
-            image.alt = "Completion";
-            image.classList.add("completion-image"); // Класс для стилизации
-            optionsContainer.appendChild(image);
+            // Скрываем прогресс-бар
+            const progressBar = document.querySelector(".quiz-progress");
+            if (progressBar) {
+                progressBar.style.display = "none";
+            }
+
+            // Скрываем стрелку "Назад" только в мобильной версии
+            const backArrow = document.querySelector(".image-arrow-left");
+            if (backArrow) {
+                backArrow.style.display = "none"; // Скрываем стрелку
+            }
+
+            // Добавляем изображение
+            if (stepData.completion?.image) {
+                const image = document.createElement("img");
+                image.src = stepData.completion.image;
+                image.alt = "Completion";
+                image.classList.add("completion-image"); // Класс для стилизации
+                optionsContainer.appendChild(image);
+            }
+
+            // Добавляем заголовок
+            if (stepData.completion?.title) {
+                const title = document.createElement("h1");
+                title.textContent = stepData.completion.title;
+                title.classList.add("completion-title"); // Класс для стилизации
+                optionsContainer.appendChild(title);
+            }
+
+            // Добавляем основное сообщение
+            if (stepData.completion?.message) {
+                const message = document.createElement("p");
+                message.textContent = stepData.completion.message;
+                message.classList.add("completion-message"); // Класс для стилизации
+                optionsContainer.appendChild(message);
+            }
+
+            // Добавляем подзаголовок
+            if (stepData.completion?.subtext) {
+                const subtext = document.createElement("p");
+                subtext.textContent = stepData.completion.subtext;
+                subtext.classList.add("completion-subtext"); // Класс для стилизации
+                optionsContainer.appendChild(subtext);
+            }
+        } else {
+            // Для всех остальных шагов показываем прогресс-бар и стрелку "Назад"
+            const progressBar = document.querySelector(".quiz-progress");
+            if (progressBar) {
+                progressBar.style.display = "block";
+            }
+
+            const backArrow = document.querySelector(".image-arrow-left");
+            if (backArrow) {
+                backArrow.style.display = "block"; // Показываем стрелку
+            }
         }
-
-        // Добавляем заголовок
-        if (stepData.completion?.title) {
-            const title = document.createElement("h1");
-            title.textContent = stepData.completion.title;
-            title.classList.add("completion-title"); // Класс для стилизации
-            optionsContainer.appendChild(title);
-        }
-
-        // Добавляем основное сообщение
-        if (stepData.completion?.message) {
-            const message = document.createElement("p");
-            message.textContent = stepData.completion.message;
-            message.classList.add("completion-message"); // Класс для стилизации
-            optionsContainer.appendChild(message);
-        }
-
-        // Добавляем подзаголовок
-        if (stepData.completion?.subtext) {
-            const subtext = document.createElement("p");
-            subtext.textContent = stepData.completion.subtext;
-            subtext.classList.add("completion-subtext"); // Класс для стилизации
-            optionsContainer.appendChild(subtext);
-        }
-
-       
-    }
 
         // ✅ Универсальная логика для description
         if (stepData.description) {
@@ -160,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
             optionsContainer.appendChild(description);
         }
 
-        // Обработка вариантов ответов
+        // Обработка вариантов ответов (оставляем без изменений)
         if (currentStep === 1) { // Шаг 2
             optionsContainer.classList.add("step-2");
             stepData.options.forEach((option, index) => {
@@ -174,12 +197,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     optionText = option.text;
                     label.classList.add(option.width === "full" ? "full-width" : "half-width");
                 }
+
                 const input = document.createElement("input");
                 input.type = stepData.multiSelect ? "checkbox" : "radio"; // Радио или чекбокс
                 input.name = "answer";
                 input.value = optionText;
 
-                // Восстановление выбранных значений
                 if (userAnswers[currentStep]) {
                     if (
                         Array.isArray(userAnswers[currentStep]) &&
@@ -198,7 +221,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.append(input, span);
                 optionsContainer.appendChild(label);
 
-                // Обработчик клика
                 label.addEventListener("click", () => {
                     if (stepData.multiSelect) {
                         input.checked = !input.checked;
@@ -215,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (currentStep === 5) { // Шаг 6 (чекбоксы дней и времени)
             optionsContainer.classList.add("step-6");
 
-            // ✅ Блок 1: ДНИ НЕДЕЛИ (ЧЕКБОКСЫ)
+            // Блок 1: ДНИ НЕДЕЛИ (ЧЕКБОКСЫ)
             const daysGroup = document.createElement("div");
             daysGroup.classList.add("quiz-group", "quiz-days");
             stepData.options.days.forEach((day) => {
@@ -230,23 +252,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.append(input, span);
                 daysGroup.appendChild(label);
 
-                // Восстановление выбранных значений
                 if (userAnswers[currentStep]?.days?.includes(day)) {
                     input.checked = true;
                     label.classList.add("selected");
                 }
 
-                // Обработчик клика
                 label.addEventListener("click", () => {
                     input.checked = !input.checked;
                     label.classList.toggle("selected", input.checked);
                     updateSelectedAnswers();
-                    updateButtonStyles(); // ✅ Добавляем вызов функции
+                    updateButtonStyles();
                 });
             });
             optionsContainer.appendChild(daysGroup);
 
-            // ✅ Блок 2: ВРЕМЯ (ЧЕКБОКСЫ + ИКОНКИ)
+            // Блок 2: ВРЕМЯ (ЧЕКБОКСЫ + ИКОНКИ)
             const timeGroup = document.createElement("div");
             timeGroup.classList.add("quiz-group", "quiz-times");
             stepData.options.times.forEach((time) => {
@@ -264,18 +284,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.append(input, icon, span);
                 timeGroup.appendChild(label);
 
-                // Восстановление выбранных значений
                 if (userAnswers[currentStep]?.times?.includes(time.text)) {
                     input.checked = true;
                     label.classList.add("selected");
                 }
 
-                // Обработчик клика
                 label.addEventListener("click", () => {
                     input.checked = !input.checked;
                     label.classList.toggle("selected", input.checked);
                     updateSelectedAnswers();
-                    updateButtonStyles(); // ✅ Добавляем вызов функции
+                    updateButtonStyles();
                 });
             });
             optionsContainer.appendChild(timeGroup);
@@ -293,13 +311,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 label.append(input, span);
                 optionsContainer.appendChild(label);
 
-                // Восстановление выбранных значений
                 if (userAnswers[currentStep] === option) {
                     input.checked = true;
                     label.classList.add("selected");
                 }
 
-                // Обработчик клика
                 label.addEventListener("click", () => {
                     document.querySelectorAll(".quiz-option").forEach((opt) => opt.classList.remove("selected"));
                     input.checked = true;
@@ -317,100 +333,88 @@ document.addEventListener("DOMContentLoaded", function () {
             const sliderLabel = document.createElement("label");
             sliderLabel.textContent = "Ваш бюджет за одне заняття: ";
             sliderWrapper.appendChild(sliderLabel);
+
             const sliderInput = document.createElement("input");
             sliderInput.type = "range";
             sliderInput.min = "200";
             sliderInput.max = "2000";
             sliderInput.step = "100";
             sliderInput.value = userAnswers[currentStep] || "200"; // Используем сохраненное значение или 200 по умолчанию
+
             const valueDisplay = document.createElement("span");
             valueDisplay.classList.add("value-display");
             valueDisplay.textContent = `${sliderInput.value} грн`;
             sliderWrapper.appendChild(sliderInput);
             sliderWrapper.appendChild(valueDisplay);
 
-            // 🛠 ВАЖНО! Добавляем обработчик изменений
             sliderInput.addEventListener("input", () => {
-                console.log("📌 Ползунок изменен! Новое значение:", sliderInput.value);
                 valueDisplay.textContent = `${sliderInput.value} грн`;
-                userAnswers[currentStep] = parseInt(sliderInput.value, 10); // ✅ Сохраняем ответ
-                updateButtonStyles(); // ✅ Гарантированно обновляем кнопку
+                userAnswers[currentStep] = parseInt(sliderInput.value, 10); // Сохраняем ответ
+                updateButtonStyles(); // Гарантированно обновляем кнопку
             });
-            console.log("🎯 Ползунок загружен. Текущее значение:", sliderInput.value);
+
             optionsContainer.appendChild(sliderWrapper);
+        } else if (currentStep === 9) { // Шаг 10 (индекс 9)
+            optionsContainer.classList.add("step-10");
 
-        }
-            
-            else if (currentStep === 9) { // Шаг 10 (индекс 9)
-    optionsContainer.classList.add("step-10");
+            // Очищаем контейнер перед добавлением нового контента
+            optionsContainer.innerHTML = "";
 
-    // Очищаем контейнер перед добавлением нового контента
-    optionsContainer.innerHTML = "";
+            // Добавляем заголовок
+            quizTitle.textContent = stepData.question;
 
-    // Добавляем заголовок
-    quizTitle.textContent = stepData.question;
+            // Добавляем подзаголовок (если есть)
+            if (stepData.description) {
+                const description = document.createElement("div");
+                description.className = "quiz-description quiz-description-step10";
 
-    // Добавляем подзаголовок (если есть)
-    if (stepData.description) {
-        const description = document.createElement("div");
-        description.className = "quiz-description quiz-description-step10";
-
-        // Проверяем, что description не пустой
-        if (typeof stepData.description === "string" && stepData.description.trim() !== "") {
-            description.innerHTML = stepData.description; // Используем innerHTML для поддержки HTML-тегов
-            optionsContainer.appendChild(description);
-        } else {
-            console.warn("⚠️ Описание для шага пустое или некорректное:", stepData.description);
-        }
-    }
-
-    // Создаем форму для полей ввода
-    if (stepData.fields) {
-        const form = document.createElement("form");
-        form.className = "quiz-form";
-
-        stepData.fields.forEach((field) => {
-            const fieldWrapper = document.createElement("div");
-            fieldWrapper.className = "quiz-field";
-
-            // Лейбл
-            const label = document.createElement("label");
-            label.className = "quiz-label";
-            label.textContent = field.label;
-            label.htmlFor = `input-${field.type}`;
-            fieldWrapper.appendChild(label);
-
-            // Поле ввода
-            const input = document.createElement("input");
-            input.type = field.type;
-            input.placeholder = field.placeholder;
-            input.id = `input-${field.type}`;
-            input.required = field.required;
-            input.classList.add("quiz-input");
-
-            // Восстановление ранее введенных значений
-            if (userAnswers[currentStep]?.[field.label]) {
-                input.value = userAnswers[currentStep][field.label];
+                if (typeof stepData.description === "string" && stepData.description.trim() !== "") {
+                    description.innerHTML = stepData.description; // Используем innerHTML для поддержки HTML-тегов
+                    optionsContainer.appendChild(description);
+                } else {
+                    console.warn("⚠️ Описание для шага пустое или некорректное:", stepData.description);
+                }
             }
 
-            // Обработчик ввода
-            input.addEventListener("input", () => {
-                if (!userAnswers[currentStep]) {
-                    userAnswers[currentStep] = {};
-                }
-                userAnswers[currentStep][field.label] = input.value;
-                updateButtonStyles();
-            });
+            // Создаем форму для полей ввода
+            if (stepData.fields) {
+                const form = document.createElement("form");
+                form.className = "quiz-form";
+                stepData.fields.forEach((field) => {
+                    const fieldWrapper = document.createElement("div");
+                    fieldWrapper.className = "quiz-field";
 
-            fieldWrapper.appendChild(input);
-            form.appendChild(fieldWrapper);
-        });
+                    const label = document.createElement("label");
+                    label.className = "quiz-label";
+                    label.textContent = field.label;
+                    label.htmlFor = `input-${field.type}`;
+                    fieldWrapper.appendChild(label);
 
-        optionsContainer.appendChild(form);
-    }
-}
-        
-        else {
+                    const input = document.createElement("input");
+                    input.type = field.type;
+                    input.placeholder = field.placeholder;
+                    input.id = `input-${field.type}`;
+                    input.required = field.required;
+                    input.classList.add("quiz-input");
+
+                    if (userAnswers[currentStep]?.[field.label]) {
+                        input.value = userAnswers[currentStep][field.label];
+                    }
+
+                    input.addEventListener("input", () => {
+                        if (!userAnswers[currentStep]) {
+                            userAnswers[currentStep] = {};
+                        }
+                        userAnswers[currentStep][field.label] = input.value;
+                        updateButtonStyles();
+                    });
+
+                    fieldWrapper.appendChild(input);
+                    form.appendChild(fieldWrapper);
+                });
+                optionsContainer.appendChild(form);
+            }
+        } else {
             // Обработка других шагов (радио или чекбоксы)
             if (stepData.options) {
                 stepData.options.forEach((option, index) => {
@@ -424,12 +428,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         optionText = option.text;
                         label.classList.add(option.width === "full" ? "full-width" : "half-width");
                     }
+
                     const input = document.createElement("input");
                     input.type = stepData.multiSelect ? "checkbox" : "radio"; // Радио или чекбокс
                     input.name = "answer";
                     input.value = optionText;
 
-                    // Восстановление выбранных значений
                     if (userAnswers[currentStep]) {
                         if (
                             Array.isArray(userAnswers[currentStep]) &&
@@ -448,7 +452,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     label.append(input, span);
                     optionsContainer.appendChild(label);
 
-                    // Обработчик клика
                     label.addEventListener("click", () => {
                         if (stepData.multiSelect) {
                             input.checked = !input.checked;
@@ -475,7 +478,9 @@ document.addEventListener("DOMContentLoaded", function () {
         updateButtonStyles();
 
         // Обновляем прогресс
-        document.querySelector(".quiz-progress").textContent = `${currentStep + 1} / ${quizData.steps.length}`;
+        if (currentStep < quizData.steps.length - 1) {
+            document.querySelector(".quiz-progress").textContent = `${currentStep + 1} / ${quizData.steps.length - 1}`;
+        }
     }
 
 
