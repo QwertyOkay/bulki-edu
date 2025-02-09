@@ -671,6 +671,7 @@
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  padding: 5px;
 }
 
 .slider-wrapper input[type=range]::-webkit-slider-thumb {
@@ -678,8 +679,9 @@
   appearance: none;
   width: 20px;
   height: 20px;
-  background: #6cbf32;
-  border: none;
+  background: rgb(102, 179, 20);
+  border: 2px solid rgb(53, 53, 53);
+  padding: 5px;
   border-radius: 50%;
   cursor: pointer;
 }

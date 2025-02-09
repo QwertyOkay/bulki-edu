@@ -124,6 +124,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 backArrow.style.display = "none"; // Скрываем стрелку
             }
 
+            if (currentStep === quizData.steps.length - 1) {
+                // Скрываем кнопки навигации
+                nextButton.style.display = 'none';
+                if (prevButton) prevButton.style.display = 'none';
+            } 
+
             // Добавляем изображение
             if (stepData.completion?.image) {
                 const image = document.createElement("img");
@@ -157,6 +163,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 optionsContainer.appendChild(subtext);
             }
         } else {
+            {
+        // Показываем кнопки для обычных шагов
+        nextButton.style.display = 'block';
+        if (prevButton) prevButton.style.display = 'block';
+    }
             // Для всех остальных шагов показываем прогресс-бар и стрелку "Назад"
             const progressBar = document.querySelector(".quiz-progress");
             if (progressBar) {
