@@ -1,0 +1,21 @@
+<svg width="65.000000" height="65.000000" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip101_2426">
+			<rect id="icons8-checkmark 2" rx="0.000000" width="64.000000" height="64.000000" transform="translate(0.500000 0.500000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<linearGradient x1="24.049997" y1="23.725002" x2="43.224991" y2="50.700008" id="paint_linear_101_2428_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FAE87A"/>
+			<stop offset="1.000000" stop-color="#C0EA96"/>
+		</linearGradient>
+	</defs>
+	<rect id="icons8-checkmark 2" rx="0.000000" width="64.000000" height="64.000000" transform="translate(0.500000 0.500000)" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip101_2426)">
+		<path id="Vector" d="M54.03 10.96C42.14 -0.97 22.85 -0.97 10.96 10.96C-0.97 22.85 -0.97 42.14 10.96 54.03C16.91 59.97 24.67 62.96 32.5 62.96C36.25 62.96 40.06 62.25 43.62 60.88C47.42 59.41 50.98 57.12 54.03 54.08C58.9 49.2 61.8 43.06 62.66 36.71C63.93 27.57 61.08 17.97 54.03 10.96Z" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="nonzero"/>
+		<path id="Vector" d="M50.78 32.5C50.78 42.59 42.59 50.78 32.5 50.78C22.4 50.78 14.21 42.59 14.21 32.5C14.21 22.4 22.4 14.21 32.5 14.21C42.59 14.21 50.78 22.4 50.78 32.5Z" fill="url(#paint_linear_101_2428_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+		<path id="Vector" d="M32.5 40.11C32.09 40.11 31.68 39.96 31.43 39.66L23.81 32.04C23.2 31.43 23.2 30.46 23.81 29.91C24.42 29.3 25.39 29.3 25.94 29.91L32.39 36.35L46.56 19.8C47.12 19.14 48.08 19.09 48.69 19.65C49.35 20.21 49.41 21.17 48.85 21.78L33.61 39.55C33.36 39.86 32.95 40.06 32.5 40.06C32.55 40.11 32.5 40.11 32.5 40.11Z" fill="#66B314" fill-opacity="1.000000" fill-rule="nonzero"/>
+		<path id="Vector" d="M32.5 64.49C14.87 64.49 0.5 50.12 0.5 32.5C0.5 14.87 14.87 0.5 32.5 0.5C50.12 0.5 64.49 14.87 64.49 32.5C64.49 50.12 50.12 64.49 32.5 64.49ZM32.5 3.55C16.55 3.55 3.55 16.55 3.55 32.5C3.55 48.44 16.55 61.44 32.5 61.44C48.44 61.44 61.44 48.44 61.44 32.5C61.44 16.55 48.44 3.55 32.5 3.55Z" fill="#66B314" fill-opacity="1.000000" fill-rule="nonzero"/>
+	</g>
+</svg>
