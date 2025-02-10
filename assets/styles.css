@@ -173,7 +173,7 @@
   #quiz-image-container {
     position: fixed;
     justify-content: flex-start;
-    left: 250px;
+    left: clamp(100px, 15vw, 300px);
   }
 }
 
@@ -209,12 +209,12 @@
 @media (min-width: 1024px) {
   .quiz-container {
     max-width: 800px;
-    padding: 100px;
+    padding: clamp(85px, 5vw, 120px);
     width: 690px;
     border-radius: 40px;
     box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.05);
     background: rgb(255, 255, 255);
-    margin-left: 500px;
+    margin-left: clamp(500px, 10vw, 500px);
   }
   .quiz-container #quiz-title {
     font-size: 32px;
