@@ -214,6 +214,7 @@
     border-radius: 40px;
     box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.05);
     background: rgb(255, 255, 255);
+    height: clamp(650px, 70vh, 800px);
     margin-left: clamp(500px, 10vw, 500px);
   }
   .quiz-container #quiz-title {
@@ -640,9 +641,14 @@
   }
 }
 #quiz-options.step-7 {
-  min-height: 240px; /* Изменяем высоту для шага 7 */
+  /* Изменяем высоту для шага 7 */
 }
-@media screen and (main-width: 1024px) {
+@media screen and (max-width: 768px) {
+  #quiz-options.step-7 {
+    min-height: 240px;
+  }
+}
+@media screen and (min-width: 1024px) {
   #quiz-options.step-7 {
     max-height: 280px;
   }

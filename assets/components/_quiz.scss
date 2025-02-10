@@ -221,6 +221,8 @@
     border-radius: 40px;
     box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.05);
     background: rgb(255, 255, 255);
+    // height: 620px;
+    height: clamp(650px, 70vh, 800px);
     // margin-left: 500px;
     // адаптив
     margin-left: clamp(500px, 10vw, 500px);
@@ -673,9 +675,13 @@
 
 // STEP #7
 #quiz-options.step-7 {
-  min-height: 240px; /* Изменяем высоту для шага 7 */
+  /* Изменяем высоту для шага 7 */
 
-  @media screen and (main-width: $breakpoint-lg) {
+  @media screen and (max-width: $breakpoint-md) {
+    min-height: 240px;
+  }
+
+  @media screen and (min-width: $breakpoint-lg) {
     max-height: 280px;
   }
 }
