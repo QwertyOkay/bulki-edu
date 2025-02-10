@@ -64,16 +64,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const preloadImages = [
         "../assets/img/cat-firstPage.png",
         "../assets/img/cat-step1.png",
-        "../assets/img/cat-step2.svg",
-        "../assets/img/cat-step3.svg",
-        "../assets/img/cat-step4.svg",
-        "../assets/img/cat-step5.svg",
-        "../assets/img/cat-step6.svg",
-        "../assets/img/cat-step7.svg",
-        "../assets/img/cat-step8.svg",
-        "../assets/img/cat-step9.svg",
-        "../assets/img/cat-step10.svg",
-        "../assets/img/cat-step11.svg"
+        "../assets/img/cat-step2.png",
+        "../assets/img/cat-step3.png",
+        "../assets/img/cat-step4.png",
+        "../assets/img/cat-step5.png",
+        "../assets/img/cat-step6.png",
+        "../assets/img/cat-step7.png",
+        "../assets/img/cat-step8.png",
+        "../assets/img/cat-step9.png",
+        "../assets/img/cat-step10.png",
+        "../assets/img/cat-step11.png"
     ];
 
     catImg.onerror = () => {
