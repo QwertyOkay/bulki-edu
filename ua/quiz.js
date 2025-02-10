@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Прелоад изображений (11 котов)
     const preloadImages = [
-        "../assets/img/cat-firstPage.svg",
-        "../assets/img/cat-step1.svg",
+        "../assets/img/cat-firstPage.png",
+        "../assets/img/cat-step1.png",
         "../assets/img/cat-step2.svg",
         "../assets/img/cat-step3.svg",
         "../assets/img/cat-step4.svg",
@@ -94,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
         quizHeaderWrapper.classList.remove("hidden");
         quizContent.classList.remove("hidden");
         currentStep = 0;
-        // catImg.src = "../assets/img/cat-step1.svg";
         catImg.style.display = "block";
         updateButtonStyles();
     });
