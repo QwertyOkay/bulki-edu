@@ -41,7 +41,9 @@ body {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 30vh;
+  // padding-bottom: 30vh;
+  // адаптив
+  padding-bottom: clamp(50px, 30vh, 300px);
   min-height: 100dvh;
 
   h1 {
@@ -75,8 +77,11 @@ body {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 14px;
-  margin-top: 30px;
+  // margin-bottom: 14px;
+  // margin-top: 30px;
+  // адаптив
+  margin-bottom: calc(10px + 1vw);
+  margin-top: calc(20px + 2vw);
 }
 
 .header {

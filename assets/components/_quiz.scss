@@ -23,7 +23,9 @@
     background: transparent;
     height: 150px;
     gap: 100px;
-    padding-left: 105px;
+    // padding-left: 105px;
+    // адаптив
+    padding-left: clamp(50px, 7vw, 150px);
   }
 }
 
@@ -395,7 +397,9 @@
     display: flex;
     width: 179px;
     height: 44px;
-    margin-top: 10px;
+    // адаптив
+    margin-top: clamp(5px, 1vw, 20px);
+    // margin-top: 10px;
   }
 }
 
