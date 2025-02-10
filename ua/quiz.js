@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
     let currentStep = 0;
     let userAnswers = [];
@@ -229,6 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Обработка вариантов ответов (оставляем без изменений)
+        
         if (currentStep === 1) { // Шаг 2
             optionsContainer.classList.add("step-2");
             stepData.options.forEach((option, index) => {
@@ -550,11 +550,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 : (selected[0] ? selected[0].value : null);
         }
     }
-
-    // Функция сохранения ответа
-    // function saveAnswer() {
-    //     updateSelectedAnswers();
-    // }
 
     function saveAnswer() {
     if (currentStep === 5) { // Шаг 6 (чекбоксы дней и времени)
