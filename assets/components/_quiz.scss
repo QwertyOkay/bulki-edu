@@ -48,6 +48,7 @@
     font-size: $quiz-title-size;
     font-weight: bold;
     color: $main-title-color;
+    line-height: 0.91;
   }
 
   .quiz-progress {
@@ -125,7 +126,6 @@
 
   .quiz-header h1 {
     font-size: 20px;
-    line-height: 0.91;
   }
 
   .quiz-option {
@@ -230,6 +230,7 @@
     #quiz-title {
       font-size: 32px;
       font-weight: 800;
+      line-height: 1.1;
     }
 
     .quiz-option {
@@ -750,6 +751,10 @@
   font-size: 12px;
   color: rgb(53, 53, 53);
   line-height: 1.5;
+
+  @media screen and (min-width: $breakpoint-lg) {
+    font-size: 14px;
+  }
 }
 
 /* Стиль для выделенного текста */
