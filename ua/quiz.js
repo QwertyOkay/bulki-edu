@@ -670,7 +670,7 @@ function getUtmParams() {
             referrer: utmParams.referrer,
             };
             console.log("Данные для отправки:", dataToSend); // Добавляем логирование
-            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcWyzHg96Gxie1d9KXctCjP3gvrQQj_UbkPcbmhfI0lQeIx0bohg2Jw54UhNyZgY7z/exec";
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyNBEqAjZDstj-8swZiSp-nFxxFuI6o-UmVFBapL-eZT5osTE8FW9_JowTdhw4RIvL/exec";
             // Добавляем задержку для обхода ограничений
             await new Promise(resolve => setTimeout(resolve, 1000));
             const response = await fetch(SCRIPT_URL, {
