@@ -349,7 +349,7 @@ function getUtmParams() {
             sliderInput.min = "298";
             sliderInput.max = "398";
             sliderInput.step = "2";
-            sliderInput.value = userAnswers[currentStep] || "200"; // Используем сохраненное значение или 200 по умолчанию
+            sliderInput.value = userAnswers[currentStep] || "300"; // Используем сохраненное значение или 300 по умолчанию
             const valueDisplay = document.createElement("span");
             valueDisplay.classList.add("value-display");
             valueDisplay.textContent = `${sliderInput.value} грн`;
@@ -595,7 +595,7 @@ function getUtmParams() {
         if (currentStep === 9) { // Последний шаг
             nextButton.textContent = "Відправити";
             nextButton.classList.remove("btn-skip", "btn-disabled");
-            nextButton.classList.add(hasSelection ? "btn-active" : "btn-disabled");
+            nextButton.classList.add("btn-active" );
         } else if (hasSelection) {
             nextButton.textContent = "Продовжити";
             nextButton.classList.remove("btn-skip", "btn-submit", "btn-disabled");

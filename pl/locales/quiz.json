@@ -3,63 +3,73 @@
         {
             "question": "Dlaczego chcesz uczyć się angielskiego?",
             "options": [
-                "Aby lepiej rozumieć kulturę lub literaturę",
-                "Dla podróży lub hobby",
-                "Do nauki lub zdawania egzaminów",
-                "Dla kariery lub biznesu"
+                "Do kariery lub biznesu",
+                "W celu nauki lub przygotowania do egzaminów",
+                "Do podróży lub jako hobby",
+                "Aby lepiej rozumieć kulturę lub literaturę"
             ]
         },
         {
             "question": "Jakie umiejętności językowe są dla Ciebie najważniejsze?",
+            "description": "Możecie wybrać kilka opcji.",
+            "multiSelect": true,
             "options": [
-                "Słownictwo specjalistyczne (medyczne, prawnicze, techniczne itd.)",
-                "Przygotowanie do egzaminów (IELTS, TOEFL, CAE itd.)",
-                "Konwersacje w języku angielskim",
-                "Angielski biznesowy",
-                "Angielski na potrzeby podróży",
-                "Angielski dla początkujących",
-                "Angielski dla dzieci"
+                { "text": "Konwersacje w języku angielskim", "width": "half" },
+                { "text": "Angielski biznesowy", "width": "half" },
+                { "text": "Angielski dla dzieci", "width": "full" },
+                { "text": "Angielski na potrzeby podróży", "width": "half" },
+                { "text": "Angielski dla początkujących", "width": "half" },
+                { "text": "Słownictwo specjalistyczne (medyczne, prawnicze, techniczne itd.)", "width": "full" },
+                { "text": "Przygotowanie do egzaminów (IELTS, TOEFL, CAE itd.)", "width": "full" }
             ]
         },
         {
             "question": "Jaki jest Twój obecny poziom języka angielskiego?",
             "options": [
-                "Zaawansowany",
+                "Początkujący",
                 "Średnio zaawansowany",
-                "Początkujący"
+                "Zaawansowany"
             ]
         },
         {
             "question": "Czy zależy Ci na poznaniu konkretnej kultury lub akcentu?",
             "options": [
-                "Akcent amerykański",
-                "Akcent brytyjski",
-                "Nie, każdy akcent jest odpowiedni"
+                "Nie, każdy akcent jest odpowiedni",
+                "🇬🇧 Akcent brytyjski",
+                "🇺🇸 Akcent amerykański",
+                "Inne opcje"
             ]
         },
         {
             "question": "Czy potrzebujesz nauczyciela, który zna inne języki?",
             "options": [
-                "Tak, tylko native speaker.",
-                "Tak, polskojęzyczny nauczyciel.",
-                "Nie, to nie jest istotne"
+                "Nie, to nie jest istotne",
+                "🇺🇦 Tak, polskojęzyczny nauczyciel.",
+                "🇬🇧 Tak, tylko native speaker."
             ]
         },
         {
-            "question": "Kiedy najlepiej jest Ci się uczyć?",
-            "options": [
-                "Rano (przed 12:00)",
-                "Po południu (12:00–18:00)",
-                "Wieczorem (18:00–21:00)",
-                "W nocy (po 21:00)"
-            ]
-        },
+    "question": "Kiedy najlepiej jest Ci się uczyć?",
+    "multiSelect": true,
+    "options": {
+        "days": [
+            "Pn", "Wt", "Śr", "Czw",
+            "Pt", "Sb", "Nd"
+        ],
+        "times": [
+            { "text": "Rano (przed 12:00)", "icon": "🌅" },
+            { "text": "Po południu (12:00–18:00)", "icon": "☀️" },
+            { "text": "Wieczorem (18:00–21:00)", "icon": "🌆" },
+            { "text": "W nocy (po 21:00)", "icon": "🌙" }
+        ]
+    }
+},
         {
             "question": "Ile czasu w tygodniu możesz poświęcić na naukę?",
             "options": [
-                "6 godzin lub więcej",
-                "3–5 godzin",
-                "1–2 godziny"
+                "1–2 godziny",
+                 "3–5 godzin",
+                "6 godzin lub więcej"
             ]
         },
         {
@@ -72,24 +82,49 @@
         },
         {
             "question": "Czy słyszałeś/aś o nas wcześniej?",
+            "description": "Czy wiesz, że BUKI School to platforma online działająca w 7 krajach, z której usług skorzystało ponad 1 600 000 uczniów?",
             "options": [
                 "Tak, słyszałem/słyszałam o Was",
                 "Nie, to dla mnie nowość",
                 "Chciałbym/Chciałabym dowiedzieć się więcej"
             ]
         },
+       {
+    "question": "Ostatni krok!",
+    "description": "Wypełnij swoje dane kontaktowe, abyśmy mogli zaproponować idealnego korepetytora, wybranego specjalnie dla Ciebie przez nasz algorytm, oraz zapewnić <span class='highlight'>bezpłatną lekcję próbną</span>.",
+    "fields": [
         {
-            "question": "Wypełnij swoje dane kontaktowe",
-            "fields": [
-                "Twój adres e-mail",
-                "Twój numer telefonu",
-                "Twoje imię"
-            ]
+            "label": "Twoje imię",
+            "placeholder": "Imię",
+            "type": "text",
+            "required": true
+        },
+        {
+            "label": "*Twój numer telefonu",
+            "placeholder": "+48",
+            "type": "tel",
+            "required": true
+        },
+        {
+            "label": "Twój adres e-mail",
+            "placeholder": "@gmail.com",
+            "type": "email",
+            "required": false
+        }
+    ]
+},
+        {
+            "completion": {
+                "image": "../assets/img/checkmark.svg",
+                "title": "Juhuuu!",
+                "message": "Nasz algorytm rozpoczął analizę danych i dobiera dla Ciebie najlepsze opcje spośród 728 korepetytorów.",
+                "subtext": "Wkrótce skontaktujemy się z Tobą i poinformujemy o wynikach."
+            }
         }
     ],
     "buttons": {
-        "next": "Kontynuować",
-        "prev": "Wstecz",
-        "submit": "Wyślij"
+        "next": "POMIŃ PYTANIE",
+        "prev": "Назад",
+        "submit": "Відправити"
     }
 }

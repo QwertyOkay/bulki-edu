@@ -1,36 +1,326 @@
 <!DOCTYPE html>
-<html lang="pl"> <!-- Change to "pl" for Polish version -->
+<html lang="uk">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BUKI Quiz</title>
+    <link rel="icon" type="image/png" href="../assets/img/logo.svg">
     <link rel="stylesheet" href="../assets/styles.css">
+
+    <link href="https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.css" rel="stylesheet">
+
+    <link href="https://raw.githubusercontent.com/repalash/gilroy-free-webfont/fonts/Gilroy-Extrabold.css"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Light.css" rel="stylesheet">
 </head>
 
 <body>
+    <main>
 
-    <!-- Start Page (Shown First) -->
-    <div id="start-page" class="start-container">
-        <h1 id="start-title">Підберіть свого професійного репетитора</h1>
-        <p id="start-description">Знайдемо ідеального викладача за допомогою нашого алгоритму.</p>
-        <button id="start-btn" class="start-button">Почати тест</button>
-    </div>
+        <div id="start-page" class="start-container">
+            <div>
+                <div class="header-wrapper">
+                    <header class="header">
+                        <img src="../assets/img/logo.svg" alt="logo">
+                    </header>
+                </div>
 
-    <!-- Quiz Page (Hidden at First) -->
-    <div id="quiz-container" class="quiz-container hidden">
-        <header class="quiz-header">
-            <h1 id="quiz-title"></h1>
-            <span class="quiz-progress"></span>
-        </header>
-        <form id="quiz-form">
-            <div id="quiz-options"></div>
-            <button type="button" id="prev-btn">Назад</button>
-            <button type="button" id="next-btn">Продовжити</button>
-        </form>
-    </div>
+                <div class="content">
+                    <div>
+                        <h1 class="main-title">Znajdź swojego profesjonalnego korepetytora dzięki naszemu specjalnemu
+                            algorytmowi.
+                        </h1>
+                        <p class="sub-title">Opowiedz o swoim celu nauki, a my znajdziemy dla Ciebie osobistego
+                            nauczyciela.
+                        </p>
+                    </div>
 
-    <script src="./quiz.js"></script>
+                    <span class="tutor-count">WYBÓR SPOŚRÓD 728 KOREPETYTORÓW</span>
+
+                    <div class="buttons-wrapper">
+                        <div class="language-selector">
+                            <span class="flag-icon">
+                                <img src="../assets/img/GB.svg" alt="GB" class="flag-icon_img"></span>
+                            <span class="language-name">Język angielski</span>
+                        </div>
+                        <button id="start-btn" class="start-button">ROZPOCZNIJ</button>
+                    </div>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../assets/img/cat-firstPage.png" alt="Cat" class="start-cat">
+            </div>
+            <div class="image-arrow">
+                <img src="../assets/img/arrow-right.svg" alt="arrow">
+            </div>
+            <div class="catBg-container"></div>
+        </div>
+
+        <div id="quiz-content" class="quiz-content hidden">
+            <div class="quiz-bg_wrapper">
+                <div></div>
+                <div class="quiz-bg_green"></div>
+            </div>
+
+            <div id="quiz-header_wrapper" class="quiz-header_wrapper hidden">
+                <div class="quiz-logo_desk">
+                    <img src="../assets/img/logo.svg" alt="logo">
+                </div>
+                <div class="quiz-header_wrap">
+                    <div class="image-arrow-left">
+                        <img src="../assets/img/arrow-left.svg" alt="arrow">
+                    </div>
+
+                    <div id="quiz-image-container"></div>
+                    <span class="quiz-progress"></span>
+                </div>
+
+            </div>
+
+            <div id="quiz-container" class="quiz-container hidden">
+
+                <header class="quiz-header">
+                    <h1 id="quiz-title"></h1>
+                </header>
+                <form id="quiz-form">
+                    <div id="quiz-options"></div>
+                    <button type="button" id="next-btn">Продовжити</button>
+                    <!-- Legal Center Button -->
+                    <p id="legal-center-btn" class="legal-center">Legal Center</p>
+
+                    <div id="legal-modal" class="modal hidden">
+                        <div class="modal-content">
+                            <span class="close-modal">&times;</span>
+                            <h2>Legal Center</h2>
+                            <p>Welcome to our Legal Center. Here, you will find important legal information about our
+                                website, including our
+                                <strong>Privacy Policy, Cookies Policy, and Advertising Disclosure.</strong> We
+                                are
+                                committed to
+                                transparency and ensuring that you understand how we collect, use, and protect your
+                                personal data.
+                            </p>
+
+                            <h3>Our Policies</h3>
+                            <ul>
+                                <li><strong>Privacy Policy</strong> – Learn how we collect, process, and protect your
+                                    personal information.
+                                </li>
+                                <li><strong>Cookies Policy</strong> – Understand how we use cookies and similar
+                                    technologies to enhance your
+                                    browsing experience.</li>
+                                <li><strong>Advertising Disclosure</strong> – Find out how we collaborate with partners
+                                    and how our
+                                    marketing works.</li>
+                            </ul>
+
+                            <h3>Contact Information</h3>
+                            <p>If you have any questions or concerns regarding our policies or need assistance, feel
+                                free to reach out to
+                                us:</p>
+                            <p><strong>📍 Address:</strong> TopTierMedia OÜ, Harju maakond, Tallinn, Lasnamäe linnaosa,
+                                Sepapaja tn 6,
+                                15551.</p>
+                            <p><strong>✉️ Email:</strong> <a
+                                    href="mailto:support@toptier-marketing.com">support@toptier-marketing.com</a>
+                            </p>
+                            <p>We recommend reviewing these policies periodically, as we may update them from time to
+                                time to comply with
+                                legal requirements and improve our services.</p>
+
+                            <h3>Advertising Disclosure</h3>
+                            <p>This website is owned and operated by <strong>TopTierMedia OÜ</strong>, a marketing
+                                agency that specializes
+                                in
+                                generating leads for educational institutions. The content on this website has been
+                                created by TopTierMedia
+                                OÜ
+                                to promote the services of UpSkills OÜ. While we create and manage the content, all
+                                rights to its use belong
+                                to
+                                UpSkills OÜ.</p>
+                            <p>We operate as an independent marketing entity and may receive compensation for referring
+                                potential students
+                                to
+                                UpSkills OÜ. This compensation allows us to maintain the website, provide up-to-date
+                                information, and
+                                improve
+                                the quality of our services.</p>
+                            <p>Our goal is to ensure that users receive accurate and helpful information about language
+                                learning
+                                opportunities.
+                                While we strive to keep all content up to date, TopTierMedia OÜ does not provide
+                                guarantees or warranties
+                                regarding the accuracy, completeness, or availability of the information presented.</p>
+                            <p>Any claims, offers, or promotions mentioned on this site are subject to change at the
+                                discretion of UpSkills
+                                OÜ.
+                                If you have any questions about our advertising relationships, please feel free to
+                                contact us at
+                                <a href="mailto:support@toptier-marketing.com">support@toptier-marketing.com</a>.
+                            </p>
+
+                            <h3>Cookies Policy</h3>
+                            <p><strong>Last updated: 05.02.2025</strong></p>
+                            <p>This website (<a href="https://buki.school">https://buki.school</a>) uses cookies and
+                                similar technologies to
+                                enhance user experience, analyze website performance, and support advertising efforts.
+                                This policy explains
+                                what cookies are, how we use them, and how you can manage your preferences.</p>
+                            <p>By using this website, you consent to the use of cookies as described in this policy. If
+                                you do not agree,
+                                you
+                                can adjust your browser settings or manage your cookie preferences as explained below.
+                            </p>
+
+                            <h4>What Are Cookies?</h4>
+                            <p>Cookies are small text files stored on your device (computer, smartphone, or tablet) when
+                                you visit a
+                                website.
+                                They help websites remember your actions and preferences over time, allowing for
+                                improved functionality and
+                                a
+                                better browsing experience.</p>
+                            <p>Other similar technologies we may use include:</p>
+                            <ul>
+                                <li><strong>Web beacons (pixel tags)</strong> - Small graphic files embedded in web
+                                    pages or emails that help track user engagement.</li>
+                                <li><strong>Log files</strong> – Files that record interactions with the website for
+                                    security and analytics purposes.</li>
+                            </ul>
+
+                            <h4>Why We Use Cookies</h4>
+                            <p>We use cookies for the following purposes:</p>
+                            <ul>
+                                <li><strong>Essential Cookies</strong> – Required for the basic operation of the
+                                    website.</li>
+                                <li><strong>Performance and Analytics Cookies</strong> – Help us understand how visitors
+                                    interact with the
+                                    site.</li>
+                                <li><strong>Functional Cookies</strong> – Store user preferences like language settings.
+                                </li>
+                                <li><strong>Advertising Cookies</strong> – Ensure relevant advertisements are displayed.
+                                </li>
+                                <li><strong>Social Media Cookies</strong> – Enable content sharing on social media
+                                    platforms.</li>
+                                <li><strong>Fraud Prevention Cookies</strong> – Help detect fraudulent activities.</li>
+                            </ul>
+
+                            <h4>Third-Party Cookies</h4>
+                            <ul>
+                                <li>We may use cookies from third-party service providers, including but not limited to:
+                                </li>
+                                <li>Google Analytics – To track website traffic and user behavior.
+                                </li>
+                                <li>Google AdSense – To deliver relevant advertisements.</li>
+                                <li>Facebook Pixel – To measure and optimize marketing campaigns.</li>
+                                <li>LinkedIn, Twitter, and other social media platforms – To facilitate social media
+                                    interactions.</li>
+                            </ul>
+
+                            <h4>Managing Cookies</h4>
+                            <p>You can configure your browser to accept, disable, or delete cookies. Below are links to
+                                guides for managing
+                                cookies in popular browsers:</p><br>
+                            <ul>
+                                <li><a href="https://support.google.com/chrome/answer/95647">Google Chrome – Manage
+                                        Cookies</a></li>
+                                <li><a
+                                        href="https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences">Mozilla
+                                        Firefox – Manage Cookies</a></li>
+                                <li><a href="https://support.apple.com/en-us/HT201265">Safari – Manage Cookies</a></li>
+                                <li><a
+                                        href="https://support.microsoft.com/en-us/microsoft-edge/view-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09">Microsoft
+                                        Edge – Manage Cookies</a></li>
+                                <li><a href="https://help.opera.com/en/latest/web-preferences/#cookies">Opera – Manage
+                                        Cookies</a></li>
+                            </ul>
+
+                            <h4>Changes to This Policy</h4>
+                            <p>We may update this Cookie Policy from time to time. Any changes will be posted on this
+                                page with an updated revision
+                                date.</p>
+
+                            <h3>Privacy Policy</h3>
+                            <p><strong>Last updated: 05.02.2025</strong></p>
+                            <h4>Introduction</h4>
+                            <p>At <a href="https://buki.school">https://buki.school</a> ("we," "our," or "us"), we
+                                prioritize your privacy
+                                and
+                                the protection of your personal information. This Privacy Policy ("Policy") outlines how
+                                we collect, use,
+                                store, and share your data when you visit or interact with our website.</p>
+                            <p>By using our website, you acknowledge and agree to the practices described in this
+                                Policy.</p>
+
+                            <h4>What Personal Data We Collect</h4>
+                            <ul>
+                                <li><strong>Personal details:</strong> Name, email address, phone number.</li>
+                                <li><strong>Browsing activity:</strong> Pages visited, IP address, cookies, and similar
+                                    tracking data.</li>
+                            </ul>
+
+                            <h4>Why We Collect Your Data</h4>
+                            <p>We process your personal data for:</p>
+                            <ul>
+                                <li><strong>Providing and maintaining services</strong></li>
+                                <li><strong>Personalizing content</strong></li>
+                                <li><strong>Analytics and performance monitoring</strong></li>
+                                <li><strong>Marketing and advertising</strong></li>
+                                <li><strong>Legal and security compliance</strong></li>
+                            </ul>
+
+                            <h4>Your Rights</h4>
+                            <p>Depending on applicable laws, you have the right to:</p>
+                            <ul>
+                                <li>Access your personal data</li>
+                                <li>Rectify incorrect information</li>
+                                <li>Request data deletion</li>
+                                <li>Restrict processing</li>
+                                <li>Object to data usage for marketing</li>
+                                <li>Withdraw consent at any time</li>
+                            </ul><br>
+                            <p>To exercise these rights, contact us at <a
+                                    href="mailto:support@toptier-marketing.com">support@toptier-marketing.com</a>.</p>
+
+                            <h4>Changes to This Policy</h4>
+                            <p>We may update this Privacy Policy from time to time. Any changes will be posted here with
+                                an updated revision date.</p><br>
+                            <p>For any inquiries, contact us at <a
+                                    href="mailto:support@toptier-marketing.com">support@toptier-marketing.com</a>.</p>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div id="quiz-completion" class="quiz-completion hidden">
+                <div class="quiz-bg_wrapper">
+                    <div></div>
+                    <div class="quiz-bg_green"></div>
+                </div>
+                <div class="quiz-completion-container">
+                    <div class="quiz-image-container">
+                        <img id="completion-image" src="" alt="Completion Image">
+                    </div>
+                    <div class="quiz-completion-content">
+                        <div class="completion-icon">
+                            <img src="../assets/img/checkmark.svg" alt="Success">
+                        </div>
+                        <h2 id="completion-title"></h2>
+                        <p id="completion-message"></p>
+                        <p id="completion-subtext"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="./quiz.js"></script>
+    </main>
 </body>
 
 </html>
