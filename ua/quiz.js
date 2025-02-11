@@ -27,7 +27,11 @@ function getUtmParams() {
         utm_campaign: params.get('utm_campaign') || '',
         utm_term: params.get('utm_term') || '',
         utm_content: params.get('utm_content') || '',
-        referrer: document.referrer || ''
+        referrer: document.referrer || '',
+        // ✅ Добавляем поддержку идентификаторов кликов
+        gclid: params.get('gclid') || '',
+        wbraid: params.get('wbraid') || '',
+        gbraid: params.get('gbraid') || ''
     };
     
 }
@@ -667,10 +671,13 @@ function getUtmParams() {
             utm_campaign: utmParams.utm_campaign,
             utm_term: utmParams.utm_term,
             utm_content: utmParams.utm_content,
-            referrer: utmParams.referrer,
+                referrer: utmParams.referrer,
+            gclid: utmParams.gclid,
+    wbraid: utmParams.wbraid,
+    gbraid: utmParams.gbraid
             };
             console.log("Данные для отправки:", dataToSend); // Добавляем логирование
-            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxyNBEqAjZDstj-8swZiSp-nFxxFuI6o-UmVFBapL-eZT5osTE8FW9_JowTdhw4RIvL/exec";
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzdLvq-wt_1OiqjCM5jkLcGLs9xUaYhOdmbBGA0MEuFAsMQHQjh6jMSXrxIVcGBw5e_/exec";
             // Добавляем задержку для обхода ограничений
             await new Promise(resolve => setTimeout(resolve, 1000));
             const response = await fetch(SCRIPT_URL, {
