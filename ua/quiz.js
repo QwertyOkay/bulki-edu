@@ -329,9 +329,9 @@ document.addEventListener("DOMContentLoaded", function () {
             sliderWrapper.appendChild(sliderLabel);
             const sliderInput = document.createElement("input");
             sliderInput.type = "range";
-            sliderInput.min = "200";
-            sliderInput.max = "2000";
-            sliderInput.step = "100";
+            sliderInput.min = "298";
+            sliderInput.max = "398";
+            sliderInput.step = "2";
             sliderInput.value = userAnswers[currentStep] || "200"; // Используем сохраненное значение или 200 по умолчанию
             const valueDisplay = document.createElement("span");
             valueDisplay.classList.add("value-display");
