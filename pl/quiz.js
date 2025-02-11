@@ -198,7 +198,7 @@ function getUtmParams() {
         }
         // ✅ Универсальная логика для description
         if (stepData.description) {
-            const description = document.createElement("div");
+            const description = document.createElement("p");
             description.className = "quiz-description";
             // Добавляем уникальный класс для 9-го шага
             if (currentStep === 8) { // Шаг 9 (индекс 8)
