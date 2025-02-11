@@ -17,7 +17,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const legalModal = document.getElementById("legal-modal");
     const legalBtn = document.getElementById("legal-center-btn");
     const closeModal = document.querySelector(".close-modal");
+
+    // Добавляем в самое начало скрипта, после объявления переменных
+function getUtmParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+        utm_term: params.get('utm_term') || '',
+        utm_content: params.get('utm_content') || '',
+        referrer: document.referrer || ''
+    };
     
+}
+    const utmParams = getUtmParams();
+    console.log('UTM Params:', utmParams);
+
+
     function openModal() {
         legalModal.classList.remove("hidden");
     }
@@ -643,10 +660,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 Step9: quizResponses[8] || "",
                 name: quizResponses[9]?.name || "",
                 phone: quizResponses[9]?.phone || "",
-                email: quizResponses[9]?.email || ""
+                email: quizResponses[9]?.email || "",
+                 // Добавляем UTM-метки и реферер
+            utm_source: utmParams.utm_source,
+            utm_medium: utmParams.utm_medium,
+            utm_campaign: utmParams.utm_campaign,
+            utm_term: utmParams.utm_term,
+            utm_content: utmParams.utm_content,
+            referrer: utmParams.referrer,
             };
             console.log("Данные для отправки:", dataToSend); // Добавляем логирование
-            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxw_-hp7v4QwdQWrCSsQW2dxBz3TR7YrLV7L3YHhomv0DcG9-rxuhVCrjlVUfMk0lQn/exec";
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcWyzHg96Gxie1d9KXctCjP3gvrQQj_UbkPcbmhfI0lQeIx0bohg2Jw54UhNyZgY7z/exec";
             // Добавляем задержку для обхода ограничений
             await new Promise(resolve => setTimeout(resolve, 1000));
             const response = await fetch(SCRIPT_URL, {
