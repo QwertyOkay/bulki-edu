@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const quizContainer = document.getElementById("quiz-container");
     const quizHeaderWrapper = document.getElementById("quiz-header_wrapper");
     const quizContent = document.getElementById("quiz-content");
-    const startButton = document.getElementById("start-btn");
+    // const startButton = document.getElementById("start-btn");
+    const startElements = document.querySelectorAll("#start-btn, #start-btn2, #start-btn3, #start-btn4");
+
     const nextButton = document.getElementById("next-btn");
     const prevButton = document.getElementById("prev-btn");
     const quizImageContainer = document.getElementById("quiz-image-container");
@@ -19,22 +21,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeModal = document.querySelector(".close-modal");
 
     // Добавляем в самое начало скрипта, после объявления переменных
-function getUtmParams() {
-    const params = new URLSearchParams(window.location.search);
-    return {
-        utm_source: params.get('utm_source') || '',
-        utm_medium: params.get('utm_medium') || '',
-        utm_campaign: params.get('utm_campaign') || '',
-        utm_term: params.get('utm_term') || '',
-        utm_content: params.get('utm_content') || '',
-        referrer: document.referrer || '',
-        // ✅ Добавляем поддержку идентификаторов кликов
-        gclid: params.get('gclid') || '',
-        wbraid: params.get('wbraid') || '',
-        gbraid: params.get('gbraid') || ''
-    };
-    
-}
+    function getUtmParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            utm_source: params.get('utm_source') || '',
+            utm_medium: params.get('utm_medium') || '',
+            utm_campaign: params.get('utm_campaign') || '',
+            utm_term: params.get('utm_term') || '',
+            utm_content: params.get('utm_content') || '',
+            referrer: document.referrer || '',
+            // ✅ Добавляем поддержку идентификаторов кликов
+            gclid: params.get('gclid') || '',
+            wbraid: params.get('wbraid') || '',
+            gbraid: params.get('gbraid') || ''
+        };
+
+    }
     const utmParams = getUtmParams();
     console.log('UTM Params:', utmParams);
 
@@ -90,18 +92,36 @@ function getUtmParams() {
         catImg.style.display = "none";
     };
     // Старт квиза
-    startButton.addEventListener("click", () => {
-        if (!quizData) {
-            console.error("Ошибка: данные квиза не загружены.");
-            return;
-        }
-        startPage.style.display = "none";
-        quizContainer.classList.remove("hidden");
-        quizHeaderWrapper.classList.remove("hidden");
-        quizContent.classList.remove("hidden");
-        currentStep = 0;
-        catImg.style.display = "block";
-        updateButtonStyles();
+    // startButton.addEventListener("click", () => {
+    //     if (!quizData) {
+    //         console.error("Ошибка: данные квиза не загружены.");
+    //         return;
+    //     }
+    //     startPage.style.display = "none";
+    //     quizContainer.classList.remove("hidden");
+    //     quizHeaderWrapper.classList.remove("hidden");
+    //     quizContent.classList.remove("hidden");
+    //     currentStep = 0;
+    //     catImg.style.display = "block";
+    //     updateButtonStyles();
+    // });
+    startElements.forEach(element => {
+        element.addEventListener("click", () => {
+            if (!quizData) {
+                console.error("Ошибка: данные квиза не загружены.");
+                return;
+            }
+
+            // Запускаем квиз
+            startPage.style.display = "none";
+            quizContainer.classList.remove("hidden");
+            quizHeaderWrapper.classList.remove("hidden");
+            quizContent.classList.remove("hidden");
+            currentStep = 0;
+            catImg.style.display = "block";
+
+            updateButtonStyles();
+        });
     });
     // Загрузка данных квиза
     const langFolder = window.location.pathname.includes("/pl") ? "pl" : "ua";
@@ -159,7 +179,7 @@ function getUtmParams() {
                 // Скрываем кнопки навигации
                 nextButton.style.display = 'none';
                 if (prevButton) prevButton.style.display = 'none';
-            } 
+            }
             // Добавляем изображение
             if (stepData.completion?.image) {
                 const image = document.createElement("img");
@@ -599,7 +619,7 @@ function getUtmParams() {
         if (currentStep === 9) { // Последний шаг
             nextButton.textContent = "Відправити";
             nextButton.classList.remove("btn-skip", "btn-disabled");
-            nextButton.classList.add("btn-active" );
+            nextButton.classList.add("btn-active");
         } else if (hasSelection) {
             nextButton.textContent = "Продовжити";
             nextButton.classList.remove("btn-skip", "btn-submit", "btn-disabled");
@@ -665,16 +685,16 @@ function getUtmParams() {
                 name: quizResponses[9]?.name || "",
                 phone: quizResponses[9]?.phone || "",
                 email: quizResponses[9]?.email || "",
-                 // Добавляем UTM-метки и реферер
-            utm_source: utmParams.utm_source,
-            utm_medium: utmParams.utm_medium,
-            utm_campaign: utmParams.utm_campaign,
-            utm_term: utmParams.utm_term,
-            utm_content: utmParams.utm_content,
+                // Добавляем UTM-метки и реферер
+                utm_source: utmParams.utm_source,
+                utm_medium: utmParams.utm_medium,
+                utm_campaign: utmParams.utm_campaign,
+                utm_term: utmParams.utm_term,
+                utm_content: utmParams.utm_content,
                 referrer: utmParams.referrer,
-            gclid: utmParams.gclid,
-    wbraid: utmParams.wbraid,
-    gbraid: utmParams.gbraid
+                gclid: utmParams.gclid,
+                wbraid: utmParams.wbraid,
+                gbraid: utmParams.gbraid
             };
             console.log("Данные для отправки:", dataToSend); // Добавляем логирование
             const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzdLvq-wt_1OiqjCM5jkLcGLs9xUaYhOdmbBGA0MEuFAsMQHQjh6jMSXrxIVcGBw5e_/exec";
@@ -683,7 +703,7 @@ function getUtmParams() {
             const response = await fetch(SCRIPT_URL, {
                 method: "POST",
                 mode: "no-cors", // Используем cors вместо no-cors
-                headers: { 
+                headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(dataToSend)
@@ -708,5 +728,5 @@ function getUtmParams() {
         }
     }
 
-    
+
 });

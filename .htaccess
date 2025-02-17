@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/UA/ [NC]
+RewriteRule ^(.*)$ /UA/$1 [L,R=301,QSA]
