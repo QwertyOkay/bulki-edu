@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const quizContainer = document.getElementById("quiz-container");
     const quizHeaderWrapper = document.getElementById("quiz-header_wrapper");
     const quizContent = document.getElementById("quiz-content");
-    // const startButton = document.getElementById("start-btn");
     const startElements = document.querySelectorAll("#start-btn, #start-btn2, #start-btn3, #start-btn4");
 
     const nextButton = document.getElementById("next-btn");
@@ -92,19 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
         catImg.style.display = "none";
     };
     // Старт квиза
-    // startButton.addEventListener("click", () => {
-    //     if (!quizData) {
-    //         console.error("Ошибка: данные квиза не загружены.");
-    //         return;
-    //     }
-    //     startPage.style.display = "none";
-    //     quizContainer.classList.remove("hidden");
-    //     quizHeaderWrapper.classList.remove("hidden");
-    //     quizContent.classList.remove("hidden");
-    //     currentStep = 0;
-    //     catImg.style.display = "block";
-    //     updateButtonStyles();
-    // });
     startElements.forEach(element => {
         element.addEventListener("click", () => {
             if (!quizData) {
@@ -549,6 +535,7 @@ document.addEventListener("DOMContentLoaded", function () {
             toggleLegalCenterVisibility();
         }
     }
+
     function updateSelectedAnswers() {
         if (currentStep === 5) { // Шаг 6 (индекс 5)
             const selectedDays = Array.from(document.querySelectorAll('input[name="answer-day"]:checked')).map(el => el.value);
@@ -630,6 +617,7 @@ document.addEventListener("DOMContentLoaded", function () {
             nextButton.classList.add("btn-skip", "btn-disabled");
         }
     }
+    
     function navigate(direction) {
         if (!quizData) return;
         if (direction === -1 && currentStep === 0) return; // Не переходим назад с первого шага

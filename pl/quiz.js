@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const quizContainer = document.getElementById("quiz-container");
     const quizHeaderWrapper = document.getElementById("quiz-header_wrapper");
     const quizContent = document.getElementById("quiz-content");
-    // const startButton = document.getElementById("start-btn");
     const startElements = document.querySelectorAll("#start-btn, #start-btn2, #start-btn3, #start-btn4");
 
     const nextButton = document.getElementById("next-btn");
@@ -93,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         catImg.style.display = "none";
     };
     // Старт квиза
-    
+
     startElements.forEach(element => {
     element.addEventListener("click", () => {
         if (!quizData) {

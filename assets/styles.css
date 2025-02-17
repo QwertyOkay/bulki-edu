@@ -1452,4 +1452,8 @@ body {
 #start-btn3:hover,
 #start-btn4:hover {
   cursor: pointer;
+}
+
+.input-error {
+  border: 2px solid red !important;
 }/*# sourceMappingURL=styles.css.map */
