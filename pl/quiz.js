@@ -94,23 +94,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Старт квиза
 
     startElements.forEach(element => {
-    element.addEventListener("click", () => {
-        if (!quizData) {
-            console.error("Ошибка: данные квиза не загружены.");
-            return;
-        }
+        element.addEventListener("click", () => {
+            if (!quizData) {
+                console.error("Ошибка: данные квиза не загружены.");
+                return;
+            }
 
-        // Запускаем квиз
-        startPage.style.display = "none";
-        quizContainer.classList.remove("hidden");
-        quizHeaderWrapper.classList.remove("hidden");
-        quizContent.classList.remove("hidden");
-        currentStep = 0;
-        catImg.style.display = "block";
+            // Запускаем квиз
+            startPage.style.display = "none";
+            quizContainer.classList.remove("hidden");
+            quizHeaderWrapper.classList.remove("hidden");
+            quizContent.classList.remove("hidden");
+            currentStep = 0;
+            catImg.style.display = "block";
 
-        updateButtonStyles();
+            updateButtonStyles();
+        });
     });
-});
 
     // Загрузка данных квиза
     const langFolder = window.location.pathname.includes("/pl") ? "pl" : "ua";

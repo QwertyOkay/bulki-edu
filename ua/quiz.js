@@ -617,7 +617,7 @@ document.addEventListener("DOMContentLoaded", function () {
             nextButton.classList.add("btn-skip", "btn-disabled");
         }
     }
-    
+
     function navigate(direction) {
         if (!quizData) return;
         if (direction === -1 && currentStep === 0) return; // Не переходим назад с первого шага

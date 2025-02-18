@@ -623,6 +623,34 @@ body {
   cursor: pointer;
 }
 
-.input-error {
-  border: 2px solid red !important;
+// .input-error {
+//   border: 2px solid red !important;
+// }
+
+/* Стили для телефонного ввода */
+// .phone-input {
+//   padding-left: 60px !important;
+//   width: 100%;
+// }
+
+// .intl-tel-input {
+//   width: 100%;
+// }
+
+// .iti__flag-container {
+//   left: 10px;
+//   top: 50%;
+//   transform: translateY(-50%);
+// }
+
+#step10-form.hidden {
+  display: none;
 }
+
+// #step10-form .quiz-input {
+//   width: 100%;
+//   padding: 12px;
+//   margin-bottom: 15px;
+//   border: 1px solid #ddd;
+//   border-radius: 8px;
+// }

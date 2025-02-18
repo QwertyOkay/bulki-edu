@@ -1454,6 +1454,7 @@ body {
   cursor: pointer;
 }
 
-.input-error {
-  border: 2px solid red !important;
+/* Стили для телефонного ввода */
+#step10-form.hidden {
+  display: none;
 }/*# sourceMappingURL=styles.css.map */

@@ -111,7 +111,7 @@
             "label": "Ваш email",
             "placeholder": "@gmail.com",
             "type": "email",
-            "required": false
+            "required": true
         }
     ]
 },
