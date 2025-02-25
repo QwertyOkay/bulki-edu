@@ -125,6 +125,7 @@ body {
   text-align: center;
   transition: background 0.3s ease-in-out;
   width: 100%;
+  z-index: 999;
 
   &:hover {
     background: $button-active-hover;
@@ -619,7 +620,9 @@ body {
 
 #start-btn2:hover,
 #start-btn3:hover,
-#start-btn4:hover {
+#start-btn4:hover,
+#start-btn5:hover,
+#start-btn6:hover {
   cursor: pointer;
 }
 

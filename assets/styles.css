@@ -328,7 +328,7 @@
 }
 
 .quiz-option.selected {
-  border: 2px solid rgb(53, 53, 53);
+  border: 2px solid #66b314;
 }
 .quiz-option.selected .custom-radio {
   border-color: #66b314;
@@ -758,7 +758,7 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 15px;
   transition: border-color 0.3s ease;
   display: flex;
   align-items: center;
@@ -1020,6 +1020,7 @@ body {
   text-align: center;
   transition: background 0.3s ease-in-out;
   width: 100%;
+  z-index: 999;
 }
 .start-button:hover {
   background: rgba(102, 179, 20, 0.7);
@@ -1455,7 +1456,9 @@ body {
 
 #start-btn2:hover,
 #start-btn3:hover,
-#start-btn4:hover {
+#start-btn4:hover,
+#start-btn5:hover,
+#start-btn6:hover {
   cursor: pointer;
 }
 

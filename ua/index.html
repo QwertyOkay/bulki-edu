@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BUKI Quiz</title>
     <link rel="icon" type="image/png" href="../assets/img/logo.svg">
-    <link rel="stylesheet" href="../assets/styles.css?ver=2">
+    <link rel="stylesheet" href="../assets/styles.css?ver=4">
     <link href="https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Extrabold.css" rel="stylesheet">
     <link href="https://raw.githubusercontent.com/repalash/gilroy-free-webfont/fonts/Gilroy-Extrabold.css"
         rel="stylesheet">
@@ -37,13 +37,13 @@
         <div id="start-page" class="start-container">
             <div>
                 <div class="header-wrapper">
-                    <header class="header">
+                    <header class="header" id="start-btn5">
                         <img src="../assets/img/logo.svg" alt="logo">
                     </header>
                 </div>
 
                 <div class="content">
-                    <div>
+                    <div id="start-btn6">
                         <h1 class="main-title">Підберіть свого професійного репетитора за допомогою нашого спеціального
                             алгоритму.
                         </h1>
@@ -63,6 +63,7 @@
                         <button id="start-btn" class="start-button">ПОЧАТИ</button>
                     </div>
                 </div>
+
             </div>
             <div class="image-container">
                 <img src="../assets/img/cat-firstPage.png" alt="Cat" class="start-cat">
@@ -109,20 +110,15 @@
                         <div class="quiz-field">
                             <label class="quiz-label" for="name-input">Ваше ім'я</label>
                             <input type="text" id="name-input" class="quiz-input" placeholder="Ім'я" required>
-                            <div class="invalid-feedback">Будь ласка, введіть ваше ім'я</div>
                         </div>
                         <div class="quiz-field">
                             <label class="quiz-label" for="phone-input">Ваш номер телефону</label>
                             <input type="tel" id="phone-input" class="quiz-input" required placeholder="XX XXX XXXX"
                                 data-placeholder-mobile="Номер телефону">
-                            <div class="invalid-feedback">Будь ласка, введіть коректний номер телефону</div>
-
                         </div>
                         <div class="quiz-field">
                             <label class="quiz-label" for="email-input">Ваш email</label>
                             <input type="email" id="email-input" class="quiz-input" placeholder="@gmail.com" required>
-                            <div class="invalid-feedback">Будь ласка, введіть коректний email</div>
-
                         </div>
                         <button id="next-btn2" type="button" class="btn-active">Відправити</button>
                     </form>
@@ -362,7 +358,7 @@
 
         </div>
 
-        <script src="./quiz.js?ver=3"></script>
+        <script src="./quiz.js?ver=6"></script>
 
     </main>
 
