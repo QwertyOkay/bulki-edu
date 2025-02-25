@@ -74,12 +74,6 @@
   font-weight: bold;
 }
 
-.quiz-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
 .quiz-option {
   display: flex;
   align-items: center;
@@ -276,6 +270,7 @@
   flex-direction: column;
   gap: 10px;
   min-height: 280px;
+  width: 100%;
 }
 @media (min-width: 1024px) {
   #quiz-options {
@@ -717,6 +712,12 @@
   font-size: 12px;
   color: rgb(53, 53, 53);
   line-height: 1.5;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 768px) {
+  .quiz-description-step10 {
+    margin-bottom: 20px;
+  }
 }
 @media screen and (min-width: 1024px) {
   .quiz-description-step10 {
@@ -904,6 +905,10 @@ textarea {
   max-width: 600px;
   border-radius: 8px;
   position: relative;
+}
+
+#dynamic-quiz-form {
+  width: 100%;
 }
 
 * {
@@ -1454,7 +1459,81 @@ body {
   cursor: pointer;
 }
 
-/* Стили для телефонного ввода */
-#step10-form.hidden {
+.iti {
+  display: block !important;
+}
+
+.invalid-feedback {
   display: none;
-}/*# sourceMappingURL=styles.css.map */
+  color: #dc3545;
+  font-size: 0.875em;
+}
+
+.was-validated input:invalid ~ .invalid-feedback {
+  display: block;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.invalid {
+  border: 2px solid #ff4444 !important;
+  animation: shake 0.5s;
+}
+
+.valid {
+  border: 2px solid rgba(102, 179, 20, 0.7) !important; /* Зелёная обводка для корректных данных */
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+.iti__dial-code {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.quiz-field {
+  position: relative;
+}
+
+/* Обертка intlTelInput */
+.iti {
+  width: 100%;
+  display: flex !important;
+  align-items: center;
+}
+
+/* Контейнер флага и кода страны */
+.iti__flag-container {
+  padding-right: 10px;
+}
+
+/* Инпут телефона */
+.quiz-input.iti__tel-input {
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Скрываем стандартный border у флага, если он мешает */
+.iti__flag-container .iti__selected-flag {
+  background: none;
+  border: none;
+}
+
+/* Убираем конфликт с вашими стилями */
+.quiz-field .iti__flag-container + input {
+  padding-left: 0 !important;
+}
+
+/* Инвалидный инпут *//*# sourceMappingURL=styles.css.map */

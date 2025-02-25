@@ -623,34 +623,91 @@ body {
   cursor: pointer;
 }
 
-// .input-error {
-//   border: 2px solid red !important;
-// }
+// TelInput form styles
 
-/* Стили для телефонного ввода */
-// .phone-input {
-//   padding-left: 60px !important;
-//   width: 100%;
-// }
-
-// .intl-tel-input {
-//   width: 100%;
-// }
-
-// .iti__flag-container {
-//   left: 10px;
-//   top: 50%;
-//   transform: translateY(-50%);
-// }
-
-#step10-form.hidden {
-  display: none;
+.iti {
+  display: block !important;
 }
 
-// #step10-form .quiz-input {
-//   width: 100%;
-//   padding: 12px;
-//   margin-bottom: 15px;
-//   border: 1px solid #ddd;
-//   border-radius: 8px;
+.invalid-feedback {
+  display: none;
+  color: #dc3545;
+  font-size: 0.875em;
+}
+
+.was-validated input:invalid ~ .invalid-feedback {
+  display: block;
+}
+
+// input:invalid {
+//   border-color: #dc3545;
+// }
+
+.visible {
+  visibility: visible;
+}
+
+.invalid {
+  border: 2px solid #ff4444 !important;
+  animation: shake 0.5s;
+}
+.valid {
+  border: 2px solid rgba(102, 179, 20, 0.7) !important; /* Зелёная обводка для корректных данных */
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.iti__dial-code {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.quiz-field {
+  position: relative;
+}
+
+/* Обертка intlTelInput */
+.iti {
+  width: 100%;
+  display: flex !important;
+  align-items: center;
+}
+
+/* Контейнер флага и кода страны */
+.iti__flag-container {
+  padding-right: 10px;
+}
+
+/* Инпут телефона */
+.quiz-input.iti__tel-input {
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Скрываем стандартный border у флага, если он мешает */
+.iti__flag-container .iti__selected-flag {
+  background: none;
+  border: none;
+}
+
+/* Убираем конфликт с вашими стилями */
+.quiz-field .iti__flag-container + input {
+  padding-left: 0 !important;
+}
+
+/* Инвалидный инпут */
+// .quiz-input.invalid {
+//   border-color: red;
 // }

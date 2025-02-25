@@ -686,7 +686,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 gbraid: utmParams.gbraid
             };
             console.log("Данные для отправки:", dataToSend); // Добавляем логирование
-            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzRrPaHymRhF-TZSEqb2JGZa_T9t5j2Q_r2p_IfjZ86qgI37Lfu4A_hHMxr-dvOd7l0/exec";
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtvUecfwiR9XsGM_KE38M3JjfmuFUt3vkZi36D6kaouM_7NqyDYMw_9C1zQJ9bEboG/exec";
             // Добавляем задержку для обхода ограничений
             await new Promise(resolve => setTimeout(resolve, 1000));
             const response = await fetch(SCRIPT_URL, {

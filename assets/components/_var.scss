@@ -15,10 +15,13 @@ $border-radius: 40px;
 $font-family: "Gilroy";
 
 // 📐 Breakpoints
+$breakpoint-xs: 320px;
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
 $breakpoint-xl: 1280px;
+$breakpoint-2k: 1440px;
+$breakpoint-4k: 2160px;
 
 // quiz
 $quiz-title-size: 30px;
