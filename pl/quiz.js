@@ -99,88 +99,88 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let iti = null;
-function initializeIntlTelInput() {
-    if (!window.intlTelInput || iti) {
-        console.log("✅ intlTelInput уже инициализирован или не загружен.");
-        return;
-    }
-    try {
-        iti = window.intlTelInput(phoneInput, {
-            initialCountry: "pl", // Изменяем на Польшу для флага Польши и кода +48
-            separateDialCode: true,
-            nationalMode: false,
-            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/24.3.6/js/utils.js",
-            dropdownContainer: document.body
-        });
-        console.log("✅ intlTelInput успешно инициализирован с Польшей:", iti);
-
-        // Динамическая валидация и стилизация инпутов телефона
-        phoneInput.addEventListener("input", () => {
-            const isValid = iti.isValidNumber();
-            const number = iti.getNumber();
-            console.log("Telefon:", phoneInput.value, "Pełny numer:", number, "Ważny:", isValid);
-
-            // Убираем все стили, чтобы начать с чистого состояния
-            phoneInput.classList.remove("invalid", "valid");
-
-            // Если данные валидны, добавляем класс valid (зелёная обводка)
-            if (isValid) {
-                phoneInput.classList.add("valid");
-            }
-            // Если данные невалидны, добавляем класс invalid (красная обводка)
-            else {
-                phoneInput.classList.add("invalid");
-            }
-            validateForm();
-        });
-
-        phoneInput.addEventListener("countrychange", () => {
-            console.log("Kraj zmieniony:", iti.getSelectedCountryData());
-            // Проверяем валидацию при смене страны
-            const isValid = iti.isValidNumber();
-            phoneInput.classList.remove("invalid", "valid");
-            if (isValid) {
-                phoneInput.classList.add("valid");
-            } else {
-                phoneInput.classList.add("invalid");
-            }
-            validateForm();
-        });
-
-        const flagContainer = phoneInput.closest(".iti").querySelector(".iti__flag-container");
-        if (flagContainer) {
-            flagContainer.addEventListener("click", (e) => {
-                e.preventDefault();
-                console.log("Klik po fladze");
-                iti.openDropdown();
-            });
+    function initializeIntlTelInput() {
+        if (!window.intlTelInput || iti) {
+            console.log("✅ intlTelInput уже инициализирован или не загружен.");
+            return;
         }
-    } catch (error) {
-        console.error("❌ Błąd inicjalizacji intlTelInput:", error);
+        try {
+            iti = window.intlTelInput(phoneInput, {
+                initialCountry: "pl", // Изменяем на Польшу для флага Польши и кода +48
+                separateDialCode: true,
+                nationalMode: false,
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/24.3.6/js/utils.js",
+                dropdownContainer: document.body
+            });
+            console.log("✅ intlTelInput успешно инициализирован с Польшей:", iti);
+
+            // Динамическая валидация и стилизация инпутов телефона
+            phoneInput.addEventListener("input", () => {
+                const isValid = iti.isValidNumber();
+                const number = iti.getNumber();
+                console.log("Telefon:", phoneInput.value, "Pełny numer:", number, "Ważny:", isValid);
+
+                // Убираем все стили, чтобы начать с чистого состояния
+                phoneInput.classList.remove("invalid", "valid");
+
+                // Если данные валидны, добавляем класс valid (зелёная обводка)
+                if (isValid) {
+                    phoneInput.classList.add("valid");
+                }
+                // Если данные невалидны, добавляем класс invalid (красная обводка)
+                else {
+                    phoneInput.classList.add("invalid");
+                }
+                validateForm();
+            });
+
+            phoneInput.addEventListener("countrychange", () => {
+                console.log("Kraj zmieniony:", iti.getSelectedCountryData());
+                // Проверяем валидацию при смене страны
+                const isValid = iti.isValidNumber();
+                phoneInput.classList.remove("invalid", "valid");
+                if (isValid) {
+                    phoneInput.classList.add("valid");
+                } else {
+                    phoneInput.classList.add("invalid");
+                }
+                validateForm();
+            });
+
+            const flagContainer = phoneInput.closest(".iti").querySelector(".iti__flag-container");
+            if (flagContainer) {
+                flagContainer.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    console.log("Klik po fladze");
+                    iti.openDropdown();
+                });
+            }
+        } catch (error) {
+            console.error("❌ Błąd inicjalizacji intlTelInput:", error);
+        }
     }
-}
 
     loadIntlTelInput(() => {
         initializeIntlTelInput();
     });
 
     function validateForm() {
-    if (currentStep !== 9) return true;
-    if (!iti || typeof iti.isValidNumber !== "function") {
-        console.error("❌ intlTelInput не готов к валидации! Используем резервную валидацию.");
-        const phoneValue = phoneInput.value.trim();
-        const phoneValid = /^(\+48)?\d{9}$/.test(phoneValue); // Валидация для польского номера (+48 и 9 цифр)
+        if (currentStep !== 9) return true;
+        if (!iti || typeof iti.isValidNumber !== "function") {
+            console.error("❌ intlTelInput не готов к валидации! Используем резервную валидацию.");
+            const phoneValue = phoneInput.value.trim();
+            const phoneValid = /^(\+48)?\d{9}$/.test(phoneValue); // Валидация для польского номера (+48 и 9 цифр)
+            const nameValid = nameInput.value.trim() !== "";
+            const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
+            console.log("Резервная валидация:", { phoneValid, nameValid, emailValid, phoneValue });
+            return phoneValid && nameValid && emailValid;
+        }
+        const phoneValid = iti.isValidNumber();
         const nameValid = nameInput.value.trim() !== "";
         const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
-        console.log("Резервная валидация:", { phoneValid, nameValid, emailValid, phoneValue });
+        console.log("Валидация:", { phoneValid, nameValid, emailValid, fullNumber: iti.getNumber() });
         return phoneValid && nameValid && emailValid;
     }
-    const phoneValid = iti.isValidNumber();
-    const nameValid = nameInput.value.trim() !== "";
-    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value);
-    console.log("Валидация:", { phoneValid, nameValid, emailValid, fullNumber: iti.getNumber() });
-    return phoneValid && nameValid && emailValid;
-}
 
     function clearInvalidStyles() {
         // Убираем классы invalid и valid с всех инпутов при загрузке шага
